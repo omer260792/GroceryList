@@ -75,7 +75,7 @@ class GroceryListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell2", for: indexPath)
         let groceryItem = items[indexPath.row]
         
         cell.textLabel?.text = groceryItem.name

@@ -18,7 +18,7 @@ enum TabCategoryEnum: String {
     static let allValuesString = [generalCategory,temporaryCategory,vicationCategory]
 }
 
-enum generalCategoryEnum: String {
+enum GeneralCategoryEnum: String {
     
     case mainCategory = "mainCategory"
     case secondCategory = "secondCategory"

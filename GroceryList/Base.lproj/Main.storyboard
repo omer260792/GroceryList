@@ -132,7 +132,7 @@
         <!--Grocery List-->
         <scene sceneID="naS-wW-Vm7">
             <objects>
-                <tableViewController title="Grocery List" id="XYX-z1-odM" customClass="TemporeyViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Grocery List" id="XYX-z1-odM" customClass="GeneralListViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Em2-Tl-dxe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,14 +168,9 @@
                             <outlet property="delegate" destination="XYX-z1-odM" id="EV8-eF-HAT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="מה לקנות" id="jod-0d-u5V">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Is2-Qu-vMp">
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="XYX-z1-odM" id="VYA-Dv-LGr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="מה לקנות" id="jod-0d-u5V"/>
                     <connections>
+                        <outlet property="tableView" destination="Em2-Tl-dxe" id="g2l-de-OGW"/>
                         <segue destination="bpQ-dR-gpn" kind="show" identifier="ListToUsers" id="wNE-Mp-6cE"/>
                     </connections>
                 </tableViewController>
@@ -205,7 +200,7 @@
         <!--רשימה כללית-->
         <scene sceneID="dXj-YC-crh">
             <objects>
-                <tableViewController id="luS-Da-MJq" customClass="ViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="luS-Da-MJq" customClass="GeneralListViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QtY-7s-TbQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,9 +220,10 @@
                             <outlet property="delegate" destination="luS-Da-MJq" id="7Az-yO-jYO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="רשימה כללית" id="UUn-Ix-Jel">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2jH-XM-y5M"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="רשימה כללית" id="UUn-Ix-Jel"/>
+                    <connections>
+                        <outlet property="tableView" destination="QtY-7s-TbQ" id="uxN-7C-Rh3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDB-gF-4tC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,7 +232,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hCZ-yR-nHI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DXh-68-ed9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="avv-jk-9bt" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7cl-fQ-3PP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -249,6 +244,7 @@
                         <segue destination="f7b-Dh-3Ui" kind="relationship" relationship="viewControllers" id="bte-Px-x2n"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DXh-68-ed9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="658" y="760"/>
         </scene>
@@ -325,13 +321,10 @@
                             <outlet property="delegate" destination="vlV-3Q-BGs" id="HPi-Fd-1Vx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="LvS-lE-U0C">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IU3-1a-yik">
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="vlV-3Q-BGs" id="x0M-um-ujG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="LvS-lE-U0C"/>
+                    <connections>
+                        <outlet property="tableView" destination="90D-fI-qO8" id="g4T-kG-PHe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgA-7v-bRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
