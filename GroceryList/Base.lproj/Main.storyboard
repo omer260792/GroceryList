@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="2779.7101449275365" y="1807.3660714285713"/>
         </scene>
-        <!--General List View Controller-->
+        <!--General View Controller-->
         <scene sceneID="EXF-hE-HUw">
             <objects>
-                <viewController id="cHg-m7-8zp" customClass="GeneralListViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cHg-m7-8zp" customClass="GeneralViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hxE-2a-f5v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

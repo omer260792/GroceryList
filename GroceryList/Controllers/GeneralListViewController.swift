@@ -19,10 +19,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     var listToUsers = "ListToUsers"
     var groceryItems = "grocery-items"
     var tabIndex = 0
-    
-    var initTabVic = 0
-    var initTabGeneral = 0
-    var initTabTemp = 0
 
     // MARK: Properties
     var items: [GroceryItem] = []
@@ -34,6 +30,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     let timeDataProvider = TimeDataProvider()
     let categoryCellIndentifier = "CategoryCellIdentifier"
     let categoryItemCellIndentifier = "CategoryItemCellIndentifier"
+    let itemCellIndentifier = "ItemCellIndentifier"
+    let vicationCategoryCellIndentifier = "VicationCategoryCellIndentifier"
+    let vicationCellIndentifier = "VicationCellIndentifier"
+
     // MARK: rxswift
     var generalListTableDataBindingDisposable: Disposable?
     let disposeBag = DisposeBag()
@@ -50,12 +50,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateRef()
         setNavigationTopBar()
         populateView()
         setupGeneralListTableViewCellWhenDeleted()
-        
     }
     
     func populateView() {
@@ -64,6 +62,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         
         self.tableUser.register(UINib(nibName: "CategoryItemCell", bundle: nil), forCellReuseIdentifier: self.categoryItemCellIndentifier)
         
+         self.tableUser.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: self.itemCellIndentifier)
+        
+         self.tableUser.register(UINib(nibName: "VicationCategoryCell", bundle: nil), forCellReuseIdentifier: self.vicationCategoryCellIndentifier)
+        
+         self.tableUser.register(UINib(nibName: "VicationCell", bundle: nil), forCellReuseIdentifier: self.vicationCellIndentifier)
+  
         self.tabBarController?.delegate = self
         //tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -106,17 +110,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         return true
     }
     
-    func ReloadCategoryItem()  {
-        self.extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState()
-//        self.generalListTableDataBindingDisposable?.dispose()
-        //self.bindDataForGeneralListTableView()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateRef()
         populateTableView()
-        print("jjj",1)
     }
     
     func updateRef(){
@@ -130,12 +127,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         default: break
         }
     }
-    
-    public func extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState() {
-        
- 
-    }
-    
+
     func bindDataForGeneralListTableView() {
         self.generalListTableDataBindingDisposable = generalListObsevaleTableView
             .bind(to: tableUser.rx.items) { (tableView, row, element) in
@@ -151,11 +143,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     }
     
     func populateTableView() {
-    
-//        if initTabVic == 0 || initTabTemp == 0 || initTabGeneral == 0 {
-//            extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState()
-//        }
-        
         ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
             self.observableGeneralListEmptyObject.removeAll()
@@ -176,7 +163,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
                 self.bindDataForGeneralListTableView()
             }
         })
-      
     }
     
     

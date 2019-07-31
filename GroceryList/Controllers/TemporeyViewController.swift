@@ -12,15 +12,10 @@ class TemporeyViewController: GeneralListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("bhhgh")
-        initTabTemp = 1
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("tabIndex3",tabIndex)
     }
 
     /*
