@@ -32,10 +32,10 @@ class CategoryItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-       // populateSetupXib()
-        addPopUp()
-        populateViewTap()
+//
+//       // populateSetupXib()
+//        addPopUp()
+//        populateViewTap()
 
     }
     
@@ -62,63 +62,63 @@ class CategoryItemCell: UITableViewCell {
         }
       
     }
-    func populateViewTap() {
-        let tapGesture = UITapGestureRecognizer()
-        viewCell.addGestureRecognizer(tapGesture)
-        
-        tapGesture.rx.event.bind(onNext: { recognizer in
-            
-            var isSend:Bool
-            var isColor:Bool
-            var isDelete:String
-            
-            self.stringTest = self.secondCategroyLabel.text!
-            let num = self.delegate.temporaryListViewModel.getCountTemporeryCtegorey()
-            let newNum = String(num + 1)
-            
-            if let isSendBool = self.isSendLabel.text, let uid = self.uidLabel.text{
-                if isSendBool == "false" {
-                    isSend = true
-                    isColor = true
-                    isDelete = "false"
-                    // save temporery list  core data
-                    
-                    if let title = self.titleLabel.text, let uid = self.uidLabel.text, let secondCategroy = self.secondCategroyLabel.text {
-                        
-                        self.delegate.addViewItemAmount.isHidden = false
-                        self.delegate.addViewItemAmount.alpha = 1
-                        self.delegate.backgroundView.alpha = 0.7
-                        self.delegate.secondCategroyTitleTextTap = title
-                        self.delegate.secondCategroyUIdTextTap = uid
-                        self.delegate.secondCategroyTextTap = secondCategroy
-                        self.delegate.secondCategroyIsSendTextTap = isSend
-                    }
-
-                }else{
-                    // remove temporery list  core data
-                    isSend = false
-                    isColor = false
-                    isDelete = "true"
-
-                    let test = self.delegate.temporaryListViewModel.someEntityExists(uid: self.uidLabel.text!)
-                    if test {
-                        self.delegate.updateTemporeryObjectFromCoreData(uid: uid)
-                    }else{
-                        print("ssssdddd")
-                    }
-                    self.delegate.generaListViewModel.updateGeneralList(content: "", date: "", delete: isDelete, generalCategory: "", image: "", isColor: isColor, isCompleted: false , isSend: isSend, secondaryCategory: newNum, title: "", uid: uid, uidCategory:"", update: true)
-                    
-                    self.delegate.ReloadCategoryItemUpdateTableView()
-
-                }
-            }
-        }).disposed(by: disposeBag)
-    }
-    
-    func addPopUp() {
-        addPopupBtn.rx.tap.subscribe {  _ in
-          self.delegate.addPopupVactionView()
-        }.disposed(by:self.disposeBag)
-    }
+//    func populateViewTap() {
+//        let tapGesture = UITapGestureRecognizer()
+//        viewCell.addGestureRecognizer(tapGesture)
+//        
+//        tapGesture.rx.event.bind(onNext: { recognizer in
+//            
+//            var isSend:Bool
+//            var isColor:Bool
+//            var isDelete:String
+//            
+//            self.stringTest = self.secondCategroyLabel.text!
+//            let num = self.delegate.temporaryListViewModel.getCountTemporeryCtegorey()
+//            let newNum = String(num + 1)
+//            
+//            if let isSendBool = self.isSendLabel.text, let uid = self.uidLabel.text{
+//                if isSendBool == "false" {
+//                    isSend = true
+//                    isColor = true
+//                    isDelete = "false"
+//                    // save temporery list  core data
+//                    
+//                    if let title = self.titleLabel.text, let uid = self.uidLabel.text, let secondCategroy = self.secondCategroyLabel.text {
+//                        
+//                        self.delegate.addViewItemAmount.isHidden = false
+//                        self.delegate.addViewItemAmount.alpha = 1
+//                        self.delegate.backgroundView.alpha = 0.7
+//                        self.delegate.secondCategroyTitleTextTap = title
+//                        self.delegate.secondCategroyUIdTextTap = uid
+//                        self.delegate.secondCategroyTextTap = secondCategroy
+//                        self.delegate.secondCategroyIsSendTextTap = isSend
+//                    }
+//
+//                }else{
+//                    // remove temporery list  core data
+//                    isSend = false
+//                    isColor = false
+//                    isDelete = "true"
+//
+//                    let test = self.delegate.temporaryListViewModel.someEntityExists(uid: self.uidLabel.text!)
+//                    if test {
+//                        self.delegate.updateTemporeryObjectFromCoreData(uid: uid)
+//                    }else{
+//                        print("ssssdddd")
+//                    }
+//                    self.delegate.generaListViewModel.updateGeneralList(content: "", date: "", delete: isDelete, generalCategory: "", image: "", isColor: isColor, isCompleted: false , isSend: isSend, secondaryCategory: newNum, title: "", uid: uid, uidCategory:"", update: true)
+//                    
+//                    self.delegate.ReloadCategoryItemUpdateTableView()
+//
+//                }
+//            }
+//        }).disposed(by: disposeBag)
+//    }
+//    
+//    func addPopUp() {
+//        addPopupBtn.rx.tap.subscribe {  _ in
+//          self.delegate.addPopupVactionView()
+//        }.disposed(by:self.disposeBag)
+//    }
 }
 

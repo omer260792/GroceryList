@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCellIndentifier" rowHeight="353" id="tbr-zm-Kbk" customClass="ItemCell" customModule="ShoppingList" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCellIndentifier" rowHeight="353" id="tbr-zm-Kbk" customClass="ItemCell" customModule="GroceryList" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tbr-zm-Kbk" id="FDn-AR-4s3">
@@ -134,17 +134,6 @@
                     <constraint firstAttribute="trailing" secondItem="sjH-q9-IWy" secondAttribute="trailing" constant="10" id="r0E-HI-bQl"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="contentLabel" destination="Gmy-CG-EbU" id="GeC-uN-5ev"/>
-                <outlet property="imageViewCell" destination="sjH-q9-IWy" id="2Yl-CQ-rld"/>
-                <outlet property="indexRowLabel" destination="vC4-Ue-haB" id="Anp-Pa-h5c"/>
-                <outlet property="isDeleteLabel" destination="Alx-JE-Hsc" id="Z4g-CE-JDd"/>
-                <outlet property="lineView" destination="CYC-Ez-nm4" id="flS-4d-fXI"/>
-                <outlet property="titleLabel" destination="Z9u-Mk-Nkl" id="Y6n-7D-ncX"/>
-                <outlet property="uidLabel" destination="gTU-Md-I2n" id="Zg9-z0-J2K"/>
-                <outlet property="viewBtnOutlet" destination="tEq-8x-8R3" id="CyA-yX-FuG"/>
-                <outlet property="viewCell" destination="n77-3G-vAd" id="cE1-ry-gym"/>
-            </connections>
             <point key="canvasLocation" x="1023.913043478261" y="-53.571428571428569"/>
         </tableViewCell>
     </objects>

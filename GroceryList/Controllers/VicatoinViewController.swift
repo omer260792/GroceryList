@@ -8,17 +8,20 @@
 
 import UIKit
 
-class ViewController: GeneralListViewController {
+class VicatoinViewController: GeneralListViewController {
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("tabIndex", tabIndex)
+        initTabVic = 1
+
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("tabIndex",tabIndex)
+        
+        print("tabIndex1","2222")
 
     }
     

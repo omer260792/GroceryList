@@ -11,14 +11,19 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-class GeneralListViewController: UITableViewController, UITabBarControllerDelegate {
+class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableUser: UITableView!
+    
     // MARK: Constants
     var listToUsers = "ListToUsers"
     var groceryItems = "grocery-items"
     var tabIndex = 0
     
+    var initTabVic = 0
+    var initTabGeneral = 0
+    var initTabTemp = 0
+
     // MARK: Properties
     var items: [GroceryItem] = []
     var user: User!
@@ -27,8 +32,16 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
     let usersRef = Database.database().reference(withPath: "online")
     
     let timeDataProvider = TimeDataProvider()
+    let categoryCellIndentifier = "CategoryCellIdentifier"
+    let categoryItemCellIndentifier = "CategoryItemCellIndentifier"
+    // MARK: rxswift
     var generalListTableDataBindingDisposable: Disposable?
     let disposeBag = DisposeBag()
+    var observableGeneralListEmptyObject = Variable<[GroceryItem]>([]).value
+    var generalListFromCoreData = Variable<[GroceryItem]>([])
+    var observableGeneralList = Observable<[GroceryItem]>.empty()
+    var generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
+
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -41,13 +54,18 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
         updateRef()
         setNavigationTopBar()
         populateView()
-        populateTableView()
+        setupGeneralListTableViewCellWhenDeleted()
+        
     }
     
     func populateView() {
         
+        self.tableUser.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: self.categoryCellIndentifier)
+        
+        self.tableUser.register(UINib(nibName: "CategoryItemCell", bundle: nil), forCellReuseIdentifier: self.categoryItemCellIndentifier)
+        
         self.tabBarController?.delegate = self
-        tableView.allowsMultipleSelectionDuringEditing = false
+        //tableView.allowsMultipleSelectionDuringEditing = false
         
         if self.tabBarController?.selectedIndex == 0 {
             tabIndex = 0
@@ -77,32 +95,28 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        if viewController is ViewController {
+        if viewController is VicatoinViewController {
             listToUsers = "ViewController"
         }
         
-        if viewController is JViewController {
+        if viewController is GeneralViewController {
             listToUsers = "JViewController"
         }
         
         return true
     }
     
+    func ReloadCategoryItem()  {
+        self.extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState()
+//        self.generalListTableDataBindingDisposable?.dispose()
+        //self.bindDataForGeneralListTableView()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateRef()
-        ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
-            var newItems: [GroceryItem] = []
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                    let groceryItem = GroceryItem(snapshot: snapshot) {
-                    newItems.append(groceryItem)
-                }
-            }
-            
-            self.items = newItems
-            self.tableView.reloadData()
-        })
+        populateTableView()
+        print("jjj",1)
     }
     
     func updateRef(){
@@ -117,63 +131,105 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
         }
     }
     
-    func populateTableView() {
+    public func extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState() {
         
-//        tableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: categoryCellIndentifier)
-//
-//        tableView.register(UINib(nibName: "CategoryItemCell", bundle: nil), forCellReuseIdentifier: categoryItemCellIndentifier)
-//
-//        extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState(normalScheme: UpdateEnum.firstInitUpdate.rawValue)
-//
-//        if observableGeneralListEmptyObject.count > 0 {
-//
-//            generalListFromCoreData = Variable<[GeneralList]>.init(observableGeneralListEmptyObject)
-//
-//            bindDataForGeneralListTableView()
-//        }
+ 
     }
     
-    
-    // MARK: UITableView Delegate methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell2", for: indexPath)
-    
-        let groceryItem = items[indexPath.row]
-       
-  
-        cell.textLabel?.text = groceryItem.name
-        cell.detailTextLabel?.text = groceryItem.key
-        toggleCellCheckbox(cell, isCompleted: groceryItem.isCompleted)
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let groceryItem = items[indexPath.row]
-            groceryItem.ref?.removeValue()
+    func bindDataForGeneralListTableView() {
+        self.generalListTableDataBindingDisposable = generalListObsevaleTableView
+            .bind(to: tableUser.rx.items) { (tableView, row, element) in
+                let indexPath = IndexPath(row: row, section: 0)
+                
+                let cell = self.tableUser.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
+                
+               cell.textLabel?.text = element.name
+                
+                return cell
         }
+        self.generalListTableDataBindingDisposable?.disposed(by: self.disposeBag)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        let groceryItem = items[indexPath.row]
-        let toggledCompletion = !groceryItem.isCompleted
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        groceryItem.ref?.updateChildValues([
-            "completed": toggledCompletion
-            ])
+    func populateTableView() {
+    
+//        if initTabVic == 0 || initTabTemp == 0 || initTabGeneral == 0 {
+//            extractGeneralListFromCoreDataAndFilterThemAccordingToGeneralListState()
+//        }
+        
+        ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
+            var newItems: [GroceryItem] = []
+            self.observableGeneralListEmptyObject.removeAll()
+            self.generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let groceryItem = GroceryItem(snapshot: snapshot) {
+                    newItems.append(groceryItem)
+                    self.observableGeneralListEmptyObject.append(groceryItem)
+                }
+            }
+            
+            self.items = newItems
+            self.generalListObsevaleTableView = Observable.of(self.observableGeneralListEmptyObject)
+            
+            if self.observableGeneralListEmptyObject.count > 0 {
+                self.generalListTableDataBindingDisposable?.dispose()
+                self.bindDataForGeneralListTableView()
+            }
+        })
+      
     }
     
+    
+//    // MARK: UITableView Delegate methods
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return items.count
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell2", for: indexPath)
+//    
+//        let groceryItem = items[indexPath.row]
+//       
+//  
+//        cell.textLabel?.text = groceryItem.name
+//        cell.detailTextLabel?.text = groceryItem.key
+//        toggleCellCheckbox(cell, isCompleted: groceryItem.isCompleted)
+//        
+//        return cell
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let groceryItem = items[indexPath.row]
+//            groceryItem.ref?.removeValue()
+//        }
+//    }
+    
+    private func setupGeneralListTableViewCellWhenDeleted() {
+        tableUser.rx.itemDeleted
+            .subscribe(onNext : { indexPath in
+                let groceryItem = self.items[indexPath.row]
+                groceryItem.ref?.removeValue()
+                self.tableUser.reloadData()
+            })
+        .disposed(by: disposeBag)
+    }
+//    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//        let groceryItem = items[indexPath.row]
+//        let toggledCompletion = !groceryItem.isCompleted
+//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+//        groceryItem.ref?.updateChildValues([
+//            "completed": toggledCompletion
+//            ])
+//    }
+//    
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
         if !isCompleted {
             cell.accessoryType = .none
@@ -266,7 +322,7 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
                 })
             }.disposed(by: disposeBag)
         }
-        if tabIndex != 2 {
+       
             // Navigation left
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "פריט" , style: .plain, target: self, action: nil)
             if let leftBtn = navigationItem.leftBarButtonItem {
@@ -283,7 +339,6 @@ class GeneralListViewController: UITableViewController, UITabBarControllerDelega
 //
 //                })
                 }.disposed(by: disposeBag)
-            }
         }
     }
 

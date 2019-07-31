@@ -1,19 +1,18 @@
 //
-//  TemporeyViewController.swift
+//  GeneralViewController.swift
 //  GroceryList
 //
-//  Created by Omer Cohen on 7/30/19.
+//  Created by Omer Cohen on 7/31/19.
 //  Copyright © 2019 Omer Cohen. All rights reserved.
 //
 
 import UIKit
 
-class TemporeyViewController: GeneralListViewController {
+class GeneralViewController: GeneralListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("bhhgh")
-        initTabTemp = 1
+        initTabGeneral = 1
 
         // Do any additional setup after loading the view.
     }
@@ -22,6 +21,7 @@ class TemporeyViewController: GeneralListViewController {
         super.viewWillAppear(animated)
         print("tabIndex3",tabIndex)
     }
+    
 
     /*
     // MARK: - Navigation

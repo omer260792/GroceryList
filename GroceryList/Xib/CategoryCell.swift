@@ -17,13 +17,13 @@ class CategoryCell: UITableViewCell {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var viewButton: UIButton!
     
-    var delegate: GeneralListViewController!
+   // var delegate: GeneralListViewController!
     let disposeBag = DisposeBag()
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        populateSetupXib()
+       // populateSetupXib()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,13 +31,13 @@ class CategoryCell: UITableViewCell {
 
     }
     
-    func populateSetupXib(){
-        viewButton.rx.tap.subscribe {  _ in
-            
-            self.delegate.SelectCategoryString = self.categoryLabel.text!
-            self.delegate.ReloadCategoryUpdateTableView()
-
-            }.disposed(by:self.disposeBag)
-    }
+//    func populateSetupXib(){
+//        viewButton.rx.tap.subscribe {  _ in
+//            
+//            self.delegate.SelectCategoryString = self.categoryLabel.text!
+//            self.delegate.ReloadCategoryUpdateTableView()
+//
+//            }.disposed(by:self.disposeBag)
+//    }
     
 }
