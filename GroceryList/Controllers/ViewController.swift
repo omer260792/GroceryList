@@ -8,12 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: GeneralListViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("tabIndex", tabIndex)
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("tabIndex",tabIndex)
+
+    }
+    
+    
+    
+    
+    
+    
+
 
 
 }

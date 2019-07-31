@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,16 @@
 		17F30C4322F0958C00106D1C /* GroceryList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C4122F0958C00106D1C /* GroceryList.xcdatamodeld */; };
 		17F30C4522F0958E00106D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C4422F0958E00106D1C /* Assets.xcassets */; };
 		17F30C4822F0958E00106D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C4622F0958E00106D1C /* LaunchScreen.storyboard */; };
+		17F30C5122F096F300106D1C /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C5022F096F300106D1C /* GroceryItem.swift */; };
+		17F30C5322F096FC00106D1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C5222F096FC00106D1C /* User.swift */; };
+		17F30C5622F0977D00106D1C /* OnlineUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C5522F0977D00106D1C /* OnlineUsersTableViewController.swift */; };
+		17F30C5822F097D900106D1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C5722F097D900106D1C /* LoginViewController.swift */; };
+		17F30C5A22F0981000106D1C /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C5922F0981000106D1C /* GroceryListTableViewController.swift */; };
+		17F30C5E22F0A5DA00106D1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C5D22F0A5DA00106D1C /* GoogleService-Info.plist */; };
+		17F30C6122F0B14900106D1C /* GeneralListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6022F0B14900106D1C /* GeneralListViewController.swift */; };
+		17F30C6322F0B98100106D1C /* JViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6222F0B98100106D1C /* JViewController.swift */; };
+		17F30C6722F0CC5500106D1C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6622F0CC5500106D1C /* Enums.swift */; };
+		17F30C6922F0D37E00106D1C /* TemporeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */; };
 		9EDFE676DB73647AF52974BA /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724DE8095893174978B31378 /* Pods_GroceryList.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +35,16 @@
 		17F30C4422F0958E00106D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17F30C4722F0958E00106D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17F30C4922F0958E00106D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17F30C5022F096F300106D1C /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		17F30C5222F096FC00106D1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		17F30C5522F0977D00106D1C /* OnlineUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineUsersTableViewController.swift; sourceTree = "<group>"; };
+		17F30C5722F097D900106D1C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		17F30C5922F0981000106D1C /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
+		17F30C5D22F0A5DA00106D1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		17F30C6022F0B14900106D1C /* GeneralListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralListViewController.swift; sourceTree = "<group>"; };
+		17F30C6222F0B98100106D1C /* JViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JViewController.swift; sourceTree = "<group>"; };
+		17F30C6622F0CC5500106D1C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporeyViewController.swift; sourceTree = "<group>"; };
 		22C31BECA0FC029FDF52EE35 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		724DE8095893174978B31378 /* Pods_GroceryList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF5FE037E42523694E094A /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,8 +83,11 @@
 		17F30C3922F0958C00106D1C /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				17F30C5F22F0B0A100106D1C /* Enums */,
+				17F30C5422F0970900106D1C /* Controllers */,
+				17F30C4F22F096D300106D1C /* Models */,
+				17F30C5D22F0A5DA00106D1C /* GoogleService-Info.plist */,
 				17F30C3A22F0958C00106D1C /* AppDelegate.swift */,
-				17F30C3C22F0958C00106D1C /* ViewController.swift */,
 				17F30C3E22F0958C00106D1C /* Main.storyboard */,
 				17F30C4422F0958E00106D1C /* Assets.xcassets */,
 				17F30C4622F0958E00106D1C /* LaunchScreen.storyboard */,
@@ -74,13 +97,43 @@
 			path = GroceryList;
 			sourceTree = "<group>";
 		};
+		17F30C4F22F096D300106D1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				17F30C5022F096F300106D1C /* GroceryItem.swift */,
+				17F30C5222F096FC00106D1C /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17F30C5422F0970900106D1C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17F30C5522F0977D00106D1C /* OnlineUsersTableViewController.swift */,
+				17F30C5722F097D900106D1C /* LoginViewController.swift */,
+				17F30C5922F0981000106D1C /* GroceryListTableViewController.swift */,
+				17F30C6022F0B14900106D1C /* GeneralListViewController.swift */,
+				17F30C3C22F0958C00106D1C /* ViewController.swift */,
+				17F30C6222F0B98100106D1C /* JViewController.swift */,
+				17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		17F30C5F22F0B0A100106D1C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				17F30C6622F0CC5500106D1C /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		206E7B38B24E7FCD6F9938F7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				E7EF5FE037E42523694E094A /* Pods-GroceryList.debug.xcconfig */,
 				22C31BECA0FC029FDF52EE35 /* Pods-GroceryList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F30C4822F0958E00106D1C /* LaunchScreen.storyboard in Resources */,
+				17F30C5E22F0A5DA00106D1C /* GoogleService-Info.plist in Resources */,
 				17F30C4522F0958E00106D1C /* Assets.xcassets in Resources */,
 				17F30C4022F0958C00106D1C /* Main.storyboard in Resources */,
 			);
@@ -207,9 +261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17F30C5822F097D900106D1C /* LoginViewController.swift in Sources */,
+				17F30C5622F0977D00106D1C /* OnlineUsersTableViewController.swift in Sources */,
+				17F30C5A22F0981000106D1C /* GroceryListTableViewController.swift in Sources */,
 				17F30C4322F0958C00106D1C /* GroceryList.xcdatamodeld in Sources */,
+				17F30C6122F0B14900106D1C /* GeneralListViewController.swift in Sources */,
+				17F30C6322F0B98100106D1C /* JViewController.swift in Sources */,
 				17F30C3D22F0958C00106D1C /* ViewController.swift in Sources */,
+				17F30C5122F096F300106D1C /* GroceryItem.swift in Sources */,
+				17F30C5322F096FC00106D1C /* User.swift in Sources */,
 				17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */,
+				17F30C6722F0CC5500106D1C /* Enums.swift in Sources */,
+				17F30C6922F0D37E00106D1C /* TemporeyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -341,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
