@@ -10,23 +10,21 @@ import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
+import Firebase
 
-class VicationCell: UITableViewCell {
+class VicationCell: ModelCell {
 
-    
-    
+    @IBOutlet var viewCellBtn: UIButton!
     @IBOutlet var itemCategoryLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //setupCell()
+        setupView()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    override func setupView() {
+        viewCellBtn.rx.tap.subscribe {  _ in
+            self.toggleContent(pathString: "vicationCategory")
+        }.disposed(by:self.disposeBag)
     }
-    
-    
 }

@@ -14,6 +14,7 @@ import UIKit
 class VicationCategoryCell: UITableViewCell {
     
     
+    @IBOutlet var viewCellBtn: UIButton!
     @IBOutlet var nameCategorycell: UILabel!
     
     override func awakeFromNib() {
@@ -26,5 +27,6 @@ class VicationCategoryCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+
 }
 

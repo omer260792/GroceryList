@@ -10,34 +10,23 @@ import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
+import Firebase
 
-class CategoryCell: UITableViewCell {
+class CategoryCell: ModelCell {
     
     @IBOutlet var categoryImgView: UIImageView!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var viewButton: UIButton!
     
-   // var delegate: GeneralListViewController!
-    let disposeBag = DisposeBag()
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
-       // populateSetupXib()
+        setupView()
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
+    override func setupView() {
+        viewButton.rx.tap.subscribe {  _ in
+            self.toggleContent(pathString: "generalCategory")
+            }.disposed(by:self.disposeBag)
     }
-    
-//    func populateSetupXib(){
-//        viewButton.rx.tap.subscribe {  _ in
-//            
-//            self.delegate.SelectCategoryString = self.categoryLabel.text!
-//            self.delegate.ReloadCategoryUpdateTableView()
-//
-//            }.disposed(by:self.disposeBag)
-//    }
-    
+
 }

@@ -35,6 +35,12 @@
 		17F30C8222F1A0DD00106D1C /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C7922F1A0DD00106D1C /* ItemCell.xib */; };
 		17F30C8322F1A0DD00106D1C /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C7A22F1A0DD00106D1C /* CategoryCell.xib */; };
 		17F30C8B22F1B73200106D1C /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C8A22F1B73100106D1C /* GeneralViewController.swift */; };
+		17F30C8E22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C8D22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift */; };
+		17F30C9022F1CE9F00106D1C /* GeneralListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C8F22F1CE9F00106D1C /* GeneralListCellViewModel.swift */; };
+		17F30C9222F1E61B00106D1C /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C9122F1E61B00106D1C /* ModelCell.swift */; };
+		17F30C9422F3048400106D1C /* VicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C9322F3048400106D1C /* VicationViewModel.swift */; };
+		17F30C9622F3A11500106D1C /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C9522F3A11500106D1C /* PhotoCollectionViewCell.swift */; };
+		17F30C9822F3A12E00106D1C /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C9722F3A12E00106D1C /* PhotosCollectionViewController.swift */; };
 		9EDFE676DB73647AF52974BA /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724DE8095893174978B31378 /* Pods_GroceryList.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +75,12 @@
 		17F30C7922F1A0DD00106D1C /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		17F30C7A22F1A0DD00106D1C /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		17F30C8A22F1B73100106D1C /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		17F30C8D22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralListViewModelProtocol.swift; sourceTree = "<group>"; };
+		17F30C8F22F1CE9F00106D1C /* GeneralListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralListCellViewModel.swift; sourceTree = "<group>"; };
+		17F30C9122F1E61B00106D1C /* ModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModelCell.swift; path = ../ViewModel/ModelCell.swift; sourceTree = "<group>"; };
+		17F30C9322F3048400106D1C /* VicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicationViewModel.swift; sourceTree = "<group>"; };
+		17F30C9522F3A11500106D1C /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		17F30C9722F3A12E00106D1C /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		22C31BECA0FC029FDF52EE35 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		724DE8095893174978B31378 /* Pods_GroceryList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF5FE037E42523694E094A /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +119,7 @@
 		17F30C3922F0958C00106D1C /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				17F30C8C22F1CB9900106D1C /* ViewModel */,
 				17F30C6B22F1995000106D1C /* Utils */,
 				17F30C6A22F1993300106D1C /* Xib */,
 				17F30C5F22F0B0A100106D1C /* Enums */,
@@ -126,6 +139,7 @@
 		17F30C4F22F096D300106D1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				17F30C9122F1E61B00106D1C /* ModelCell.swift */,
 				17F30C5022F096F300106D1C /* GroceryItem.swift */,
 				17F30C5222F096FC00106D1C /* User.swift */,
 			);
@@ -142,6 +156,8 @@
 				17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */,
 				17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */,
 				17F30C8A22F1B73100106D1C /* GeneralViewController.swift */,
+				17F30C9522F3A11500106D1C /* PhotoCollectionViewCell.swift */,
+				17F30C9722F3A12E00106D1C /* PhotosCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +194,16 @@
 				17F30C6E22F1999100106D1C /* RoundButton.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		17F30C8C22F1CB9900106D1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				17F30C8D22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift */,
+				17F30C8F22F1CE9F00106D1C /* GeneralListCellViewModel.swift */,
+				17F30C9322F3048400106D1C /* VicationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		206E7B38B24E7FCD6F9938F7 /* Pods */ = {
@@ -321,9 +347,11 @@
 				17F30C7E22F1A0DD00106D1C /* CategoryCell.swift in Sources */,
 				17F30C5822F097D900106D1C /* LoginViewController.swift in Sources */,
 				17F30C5622F0977D00106D1C /* OnlineUsersTableViewController.swift in Sources */,
+				17F30C9422F3048400106D1C /* VicationViewModel.swift in Sources */,
 				17F30C6F22F1999100106D1C /* RoundButton.swift in Sources */,
 				17F30C5A22F0981000106D1C /* GroceryListTableViewController.swift in Sources */,
 				17F30C4322F0958C00106D1C /* GroceryList.xcdatamodeld in Sources */,
+				17F30C9022F1CE9F00106D1C /* GeneralListCellViewModel.swift in Sources */,
 				17F30C6122F0B14900106D1C /* GeneralListViewController.swift in Sources */,
 				17F30C8022F1A0DD00106D1C /* CategoryItemCell.swift in Sources */,
 				17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */,
@@ -331,11 +359,15 @@
 				17F30C5322F096FC00106D1C /* User.swift in Sources */,
 				17F30C8B22F1B73200106D1C /* GeneralViewController.swift in Sources */,
 				17F30C7B22F1A0DD00106D1C /* VicationCell.swift in Sources */,
+				17F30C8E22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift in Sources */,
 				17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */,
+				17F30C9622F3A11500106D1C /* PhotoCollectionViewCell.swift in Sources */,
 				17F30C6722F0CC5500106D1C /* Enums.swift in Sources */,
+				17F30C9222F1E61B00106D1C /* ModelCell.swift in Sources */,
 				17F30C6922F0D37E00106D1C /* TemporeyViewController.swift in Sources */,
 				17F30C6D22F1996500106D1C /* TimeDataProvider.swift in Sources */,
 				17F30C7F22F1A0DD00106D1C /* VicationCategoryCell.swift in Sources */,
+				17F30C9822F3A12E00106D1C /* PhotosCollectionViewController.swift in Sources */,
 				17F30C7122F199EE00106D1C /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

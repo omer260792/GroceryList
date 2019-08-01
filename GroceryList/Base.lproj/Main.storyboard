@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="heebo_bold.ttf">
+            <string>Heebo-Bold</string>
+        </array>
+        <array key="heebo_regular.ttf">
+            <string>Heebo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="lfY-S0-4zb">
@@ -257,12 +265,67 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEG-mg-Oqb">
+                                <rect key="frame" x="47" y="301.5" width="320" height="293.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z22-fV-OQR">
+                                        <rect key="frame" x="10" y="5" width="300" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="qbJ-CR-85q">
+                                        <rect key="frame" x="0.0" y="29.5" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-uM-43m">
+                                        <rect key="frame" x="10" y="245.5" width="300" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPa-i9-mI1">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="38"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                                <state key="normal" title="ביטול">
+                                                    <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVV-SO-s7n">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="38"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                                <state key="normal" title="אישור">
+                                                    <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qbJ-CR-85q" secondAttribute="trailing" id="DZg-dI-Vlp"/>
+                                    <constraint firstItem="qbJ-CR-85q" firstAttribute="top" secondItem="z22-fV-OQR" secondAttribute="bottom" id="HqM-JL-0iV"/>
+                                    <constraint firstAttribute="trailing" secondItem="z22-fV-OQR" secondAttribute="trailing" constant="10" id="LcW-wn-w0Z"/>
+                                    <constraint firstItem="qbJ-CR-85q" firstAttribute="leading" secondItem="SEG-mg-Oqb" secondAttribute="leading" id="Qzd-U1-hy2"/>
+                                    <constraint firstAttribute="bottom" secondItem="fBA-uM-43m" secondAttribute="bottom" constant="10" id="Uih-UB-LG6"/>
+                                    <constraint firstItem="fBA-uM-43m" firstAttribute="top" secondItem="qbJ-CR-85q" secondAttribute="bottom" id="oeD-Fr-Om9"/>
+                                    <constraint firstItem="fBA-uM-43m" firstAttribute="leading" secondItem="SEG-mg-Oqb" secondAttribute="leading" constant="10" id="qJa-l5-mp1"/>
+                                    <constraint firstItem="z22-fV-OQR" firstAttribute="top" secondItem="SEG-mg-Oqb" secondAttribute="top" constant="5" id="qnM-Dy-b1C"/>
+                                    <constraint firstItem="z22-fV-OQR" firstAttribute="leading" secondItem="SEG-mg-Oqb" secondAttribute="leading" constant="10" id="tMC-ul-nMi"/>
+                                    <constraint firstAttribute="trailing" secondItem="fBA-uM-43m" secondAttribute="trailing" constant="10" id="xMu-pv-4wo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SEG-mg-Oqb" firstAttribute="leading" secondItem="g3d-8t-uR8" secondAttribute="leading" constant="47" id="1LY-An-luc"/>
+                            <constraint firstItem="SEG-mg-Oqb" firstAttribute="centerX" secondItem="AWK-Cx-1jt" secondAttribute="centerX" id="Ixg-OU-M6h"/>
+                            <constraint firstItem="SEG-mg-Oqb" firstAttribute="centerY" secondItem="AWK-Cx-1jt" secondAttribute="centerY" id="rdq-y9-03Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g3d-8t-uR8"/>
                     </view>
                     <navigationItem key="navigationItem" id="rjl-zw-49c"/>
                     <connections>
+                        <outlet property="cencelBtn" destination="tPa-i9-mI1" id="hX2-qF-jLl"/>
+                        <outlet property="confirmBtn" destination="yVV-SO-s7n" id="pEP-nZ-QSj"/>
+                        <outlet property="listCategoryLabel" destination="z22-fV-OQR" id="cvW-Yu-Yz6"/>
+                        <outlet property="picker" destination="qbJ-CR-85q" id="280-Zp-HvU"/>
+                        <outlet property="pikerView" destination="SEG-mg-Oqb" id="oDL-EU-DFI"/>
                         <outlet property="tableUser" destination="LJG-7X-ECU" id="PUk-jK-yLz"/>
                     </connections>
                 </viewController>
@@ -293,12 +356,67 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-Ov-BjX">
+                                <rect key="frame" x="47" y="301.5" width="320" height="293.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-I6-WLK">
+                                        <rect key="frame" x="10" y="5" width="300" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="SQG-eH-hWw">
+                                        <rect key="frame" x="0.0" y="29.5" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EFV-Mw-9z5">
+                                        <rect key="frame" x="10" y="245.5" width="300" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-yI-xH8">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="38"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                                <state key="normal" title="ביטול">
+                                                    <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3im-YB-zvt">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="38"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                                <state key="normal" title="אישור">
+                                                    <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="h5K-I6-WLK" secondAttribute="trailing" constant="10" id="GAX-MP-lfc"/>
+                                    <constraint firstItem="h5K-I6-WLK" firstAttribute="leading" secondItem="fh0-Ov-BjX" secondAttribute="leading" constant="10" id="LeC-jQ-6Vh"/>
+                                    <constraint firstItem="h5K-I6-WLK" firstAttribute="top" secondItem="fh0-Ov-BjX" secondAttribute="top" constant="5" id="NSz-bM-SYL"/>
+                                    <constraint firstItem="EFV-Mw-9z5" firstAttribute="leading" secondItem="fh0-Ov-BjX" secondAttribute="leading" constant="10" id="Tr2-pP-6rh"/>
+                                    <constraint firstItem="EFV-Mw-9z5" firstAttribute="top" secondItem="SQG-eH-hWw" secondAttribute="bottom" id="USg-L7-uLK"/>
+                                    <constraint firstAttribute="bottom" secondItem="EFV-Mw-9z5" secondAttribute="bottom" constant="10" id="aFy-Zr-SFN"/>
+                                    <constraint firstItem="SQG-eH-hWw" firstAttribute="leading" secondItem="fh0-Ov-BjX" secondAttribute="leading" id="lAK-Es-9Uf"/>
+                                    <constraint firstAttribute="trailing" secondItem="SQG-eH-hWw" secondAttribute="trailing" id="nXL-VK-6QW"/>
+                                    <constraint firstAttribute="trailing" secondItem="EFV-Mw-9z5" secondAttribute="trailing" constant="10" id="qSf-YE-vwZ"/>
+                                    <constraint firstItem="SQG-eH-hWw" firstAttribute="top" secondItem="h5K-I6-WLK" secondAttribute="bottom" id="woK-q3-8pD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerX" secondItem="hxE-2a-f5v" secondAttribute="centerX" id="AKL-LB-Yw5"/>
+                            <constraint firstItem="fh0-Ov-BjX" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" constant="47" id="BSF-Bb-O9F"/>
+                            <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerY" secondItem="hxE-2a-f5v" secondAttribute="centerY" id="dd6-7E-HdS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gEG-GF-5H1"/>
                     </view>
                     <navigationItem key="navigationItem" id="F7Y-l9-tnn"/>
                     <connections>
+                        <outlet property="cencelBtn" destination="ou3-yI-xH8" id="pMU-2I-uQS"/>
+                        <outlet property="confirmBtn" destination="3im-YB-zvt" id="x2w-AS-VVb"/>
+                        <outlet property="listCategoryLabel" destination="h5K-I6-WLK" id="OHD-Kh-7eA"/>
+                        <outlet property="picker" destination="SQG-eH-hWw" id="8BG-UX-lLm"/>
+                        <outlet property="pikerView" destination="fh0-Ov-BjX" id="0ep-P5-fva"/>
                         <outlet property="tableUser" destination="Ye3-ZC-UBM" id="Cyy-22-RFS"/>
                     </connections>
                 </viewController>

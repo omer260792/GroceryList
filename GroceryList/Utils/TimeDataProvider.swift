@@ -8,22 +8,20 @@
 
 import Foundation
 
-struct TimeDataProvider {
-    
+class TimeDataProvider {
     
     // Mark: get the current time
-    func currentTimeInSeconds()-> Int {
+    static func currentTimeInSeconds()-> Int {
         let currentDate = Date()
         let since1970 = currentDate.timeIntervalSince1970
         return Int(since1970)
     }
     
-    
     // Mark: get the current time
-    func currentTimeInSecondsSting()-> String {
+    static func currentTimeInSecondsSting()-> String {
         let currentDate = Date()
         let since1970 = currentDate.timeIntervalSince1970
-        return String(since1970)
+        return String(Int(since1970))
     }
     
 }

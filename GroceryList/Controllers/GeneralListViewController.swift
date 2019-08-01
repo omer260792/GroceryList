@@ -11,29 +11,44 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
 
+/// remove all seconed category
+
+
+class GeneralListViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
+    
     @IBOutlet var tableUser: UITableView!
+    @IBOutlet var confirmBtn: UIButton!
+    @IBOutlet var cencelBtn: UIButton!
+    @IBOutlet var picker: UIPickerView!
+    @IBOutlet var pikerView: UIView!
+    @IBOutlet var listCategoryLabel: UILabel!
     
     // MARK: Constants
     var listToUsers = "ListToUsers"
-    var groceryItems = "grocery-items"
+    var groceryItemsCategory = "grocery-items"
     var tabIndex = 0
+    var tabCategory = ""
+    var nameOfCategoryString = ""
+    var cellTestIndex: Int = 0
 
     // MARK: Properties
     var items: [GroceryItem] = []
+    var itemsCount: [GroceryItem] = []
+    var itemsEmpty: [GroceryItem] = []
     var user: User!
     var userCountBarButtonItem: UIBarButtonItem!
     var ref = Database.database().reference(withPath: "groceryItems")
     let usersRef = Database.database().reference(withPath: "online")
-    
+    let modelCell = ModelCell()
     let timeDataProvider = TimeDataProvider()
+    var vicationViewModel: VicationViewModel?
     let categoryCellIndentifier = "CategoryCellIdentifier"
     let categoryItemCellIndentifier = "CategoryItemCellIndentifier"
     let itemCellIndentifier = "ItemCellIndentifier"
-    let vicationCategoryCellIndentifier = "VicationCategoryCellIndentifier"
+    let vicationCategoryCellIndentifier = "VicationCategoryCellIdentifier"
     let vicationCellIndentifier = "VicationCellIndentifier"
-
+    
     // MARK: rxswift
     var generalListTableDataBindingDisposable: Disposable?
     let disposeBag = DisposeBag()
@@ -41,21 +56,25 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     var generalListFromCoreData = Variable<[GroceryItem]>([])
     var observableGeneralList = Observable<[GroceryItem]>.empty()
     var generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
-
+    
+    var myArrayCategoryName: Array<String> = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        vicationViewModel = VicationViewModel(withTableView: tableUser)
         updateRef()
         setNavigationTopBar()
         populateView()
         setupGeneralListTableViewCellWhenDeleted()
+        setupGeneralListTableViewCellWhenTapped()
     }
-    
+
     func populateView() {
         
         self.tableUser.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: self.categoryCellIndentifier)
@@ -69,7 +88,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
          self.tableUser.register(UINib(nibName: "VicationCell", bundle: nil), forCellReuseIdentifier: self.vicationCellIndentifier)
   
         self.tabBarController?.delegate = self
-        //tableView.allowsMultipleSelectionDuringEditing = false
         
         if self.tabBarController?.selectedIndex == 0 {
             tabIndex = 0
@@ -114,17 +132,82 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         updateRef()
         populateTableView()
+
     }
     
     func updateRef(){
         switch  self.tabIndex {
         case 0:
-            self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
-        case 1:
-            self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
-        case 2:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.temporaryCategory.rawValue)
+        case 1:
+            self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
+        case 2:
+            self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
         default: break
+        }
+    }
+    
+    func getCell(forTableView tableView: UITableView, andIndexPath indexPath: IndexPath, elemntData: GroceryItem) -> UITableViewCell {
+        let element = elemntData
+        tableView.rowHeight = 70
+        switch element.tabCategory {
+        case "generalCategory":
+            
+            if element.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+               let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryCellIndentifier, for: indexPath) as! CategoryCell
+                cell.categoryLabel.text = element.key
+                cell.items = [element]
+                return cell
+            }else{
+                let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryItemCellIndentifier, for: indexPath) as! CategoryItemCell
+                cell.items = [element]
+
+                if element.isCompleted == true {
+                    tableView.rowHeight = 0
+                    
+                }else{
+                    tableView.rowHeight = 70
+                    cell.titleLabel.text = element.key
+                }
+                return cell
+            }
+            
+        case "temporaryCategory":
+            
+            let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
+            cell.items = [element]
+
+            if element.isCompleted == true {
+                cell.lineView.isHidden = false
+                
+            }else{
+                cell.lineView.isHidden = true
+            }
+            cell.titleLabel.text = element.key
+            return cell
+            
+        case "vicationCategory":
+            
+            if element.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+                let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCellIndentifier, for: indexPath) as! VicationCell
+                cell.itemCategoryLabel.text = element.key
+                cell.items = [element]
+                return cell
+            }else{
+                let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell
+                
+                if element.isCompleted == true {
+                    tableView.rowHeight = 0
+                    
+                }else{
+                    tableView.rowHeight = 70
+                    cell.nameCategorycell.text = element.key
+                }
+                return cell
+             }
+            
+        default:
+            return UITableViewCell()
         }
     }
 
@@ -132,11 +215,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         self.generalListTableDataBindingDisposable = generalListObsevaleTableView
             .bind(to: tableUser.rx.items) { (tableView, row, element) in
                 let indexPath = IndexPath(row: row, section: 0)
-                
-                let cell = self.tableUser.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
-                
-               cell.textLabel?.text = element.name
-                
+                self.cellTestIndex = indexPath.row
+                let cell = self.getCell(forTableView: tableView, andIndexPath: indexPath, elemntData: element )
+                cell.selectionStyle = .none
                 return cell
         }
         self.generalListTableDataBindingDisposable?.disposed(by: self.disposeBag)
@@ -145,6 +226,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
     func populateTableView() {
         ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
+            self.itemsCount = self.itemsEmpty
             self.observableGeneralListEmptyObject.removeAll()
             self.generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
             for child in snapshot.children {
@@ -152,11 +234,22 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
                     let groceryItem = GroceryItem(snapshot: snapshot) {
                     newItems.append(groceryItem)
                     self.observableGeneralListEmptyObject.append(groceryItem)
+                    if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+                        self.myArrayCategoryName.append(groceryItem.name)
+                        self.itemsCount.append(groceryItem)
+                    }
                 }
             }
             
             self.items = newItems
-            self.generalListObsevaleTableView = Observable.of(self.observableGeneralListEmptyObject)
+            
+            var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
+            generalListObjectSorted.sort { (item1, item2) -> Bool in
+                
+                return item1.uid < item2.uid
+            }
+            
+            self.generalListObsevaleTableView = Observable.of(generalListObjectSorted)
             
             if self.observableGeneralListEmptyObject.count > 0 {
                 self.generalListTableDataBindingDisposable?.dispose()
@@ -164,37 +257,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
             }
         })
     }
-    
-    
-//    // MARK: UITableView Delegate methods
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return items.count
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell2", for: indexPath)
-//    
-//        let groceryItem = items[indexPath.row]
-//       
-//  
-//        cell.textLabel?.text = groceryItem.name
-//        cell.detailTextLabel?.text = groceryItem.key
-//        toggleCellCheckbox(cell, isCompleted: groceryItem.isCompleted)
-//        
-//        return cell
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let groceryItem = items[indexPath.row]
-//            groceryItem.ref?.removeValue()
-//        }
-//    }
     
     private func setupGeneralListTableViewCellWhenDeleted() {
         tableUser.rx.itemDeleted
@@ -215,7 +277,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
 //            "completed": toggledCompletion
 //            ])
 //    }
-//    
+//
+    func fillCell() {
+        
+    }
+    
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
         if !isCompleted {
             cell.accessoryType = .none
@@ -235,33 +301,42 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
             guard let textField = alert.textFields?.first,
-                let text = textField.text else { return }
-            
-            var tabCategory = ""
-            
+                var text = textField.text else { return }
+            var uid: String
+            var name: String
+            self.updateRef()
             switch  self.tabIndex {
             case 0:
-                self.updateRef()
-                tabCategory = TabCategoryEnum.generalCategory.rawValue
-                
+                self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
             case 1:
-                self.updateRef()
-                tabCategory = TabCategoryEnum.vicationCategory.rawValue
-                
-                
+                self.tabCategory = TabCategoryEnum.generalCategory.rawValue
             case 2:
-                self.updateRef()
-                tabCategory = TabCategoryEnum.temporaryCategory.rawValue
+                self.tabCategory = TabCategoryEnum.vicationCategory.rawValue
                 
             default:
-                tabCategory = "3"
+                self.tabCategory = "3"
+            }
+            if category == GeneralCategoryEnum.mainCategory.rawValue {
+                uid = text
+                name = text
+            }else{
+                uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
+                name = self.nameOfCategoryString
             }
             
-            let groceryItem = GroceryItem(name: text, content: "", date: "", tabCategory: tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: "")
+            let groceryItem = GroceryItem(name: name, content: "", date: "", tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
             
             let groceryItemRef = self.ref.child(text.lowercased())
             
-            groceryItemRef.setValue(groceryItem.toAnyObject())
+            groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+                
+                if error != nil {
+                    print("oops, an error")
+                } else {
+                    print("completed")
+                }
+            }
+           
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -303,29 +378,35 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate {
             rightBtn.rx.tap.subscribe{ _ in
                 self.addButtonDidTouchT(category: GeneralCategoryEnum.mainCategory.rawValue)
                 UIView.animate(withDuration: 0.3, animations: {
-                   // self.AddGeneralItemView.alpha = 1
+                    self.pikerView.alpha = 0
                   //  self.backgroundView.alpha = 0.7
                 })
             }.disposed(by: disposeBag)
         }
        
-            // Navigation left
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "פריט" , style: .plain, target: self, action: nil)
-            if let leftBtn = navigationItem.leftBarButtonItem {
-                leftBtn.rx.tap.subscribe{ _ in
-//                self.myArray = self.generaListViewModel.getGeneralCategoryName()
-//
-//                // Connect data:
-//                self.addSecPickerView.delegate = self
-//                self.addSecPickerView.dataSource = self
-//
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.backgroundView.alpha = 0.7
-//                    self.addSecCategoryViewPiker.alpha = 1
-//
-//                })
-                }.disposed(by: disposeBag)
-        }
+        
     }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return itemsCount.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        self.nameOfCategoryString = myArrayCategoryName[row] as String
+        print("self.nameOfCategoryString",myArrayCategoryName[row])
+        return myArrayCategoryName[row]
+    }
+
+    private func setupGeneralListTableViewCellWhenTapped() {
+        tableUser.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+    
+        }).disposed(by: disposeBag)
+    }
+    
 
 }
