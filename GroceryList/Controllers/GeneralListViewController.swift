@@ -185,6 +185,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.lineView.isHidden = true
             }
             cell.titleLabel.text = element.key
+            cell.contentLabel.text = element.content
             return cell
             
         case "vicationCategory":

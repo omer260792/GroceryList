@@ -34,6 +34,7 @@ class CategoryItemCell: ModelCell {
             
             //self.delegate?.addObjectToVicationListFromGeneralList()
             
+            
         }.disposed(by:self.disposeBag)
         
         let viewCellTapGesture = UITapGestureRecognizer()
