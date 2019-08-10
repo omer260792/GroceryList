@@ -226,6 +226,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func populateTableView() {
         ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
+            self.myArrayCategoryName = [String]()
             self.itemsCount = self.itemsEmpty
             self.observableGeneralListEmptyObject.removeAll()
             self.generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
@@ -234,8 +235,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     let groceryItem = GroceryItem(snapshot: snapshot) {
                     newItems.append(groceryItem)
                     self.observableGeneralListEmptyObject.append(groceryItem)
-                    if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
-
+                    if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{                        
                         self.myArrayCategoryName.append(groceryItem.name)
                         self.itemsCount.append(groceryItem)
                     }
@@ -393,8 +393,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        print("ggg",itemsCount.count)
         return itemsCount.count
     }
     
