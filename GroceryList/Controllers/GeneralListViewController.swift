@@ -163,6 +163,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryItemCellIndentifier, for: indexPath) as! CategoryItemCell
                     cell.items = [element]
                     cell.delegate = self
+                    toggleCellCheckbox(cell, isCompleted: element.isColor)
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
                     
@@ -286,11 +287,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
         if !isCompleted {
-            cell.accessoryType = .none
+          //  cell.accessoryType = .none
             cell.textLabel?.textColor = .black
             cell.detailTextLabel?.textColor = .black
         } else {
-            cell.accessoryType = .checkmark
+           // cell.accessoryType = .checkmark
             cell.textLabel?.textColor = .gray
             cell.detailTextLabel?.textColor = .gray
         }
@@ -418,7 +419,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func addObjectToVicationListFromGeneralList(item: [GroceryItem]){
-        let alert = UIAlertController(title: "שם המוצר??",
+        let alert = UIAlertController(title: "שם המוצר??ֿ\(item[0].key)",
                                       message: "כמה פריטים צריך?",
                                       preferredStyle: .alert)
         
