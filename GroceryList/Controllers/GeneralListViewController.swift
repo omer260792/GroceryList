@@ -163,7 +163,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryItemCellIndentifier, for: indexPath) as! CategoryItemCell
                     cell.items = [element]
                     cell.delegate = self
-                    toggleCellCheckbox(cell, isCompleted: element.isColor)
+                isColorCell(cell: cell, isColor: element.isColor)
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
                     
@@ -181,7 +181,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
 
             if element.isCompleted == true {
                 cell.lineView.isHidden = false
-                
             }else{
                 cell.lineView.isHidden = true
             }
@@ -197,7 +196,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell
-                
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
                     
@@ -270,30 +268,21 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             })
         .disposed(by: disposeBag)
     }
-//    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-//        let groceryItem = items[indexPath.row]
-//        let toggledCompletion = !groceryItem.isCompleted
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        groceryItem.ref?.updateChildValues([
-//            "completed": toggledCompletion
-//            ])
-//    }
-//
-    func fillCell() {
-        
+    
+    func isColorCell(cell: UITableViewCell, isColor: Bool) {
+        if isColor {
+            cell.backgroundColor = .green
+        } else {
+            cell.backgroundColor = .white
+        }
     }
     
-    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-        if !isCompleted {
-          //  cell.accessoryType = .none
-            cell.textLabel?.textColor = .black
-            cell.detailTextLabel?.textColor = .black
+    func isToggleCell(cell: UITableViewCell, element: GroceryItem, tableView: UITableView) {
+        if element.isCompleted {
+            tableView.rowHeight = 0
         } else {
-           // cell.accessoryType = .checkmark
-            cell.textLabel?.textColor = .gray
-            cell.detailTextLabel?.textColor = .gray
+           tableView.rowHeight = 70
+//cell.nameCategorycell.text = element.key
         }
     }
     

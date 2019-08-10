@@ -40,7 +40,7 @@ class ModelCell: UITableViewCell {
             if error != nil {
                 print("oops, an error")
             } else {
-                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: item)
+                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: item, isColor: true)
             }
         }
         
@@ -66,14 +66,14 @@ class ModelCell: UITableViewCell {
         })
     }
     
-    func updateAmountObject(pathString: String,  item: [GroceryItem]) {
+    func updateAmountObject(pathString: String,  item: [GroceryItem], isColor: Bool) {
         let ref = Database.database().reference(withPath: pathString)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     self.groceryItem = GroceryItem(snapshot: snap)
-                    if self.groceryItem?.name == item[0].name {
-                        ref.child(self.groceryItem!.key).updateChildValues(["isColor":true])
+                    if self.groceryItem?.key == item[0].key {
+                        ref.child(self.groceryItem!.key).updateChildValues(["isColor":isColor])
                     }
                 }
             }

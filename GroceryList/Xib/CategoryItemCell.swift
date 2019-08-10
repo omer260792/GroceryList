@@ -34,14 +34,17 @@ class CategoryItemCell: ModelCell {
             
             //self.delegate?.addObjectToVicationListFromGeneralList()
             
-            }.disposed(by:self.disposeBag)
+        }.disposed(by:self.disposeBag)
         
         let viewCellTapGesture = UITapGestureRecognizer()
         viewCell.addGestureRecognizer(viewCellTapGesture)
         
         viewCellTapGesture.rx.event.bind(onNext: { recognizer in
-            print(self.items[0].key)
-            self.delegate?.addObjectToVicationListFromGeneralList(item: [self.items[0]])
+            if self.items[0].isColor == true{
+                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: self.items, isColor: false)
+            }else{
+                self.delegate?.addObjectToVicationListFromGeneralList(item: [self.items[0]])
+            }
         }).disposed(by: self.disposeBag)
         
     }
