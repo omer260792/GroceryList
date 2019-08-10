@@ -425,6 +425,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             guard let textField = alert.textFields?.first,
                 let text = textField.text else { return }
             
+//            if text.contains(", . ? /") {
+//                print("YES")
+//            }
+            
             self.modelCell.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue, item: item,content: text)
         }
         

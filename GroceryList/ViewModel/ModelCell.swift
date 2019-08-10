@@ -116,6 +116,11 @@ class ModelCell: UITableViewCell {
         })
     }
     
+    func ifAllListExsits(ref: DatabaseReference) -> Int {
+     
+        return 0
+    }
+    
     func toggleLine(pathString: String) {
         let ref = Database.database().reference(withPath: pathString)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TemporeyViewController: GeneralListViewController {
 
@@ -25,9 +26,17 @@ class TemporeyViewController: GeneralListViewController {
         if let leftBtn = navigationItem.leftBarButtonItem {
             leftBtn.rx.tap.subscribe{ _ in
                 self.modelCell.removeTemporaryList(pathString: TabCategoryEnum.temporaryCategory.rawValue)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                    self.generalListTableDataBindingDisposable?.dispose()
-                    self.tableUser.reloadData()
+                    self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                        if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                            if snapshots.count == 0{
+                                self.generalListTableDataBindingDisposable?.dispose()
+                                self.tableUser.reloadData()
+                            }
+                        }
+                    })
+                
                 })
             }.disposed(by: disposeBag)
         }
