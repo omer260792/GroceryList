@@ -8,6 +8,7 @@ target 'GroceryList' do
   pod 'Firebase/Database', :inhibit_warnings => true
   pod 'Firebase/Auth', :inhibit_warnings => true
   pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
   pod 'RxSwift','~> 4.0'
   pod 'RxCocoa','~> 4.0'
   pod 'SDWebImage', '~> 4.0'

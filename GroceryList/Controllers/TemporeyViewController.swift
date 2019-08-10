@@ -25,11 +25,11 @@ class TemporeyViewController: GeneralListViewController {
         if let leftBtn = navigationItem.leftBarButtonItem {
             leftBtn.rx.tap.subscribe{ _ in
                 self.modelCell.removeTemporaryList(pathString: TabCategoryEnum.temporaryCategory.rawValue)
-                self.populateTableView()
-                self.generalListTableDataBindingDisposable?.dispose()
-                self.bindDataForGeneralListTableView()
-                self.tableUser.reloadData()
-                }.disposed(by: disposeBag)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    self.generalListTableDataBindingDisposable?.dispose()
+                    self.tableUser.reloadData()
+                })
+            }.disposed(by: disposeBag)
         }
     }
 }
