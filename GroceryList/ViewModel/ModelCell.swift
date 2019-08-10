@@ -99,6 +99,32 @@ class ModelCell: UITableViewCell {
         return itemsCount
     }
     
+    func removeTemporaryList(pathString: String) {
+        let ref = Database.database().reference(withPath: pathString)
+        var num = 0
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if let groc = self.groceryItem{
+                        if groc.isCompleted == true{
+                            num = num + 1
+                            groc.ref?.removeValue()
+                        }else{
+                            
+                        }
+                    }
+                }
+            }else{
+//                ref.removeValue(){ (error, ref) in
+//                    if error != nil {
+//                        print("error \(error)")
+//                    }
+//                }
+            }
+        })
+    }
+    
     func toggleLine(pathString: String) {
         let ref = Database.database().reference(withPath: pathString)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in

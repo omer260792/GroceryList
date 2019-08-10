@@ -139,10 +139,13 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         switch  self.tabIndex {
         case 0:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.temporaryCategory.rawValue)
+            self.tabCategory = "0"
         case 1:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
+            self.tabCategory = "1"
         case 2:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
+            self.tabCategory = "2"
         default: break
         }
     }

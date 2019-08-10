@@ -12,20 +12,24 @@ class TemporeyViewController: GeneralListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setupView(){
+        // Navigation left
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "מחק" , style: .plain, target: self, action: nil)
+        if let leftBtn = navigationItem.leftBarButtonItem {
+            leftBtn.rx.tap.subscribe{ _ in
+                self.modelCell.removeTemporaryList(pathString: TabCategoryEnum.temporaryCategory.rawValue)
+                self.populateTableView()
+                self.generalListTableDataBindingDisposable?.dispose()
+                self.bindDataForGeneralListTableView()
+                self.tableUser.reloadData()
+                }.disposed(by: disposeBag)
+        }
     }
-    */
-
 }
