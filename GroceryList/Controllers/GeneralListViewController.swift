@@ -302,42 +302,15 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
             guard let textField = alert.textFields?.first,
-                var text = textField.text else { return }
-            var uid: String
-            var name: String
+                let text = textField.text else { return }
             self.updateRef()
-            switch  self.tabIndex {
-            case 0:
-                self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
-            case 1:
-                self.tabCategory = TabCategoryEnum.generalCategory.rawValue
-            case 2:
-                self.tabCategory = TabCategoryEnum.vicationCategory.rawValue
-                
-            default:
-                self.tabCategory = "3"
-            }
-            if category == GeneralCategoryEnum.mainCategory.rawValue {
-                uid = text
-                name = text
-            }else{
-                uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
-                name = self.nameOfCategoryString
-            }
-            
-            let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
-            
-            let groceryItemRef = self.ref.child(text.lowercased())
-            
-            groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
-                
-                if error != nil {
-                    print("oops, an error")
-                } else {
-                    print("completed")
+            self.ref.child(text).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChildren(){
+                    print("true rooms exist")
+                }else{
+                    self.save(text: text, category: category)
                 }
-            }
-           
+            })
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -349,6 +322,42 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func save(text: String, category: String){
+        var uid: String
+        var name :String
+        switch  self.tabIndex {
+        case 0:
+            self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
+        case 1:
+            self.tabCategory = TabCategoryEnum.generalCategory.rawValue
+        case 2:
+            self.tabCategory = TabCategoryEnum.vicationCategory.rawValue
+            
+        default:
+            self.tabCategory = "3"
+        }
+        if category == GeneralCategoryEnum.mainCategory.rawValue {
+            uid = text
+            name = text
+        }else{
+            uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
+            name = self.nameOfCategoryString
+        }
+        
+        let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
+        
+        let groceryItemRef = self.ref.child(text.lowercased())
+        
+        groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+            
+            if error != nil {
+                print("oops, an error")
+            } else {
+                print("completed")
+            }
+        }
     }
     
     // MARK: Add Item
