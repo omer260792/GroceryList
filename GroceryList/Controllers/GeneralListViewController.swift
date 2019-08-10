@@ -157,11 +157,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryCellIndentifier, for: indexPath) as! CategoryCell
                 cell.categoryLabel.text = element.key
                 cell.items = [element]
+                cell.delegate = self
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryItemCellIndentifier, for: indexPath) as! CategoryItemCell
-                cell.items = [element]
-
+                    cell.items = [element]
+                    cell.delegate = self
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
                     
@@ -317,10 +318,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                                          style: .cancel)
         
         alert.addTextField()
-        
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
     }
     
@@ -346,7 +345,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             name = self.nameOfCategoryString
         }
         
-        let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
+        let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: false, isColor: false, isCompleted: false, uid: uid)
         
         let groceryItemRef = self.ref.child(text.lowercased())
         
@@ -408,7 +407,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.nameOfCategoryString = myArrayCategoryName[row] as String
-        print("ggg11",myArrayCategoryName[row])
         return myArrayCategoryName[row]
     }
 
@@ -419,5 +417,24 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }).disposed(by: disposeBag)
     }
     
-
+    func addObjectToVicationListFromGeneralList(item: [GroceryItem]){
+        let alert = UIAlertController(title: "שם המוצר??",
+                                      message: "כמה פריטים צריך?",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
+            guard let textField = alert.textFields?.first,
+                let text = textField.text else { return }
+            
+            self.modelCell.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue, item: item,content: text)
+        }
+        
+        let cancelAction = UIAlertAction(title: "ביטול",
+                                         style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 }

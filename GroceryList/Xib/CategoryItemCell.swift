@@ -22,6 +22,7 @@ class CategoryItemCell: ModelCell {
     @IBOutlet var secondCategroyLabel: UILabel!
     @IBOutlet var addPopupBtn: UIButton!
     @IBOutlet var viewCell: UIView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,29 +32,18 @@ class CategoryItemCell: ModelCell {
     override func setupView() {
         addPopupBtn.rx.tap.subscribe {  _ in
             
-            let alert = UIAlertController(title: "Grocery Item",
-                                          message: "Add an Item",
-                                          preferredStyle: .alert)
+            //self.delegate?.addObjectToVicationListFromGeneralList()
             
-            let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-                guard let textField = alert.textFields?.first,
-                    var text = textField.text else { return }
-                
-                self.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue)
-
-            }
-            
-            
-            
-            let cancelAction = UIAlertAction(title: "Cancel",
-                                             style: .cancel)
-            
-            alert.addTextField()
-            alert.addAction(saveAction)
-            alert.addAction(cancelAction)
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-
             }.disposed(by:self.disposeBag)
+        
+        let viewCellTapGesture = UITapGestureRecognizer()
+        viewCell.addGestureRecognizer(viewCellTapGesture)
+        
+        viewCellTapGesture.rx.event.bind(onNext: { recognizer in
+            print(self.items[0].key)
+            self.delegate?.addObjectToVicationListFromGeneralList(item: [self.items[0]])
+        }).disposed(by: self.disposeBag)
+        
     }
 
 

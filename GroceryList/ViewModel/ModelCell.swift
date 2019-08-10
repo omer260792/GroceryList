@@ -30,17 +30,17 @@ class ModelCell: UITableViewCell {
     func setupView() {}
     func fillCellData(){}
     
-    func addItemToNewList(path: String){
-        let refrence = Database.database().reference(withPath: path).child(self.items[0].key)
+    func addItemToNewList(path: String, item: [GroceryItem], content: String){
+        let refrence = Database.database().reference(withPath: path).child(item[0].key)
         
-        let groceryItem = GroceryItem(name: self.items[0].name, content: "", date:TimeDataProvider.currentTimeInSecondsSting(), tabCategory: TabCategoryEnum.temporaryCategory.rawValue, generalCategory: GeneralCategoryEnum.mainCategory.rawValue, image: "", isSend: true, isColor: true, isCompleted: false, uid: self.items[0].uid)
+        let groceryItem = GroceryItem(name: item[0].name, content: content, date:TimeDataProvider.currentTimeInSecondsSting(), tabCategory: TabCategoryEnum.temporaryCategory.rawValue, generalCategory: GeneralCategoryEnum.mainCategory.rawValue, image: "", isSend: true, isColor: true, isCompleted: false, uid: item[0].uid)
                 
         let groceryItemRef = refrence
         groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
             if error != nil {
                 print("oops, an error")
             } else {
-                print("completed")
+                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: item)
             }
         }
         
@@ -60,6 +60,20 @@ class ModelCell: UITableViewCell {
                             isCompleted = true
                         }
                         ref.child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
+                    }
+                }
+            }
+        })
+    }
+    
+    func updateAmountObject(pathString: String,  item: [GroceryItem]) {
+        let ref = Database.database().reference(withPath: pathString)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if self.groceryItem?.name == item[0].name {
+                        ref.child(self.groceryItem!.key).updateChildValues(["isColor":true])
                     }
                 }
             }
