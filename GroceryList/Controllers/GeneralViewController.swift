@@ -21,7 +21,9 @@ class GeneralViewController: GeneralListViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.pikerView.alpha = 0
+        if let pickerView = self.pikerView {
+            pickerView.alpha = 0
+        }
     }
     
     func setupView(){
@@ -31,7 +33,9 @@ class GeneralViewController: GeneralListViewController {
                 self.picker.delegate = self
                 self.picker.dataSource = self
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.pikerView.alpha = 0
+                    if let pickerView = self.pikerView {
+                        pickerView.alpha = 0
+                    }
                 })
                 }.disposed(by: disposeBag)
         }
@@ -43,7 +47,9 @@ class GeneralViewController: GeneralListViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     self.groceryItemsCategory = GeneralCategoryEnum.secondCategory.rawValue
                     self.addButtonDidTouchT(category: GeneralCategoryEnum.secondCategory.rawValue)
-                    self.pikerView.alpha = 0
+                    if let pickerView = self.pikerView {
+                        pickerView.alpha = 0
+                    }
                 })
                 }.disposed(by: disposeBag)
         }
@@ -55,7 +61,9 @@ class GeneralViewController: GeneralListViewController {
                 self.picker.delegate = self
                 self.picker.dataSource = self
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.pikerView.alpha = 1
+                    if let pickerView = self.pikerView {
+                        pickerView.alpha = 1
+                    }
                 })
             }.disposed(by: disposeBag)
         }

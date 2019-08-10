@@ -478,6 +478,53 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4r-KM-j4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view alpha="0.0" contentMode="scaleToFill" id="l7d-QW-WCc">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="293.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7w-nl-k2z">
+                            <rect key="frame" x="10" y="5" width="300" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="bUo-iM-Rya">
+                            <rect key="frame" x="0.0" y="29.5" width="320" height="216"/>
+                        </pickerView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="96V-hb-6Ab">
+                            <rect key="frame" x="10" y="245.5" width="300" height="38"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESC-Id-OtF">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="38"/>
+                                    <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                    <state key="normal" title="ביטול">
+                                        <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXZ-Sp-Jqw">
+                                    <rect key="frame" x="150" y="0.0" width="150" height="38"/>
+                                    <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
+                                    <state key="normal" title="אישור">
+                                        <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="p7w-nl-k2z" firstAttribute="leading" secondItem="l7d-QW-WCc" secondAttribute="leading" constant="10" id="Nne-N9-quu"/>
+                        <constraint firstItem="p7w-nl-k2z" firstAttribute="top" secondItem="l7d-QW-WCc" secondAttribute="top" constant="5" id="QWm-X6-pf6"/>
+                        <constraint firstItem="bUo-iM-Rya" firstAttribute="leading" secondItem="l7d-QW-WCc" secondAttribute="leading" id="QcM-b2-ITA"/>
+                        <constraint firstItem="96V-hb-6Ab" firstAttribute="top" secondItem="bUo-iM-Rya" secondAttribute="bottom" id="RS3-qe-J5M"/>
+                        <constraint firstItem="bUo-iM-Rya" firstAttribute="top" secondItem="p7w-nl-k2z" secondAttribute="bottom" id="X66-5j-BoA"/>
+                        <constraint firstAttribute="trailing" secondItem="bUo-iM-Rya" secondAttribute="trailing" id="hNe-8A-xSP"/>
+                        <constraint firstAttribute="trailing" secondItem="p7w-nl-k2z" secondAttribute="trailing" constant="10" id="hTj-1F-IGP"/>
+                        <constraint firstAttribute="trailing" secondItem="96V-hb-6Ab" secondAttribute="trailing" constant="10" id="lce-ob-J1V"/>
+                        <constraint firstItem="96V-hb-6Ab" firstAttribute="leading" secondItem="l7d-QW-WCc" secondAttribute="leading" constant="10" id="wTA-Xt-Anb"/>
+                        <constraint firstAttribute="bottom" secondItem="96V-hb-6Ab" secondAttribute="bottom" constant="10" id="z3Z-MG-X88"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="5Oa-Dl-3CY"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1869.5652173913045" y="1807.3660714285713"/>
         </scene>

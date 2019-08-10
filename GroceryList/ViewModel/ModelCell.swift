@@ -43,6 +43,7 @@ class ModelCell: UITableViewCell {
                 print("completed")
             }
         }
+        
     }
     
     func toggleContent(pathString: String) {

@@ -30,11 +30,44 @@ class CategoryItemCell: ModelCell {
     
     override func setupView() {
         addPopupBtn.rx.tap.subscribe {  _ in
-            self.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue)
+            
+            let alert = UIAlertController(title: "Grocery Item",
+                                          message: "Add an Item",
+                                          preferredStyle: .alert)
+            
+            let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+                guard let textField = alert.textFields?.first,
+                    var text = textField.text else { return }
+                
+                self.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue)
+
+            }
+            
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel",
+                                             style: .cancel)
+            
+            alert.addTextField()
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+
             }.disposed(by:self.disposeBag)
     }
 
 
 }
-    
 
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is UIViewController {
+                return parentResponder as? UIViewController
+            }
+        }
+        return nil
+    }
+}

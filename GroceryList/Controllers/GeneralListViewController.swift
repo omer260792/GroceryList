@@ -21,7 +21,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var cencelBtn: UIButton!
     @IBOutlet var picker: UIPickerView!
-    @IBOutlet var pikerView: UIView!
+    @IBOutlet var pikerView: UIView?
     @IBOutlet var listCategoryLabel: UILabel!
     
     // MARK: Constants
@@ -235,6 +235,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     newItems.append(groceryItem)
                     self.observableGeneralListEmptyObject.append(groceryItem)
                     if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+
                         self.myArrayCategoryName.append(groceryItem.name)
                         self.itemsCount.append(groceryItem)
                     }
@@ -324,7 +325,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 name = self.nameOfCategoryString
             }
             
-            let groceryItem = GroceryItem(name: name, content: "", date: "", tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
+            let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: true, isColor: true, isCompleted: false, uid: uid)
             
             let groceryItemRef = self.ref.child(text.lowercased())
             
@@ -378,8 +379,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             rightBtn.rx.tap.subscribe{ _ in
                 self.addButtonDidTouchT(category: GeneralCategoryEnum.mainCategory.rawValue)
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.pikerView.alpha = 0
-                  //  self.backgroundView.alpha = 0.7
+                    if let pickerView = self.pikerView {
+                        pickerView.alpha = 0
+                    }
                 })
             }.disposed(by: disposeBag)
         }
@@ -391,13 +393,15 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        print("ggg",itemsCount.count)
         return itemsCount.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.nameOfCategoryString = myArrayCategoryName[row] as String
-        print("self.nameOfCategoryString",myArrayCategoryName[row])
+        print("ggg11",myArrayCategoryName[row])
         return myArrayCategoryName[row]
     }
 
