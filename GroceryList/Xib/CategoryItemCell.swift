@@ -23,7 +23,6 @@ class CategoryItemCell: ModelCell {
     @IBOutlet var addPopupBtn: UIButton!
     @IBOutlet var viewCell: UIView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
@@ -31,10 +30,6 @@ class CategoryItemCell: ModelCell {
     
     override func setupView() {
         addPopupBtn.rx.tap.subscribe {  _ in
-            
-            //self.delegate?.addObjectToVicationListFromGeneralList()
-            
-            
         }.disposed(by:self.disposeBag)
         
         let viewCellTapGesture = UITapGestureRecognizer()

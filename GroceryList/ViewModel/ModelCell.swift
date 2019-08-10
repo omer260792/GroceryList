@@ -18,7 +18,8 @@ class ModelCell: UITableViewCell {
     var viewModel: GeneralListCellViewModel?
     var vicationViewModel: VicationViewModel?
     var items: [GroceryItem] = []
-    
+    var arrayNamePicker = [String]()
+
     private var ref = Database.database()
     private var groceryItem:GroceryItem? = nil
     private let itemsEmpty: [GroceryItem] = []
@@ -78,6 +79,24 @@ class ModelCell: UITableViewCell {
                 }
             }
         })
+    }
+    
+    func getVicationCategoryToPickerview(pathString: String) -> [GroceryItem]{
+        var itemsCount: [GroceryItem] = []
+        let ref = Database.database().reference(withPath: pathString)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if let groc = self.groceryItem{
+                        if groc.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+                            itemsCount = [self.groceryItem] as! [GroceryItem]
+                        }
+                    }
+                }
+            }
+        })
+        return itemsCount
     }
     
     func toggleLine(pathString: String) {

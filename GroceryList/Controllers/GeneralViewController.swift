@@ -21,26 +21,22 @@ class GeneralViewController: GeneralListViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if let pickerView = self.pikerView {
-            pickerView.alpha = 0
-        }
+      self.dismissPickerView()
     }
     
     func setupView(){
-        
-        self.picker.delegate = self
-        self.picker.dataSource = self
         
         if let cencelBtn = cencelBtn {
             cencelBtn.rx.tap.subscribe{ _ in
                 UIView.animate(withDuration: 0.3, animations: {
                     self.dismissPickerView()
                 })
-            }.disposed(by: disposeBag)
+                }.disposed(by: disposeBag)
         }
         
         if let confirmBtn = confirmBtn {
             confirmBtn.rx.tap.subscribe{ _ in
+                self.addPickerViewDelegate()
                 UIView.animate(withDuration: 0.3, animations: {
                     self.groceryItemsCategory = GeneralCategoryEnum.secondCategory.rawValue
                     self.addButtonDidTouchT(category: GeneralCategoryEnum.secondCategory.rawValue)
@@ -53,22 +49,11 @@ class GeneralViewController: GeneralListViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "פריט" , style: .plain, target: self, action: nil)
         if let leftBtn = navigationItem.leftBarButtonItem {
             leftBtn.rx.tap.subscribe{ _ in
+                self.addPickerViewDelegate()
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.showPickerView()
+                   self.showPickerView()
                 })
             }.disposed(by: disposeBag)
-        }
-    }
-    
-    func showPickerView(){
-        if let pickerView = self.pikerView {
-            pickerView.alpha = 1
-        }
-    }
-    
-    func dismissPickerView(){
-        if let pickerView = self.pikerView {
-            pickerView.alpha = 0
         }
     }
 

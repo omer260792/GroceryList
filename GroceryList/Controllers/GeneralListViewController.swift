@@ -28,7 +28,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var listToUsers = "ListToUsers"
     var groceryItemsCategory = "grocery-items"
     var tabIndex = 0
-    var tabCategory = ""
+    var tabCategory = "0"
     var nameOfCategoryString = ""
     var cellTestIndex: Int = 0
 
@@ -86,7 +86,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
          self.tableUser.register(UINib(nibName: "VicationCategoryCell", bundle: nil), forCellReuseIdentifier: self.vicationCategoryCellIndentifier)
         
          self.tableUser.register(UINib(nibName: "VicationCell", bundle: nil), forCellReuseIdentifier: self.vicationCellIndentifier)
-  
+        
         self.tabBarController?.delegate = self
         
         if self.tabBarController?.selectedIndex == 0 {
@@ -248,7 +248,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
             generalListObjectSorted.sort { (item1, item2) -> Bool in
                 
-                return item1.uid < item2.uid
+                if self.tabCategory == "0" {
+                    return item1.date < item2.date
+                }else{
+                    return item1.uid < item2.uid
+                }
             }
             
             self.generalListObsevaleTableView = Observable.of(generalListObjectSorted)
@@ -398,6 +402,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.nameOfCategoryString = myArrayCategoryName[row] as String
+        print(self.nameOfCategoryString)
         return myArrayCategoryName[row]
     }
 
@@ -427,5 +432,24 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showPickerView(){
+        if let pickerView = self.pikerView {
+            pickerView.alpha = 1
+        }
+    }
+    
+    func dismissPickerView(){
+        if let pickerView = self.pikerView {
+            pickerView.alpha = 0
+        }
+    }
+    
+    func addPickerViewDelegate(){
+        if let picker = self.picker{
+            picker.delegate = self
+            picker.dataSource = self
+        }
     }
 }
