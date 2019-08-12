@@ -435,11 +435,11 @@
             </objects>
             <point key="canvasLocation" x="2781.1594202898555" y="1118.9732142857142"/>
         </scene>
-        <!--Item-->
+        <!--רשימה-->
         <scene sceneID="vEt-ZB-cmD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rMA-dJ-7OY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="t0j-mA-lRI"/>
+                    <tabBarItem key="tabBarItem" title="רשימה" image="icons8-add-list-100" id="t0j-mA-lRI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="es8-dM-MS5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -454,11 +454,13 @@
             </objects>
             <point key="canvasLocation" x="1869.5652173913045" y="426.5625"/>
         </scene>
-        <!--Item-->
+        <!--קטגוריות-->
         <scene sceneID="VPP-vp-KdZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzu-61-TjF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Hx3-iq-hg4"/>
+                    <tabBarItem key="tabBarItem" title="קטגוריות" image="icons8-shopping-cart-100" id="Hx3-iq-hg4">
+                        <color key="badgeColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7sO-gM-xF1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -473,11 +475,11 @@
             </objects>
             <point key="canvasLocation" x="1871.0144927536232" y="1118.9732142857142"/>
         </scene>
-        <!--Item-->
+        <!--חופשה-->
         <scene sceneID="tLn-lm-TaB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eDR-wL-lCq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ucX-j5-G8c"/>
+                    <tabBarItem key="tabBarItem" title="חופשה" image="icons8-beach-umbrella-100" id="ucX-j5-G8c"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u2i-2v-lKG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -493,4 +495,9 @@
             <point key="canvasLocation" x="1869.5652173913045" y="1807.3660714285713"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-add-list-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="icons8-beach-umbrella-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="icons8-shopping-cart-100" width="33.333332061767578" height="33.333332061767578"/>
+    </resources>
 </document>

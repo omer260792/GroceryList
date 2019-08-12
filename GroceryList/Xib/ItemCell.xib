@@ -19,29 +19,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-help-96" translatesAutoresizingMaskIntoConstraints="NO" id="sjH-q9-IWy">
-                        <rect key="frame" x="281" y="8" width="84" height="84"/>
+                        <rect key="frame" x="269" y="10" width="96" height="79.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="84" id="DKP-15-1O2"/>
-                            <constraint firstAttribute="height" constant="84" id="HtR-Ds-KV2"/>
+                            <constraint firstAttribute="width" constant="96" id="9Ce-4t-RDC"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n77-3G-vAd">
-                        <rect key="frame" x="20" y="2" width="240" height="95.5"/>
+                        <rect key="frame" x="20" y="2" width="228" height="95.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-Gf-3sS">
-                                <rect key="frame" x="2" y="3" width="238" height="89.5"/>
+                                <rect key="frame" x="2" y="3" width="226" height="89.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZZ-pj-hCS">
-                                        <rect key="frame" x="0.0" y="0.0" width="238" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="226" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-Mk-Nkl">
-                                                <rect key="frame" x="0.0" y="0.0" width="238" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="226" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYC-Ez-nm4">
-                                                <rect key="frame" x="0.0" y="21.5" width="238" height="2"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="226" height="2"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Hnn-yQ-4gy"/>
@@ -61,7 +60,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmy-CG-EbU">
-                                        <rect key="frame" x="0.0" y="45" width="238" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="45" width="226" height="44.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -85,12 +84,16 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywd-pa-Pkr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                        <state key="normal">
+                            <color key="titleColor" red="0.46666666666666667" green="0.81960784313725488" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ywd-pa-Pkr" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" id="30F-Gb-pb2"/>
                     <constraint firstItem="n77-3G-vAd" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" constant="20" id="CAw-Y4-DeP"/>
                     <constraint firstItem="n77-3G-vAd" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" constant="2" id="GGk-Y7-X8I"/>
+                    <constraint firstItem="sjH-q9-IWy" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" constant="10" id="J4R-ga-YDH"/>
                     <constraint firstItem="n77-3G-vAd" firstAttribute="centerY" secondItem="FDn-AR-4s3" secondAttribute="centerY" id="KGj-aj-a6z"/>
                     <constraint firstItem="sjH-q9-IWy" firstAttribute="centerY" secondItem="FDn-AR-4s3" secondAttribute="centerY" id="QQS-Kn-5BU"/>
                     <constraint firstAttribute="trailing" secondItem="ywd-pa-Pkr" secondAttribute="trailing" id="XOa-0z-T91"/>

@@ -31,6 +31,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var tabCategory = "0"
     var nameOfCategoryString = ""
     var cellTestIndex: Int = 0
+    var titlePage = ""
 
     // MARK: Properties
     var items: [GroceryItem] = []
@@ -140,19 +141,23 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case 0:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.temporaryCategory.rawValue)
             self.tabCategory = "0"
+            self.titlePage = "0"
         case 1:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
             self.tabCategory = "1"
+            self.titlePage = "1"
         case 2:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
             self.tabCategory = "2"
+            self.titlePage = "2"
         default: break
         }
     }
     
     func getCell(forTableView tableView: UITableView, andIndexPath indexPath: IndexPath, elemntData: GroceryItem) -> UITableViewCell {
         let element = elemntData
-        tableView.rowHeight = 70
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 60
         switch element.tabCategory {
         case "generalCategory":
             
@@ -171,7 +176,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     tableView.rowHeight = 0
                     
                 }else{
-                    tableView.rowHeight = 70
+                    tableView.rowHeight = 60
                     cell.titleLabel.text = element.key
                 }
                 return cell
@@ -204,7 +209,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     tableView.rowHeight = 0
                     
                 }else{
-                    tableView.rowHeight = 70
+                    tableView.rowHeight = 60
                     cell.nameCategorycell.text = element.key
                 }
                 return cell
@@ -221,7 +226,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let indexPath = IndexPath(row: row, section: 0)
                 self.cellTestIndex = indexPath.row
                 let cell = self.getCell(forTableView: tableView, andIndexPath: indexPath, elemntData: element )
-                cell.selectionStyle = .none
                 return cell
         }
         self.generalListTableDataBindingDisposable?.disposed(by: self.disposeBag)
@@ -299,9 +303,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                                       message: "Add an Item",
                                       preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+        let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
             guard let textField = alert.textFields?.first,
                 let text = textField.text else { return }
+            
             self.updateRef()
             self.ref.child(text).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.hasChildren(){
@@ -312,7 +317,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             })
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: "ביטול",
                                          style: .cancel)
         
         alert.addTextField()
@@ -372,9 +377,26 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         let navBarColor = UIColor(red: 205/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
         navigationController?.navigationBar.barTintColor = navBarColor
         
+        if self.tabBarController?.selectedIndex == 0 {
+            tabIndex = 0
+        } else if self.tabBarController?.selectedIndex == 1 {
+            tabIndex = 1
+        }else{
+            tabIndex = 2
+        }
+        
+        if self.tabIndex == 0 {
+            self.titlePage = "רשימת קניות"
+        }else if self.self.tabIndex == 1{
+            self.titlePage = "רשימה כללית"
+        }else{
+            self.titlePage = "מה לקחת לחופשה:)"
+        }
+
+
         // Navigation Title
         let navLabel = UILabel()
-        let navTitle = NSMutableAttributedString(string:"רשימה כללית", attributes:[
+        let navTitle = NSMutableAttributedString(string:self.titlePage, attributes:[
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: UIFont.Weight.bold)])
         navLabel.attributedText = navTitle
         navigationItem.titleView = navLabel
@@ -417,7 +439,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func addObjectToVicationListFromGeneralList(item: [GroceryItem]){
-        let alert = UIAlertController(title: "שם המוצר??ֿ\(item[0].key)",
+        let alert = UIAlertController(title: item[0].key,
                                       message: "כמה פריטים צריך?",
                                       preferredStyle: .alert)
         
