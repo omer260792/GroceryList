@@ -34,7 +34,7 @@ class ModelCell: UITableViewCell {
     func addItemToNewList(path: String, item: [GroceryItem], content: String){
         let refrence = Database.database().reference(withPath: path).child(item[0].key)
         
-        let groceryItem = GroceryItem(name: item[0].name, content: content, date:TimeDataProvider.currentTimeInSecondsSting(), tabCategory: TabCategoryEnum.temporaryCategory.rawValue, generalCategory: GeneralCategoryEnum.mainCategory.rawValue, image: "", isSend: true, isColor: true, isCompleted: false, uid: item[0].uid)
+        let groceryItem = GroceryItem(name: item[0].name, content: content, date:TimeDataProvider.currentTimeInSecondsSting(), tabCategory: TabCategoryEnum.temporaryCategory.rawValue, generalCategory: GeneralCategoryEnum.secondCategory.rawValue, image: "", isSend: true, isColor: true, isCompleted: false, uid: item[0].uid)
                 
         let groceryItemRef = refrence
         groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
@@ -116,8 +116,23 @@ class ModelCell: UITableViewCell {
         })
     }
     
+    func updateGeneralListCellColor(pathString: String, grocObjKey: String) {
+        let ref = Database.database().reference(withPath: pathString)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if let groc = self.groceryItem{
+                        if groc.key == grocObjKey{
+                            self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: [groc], isColor: false)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
     func ifAllListExsits(ref: DatabaseReference) -> Int {
-     
         return 0
     }
     

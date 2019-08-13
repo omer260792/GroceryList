@@ -11,10 +11,6 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-
-/// remove all seconed category
-
-
 class GeneralListViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet var tableUser: UITableView!
@@ -274,11 +270,19 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     private func setupGeneralListTableViewCellWhenDeleted() {
         tableUser.rx.itemDeleted
             .subscribe(onNext : { indexPath in
-                let groceryItem = self.items[indexPath.row]
-                groceryItem.ref?.removeValue()
-                self.tableUser.reloadData()
+                if self.tabCategory == "0" && self.items[indexPath.row].generalCategory == "secondCategory"{
+                      self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key)
+                }
+                self.removeObjectFromFirebase(indexPath: indexPath)
             })
         .disposed(by: disposeBag)
+    }
+    
+    func removeObjectFromFirebase(indexPath: IndexPath){
+        let groceryItem = self.items[indexPath.row]
+        groceryItem.ref?.removeValue()
+        self.generalListTableDataBindingDisposable?.dispose()
+        self.tableUser.reloadData()
     }
     
     func isColorCell(cell: UITableViewCell, isColor: Bool) {
@@ -294,7 +298,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             tableView.rowHeight = 0
         } else {
            tableView.rowHeight = 70
-//cell.nameCategorycell.text = element.key
         }
     }
     
@@ -379,21 +382,15 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         
         if self.tabBarController?.selectedIndex == 0 {
             tabIndex = 0
+            self.titlePage = "רשימת קניות"
         } else if self.tabBarController?.selectedIndex == 1 {
             tabIndex = 1
-        }else{
-            tabIndex = 2
-        }
-        
-        if self.tabIndex == 0 {
-            self.titlePage = "רשימת קניות"
-        }else if self.self.tabIndex == 1{
             self.titlePage = "רשימה כללית"
         }else{
+            tabIndex = 2
             self.titlePage = "מה לקחת לחופשה:)"
         }
-
-
+        
         // Navigation Title
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string:self.titlePage, attributes:[
