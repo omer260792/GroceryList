@@ -232,6 +232,7 @@
 				17F30C3422F0958C00106D1C /* Frameworks */,
 				17F30C3522F0958C00106D1C /* Resources */,
 				0E302FE98277B100726BE1A2 /* [CP] Embed Pods Frameworks */,
+				17BA66CB230301BC00F99665 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -311,6 +312,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GroceryList/Pods-GroceryList-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		17BA66CB230301BC00F99665 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8c3f0d8b4b9bafcf9b465f74628362fd0ddda0e3 60007bb42bf3ee3031312ed3ec34a75e53b88597071110163ff9ddac21087196\n\n";
 		};
 		8E4CC17023DF9357BE34A2D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

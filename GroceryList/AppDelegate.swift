@@ -12,6 +12,8 @@ import UserNotifications
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -22,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         FirebaseApp.configure()
+        Fabric.with([Crashlytics.self])
 
         Messaging.messaging().isAutoInitEnabled = true
 
