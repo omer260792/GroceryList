@@ -14,6 +14,7 @@ import UIKit
 class VicationCategoryCell: UITableViewCell {
     
     
+    @IBOutlet var binBtn: UIButton!
     @IBOutlet var viewCellBtn: UIButton!
     @IBOutlet var nameCategorycell: UILabel!
     

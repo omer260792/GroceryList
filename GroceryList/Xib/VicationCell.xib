@@ -27,10 +27,20 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-dq-4wk">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="71.5"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bf5-nD-Z8A">
+                        <rect key="frame" x="20" y="6" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="84a-6r-4mJ"/>
+                            <constraint firstAttribute="width" constant="60" id="WNp-O1-jVn"/>
+                        </constraints>
+                        <state key="normal" image="icons8-delete-bin-100"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="lQp-dq-4wk" firstAttribute="top" secondItem="ufs-IB-ULw" secondAttribute="top" id="422-jR-JV8"/>
+                    <constraint firstItem="Bf5-nD-Z8A" firstAttribute="leading" secondItem="ufs-IB-ULw" secondAttribute="leading" constant="20" id="FJl-v0-C3i"/>
+                    <constraint firstItem="Bf5-nD-Z8A" firstAttribute="centerY" secondItem="ufs-IB-ULw" secondAttribute="centerY" id="Nhi-T6-t5w"/>
                     <constraint firstItem="15D-Ng-hKy" firstAttribute="centerX" secondItem="ufs-IB-ULw" secondAttribute="centerX" id="R9L-Yd-1Zb"/>
                     <constraint firstItem="15D-Ng-hKy" firstAttribute="centerY" secondItem="ufs-IB-ULw" secondAttribute="centerY" id="RKJ-Q3-5pD"/>
                     <constraint firstAttribute="bottom" secondItem="lQp-dq-4wk" secondAttribute="bottom" id="ZAk-ox-oyl"/>
@@ -39,10 +49,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="binBtn" destination="Bf5-nD-Z8A" id="vYz-UK-Xbj"/>
                 <outlet property="itemCategoryLabel" destination="15D-Ng-hKy" id="ybN-zX-Kp4"/>
                 <outlet property="viewCellBtn" destination="lQp-dq-4wk" id="85q-id-F1W"/>
             </connections>
             <point key="canvasLocation" x="-60.869565217391312" y="-26.116071428571427"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icons8-delete-bin-100" width="100" height="100"/>
+    </resources>
 </document>

@@ -14,8 +14,10 @@ import Firebase
 
 class VicationCell: ModelCell {
 
+    @IBOutlet var binBtn: UIButton!
     @IBOutlet var viewCellBtn: UIButton!
     @IBOutlet var itemCategoryLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

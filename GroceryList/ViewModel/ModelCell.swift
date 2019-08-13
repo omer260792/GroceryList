@@ -116,6 +116,48 @@ class ModelCell: UITableViewCell {
         })
     }
     
+    func updateGeneralListAndVicationListNameCategory(pathString: String, indexPath: IndexPath, item: [GroceryItem]) {
+        var ref = Database.database().reference(withPath: pathString)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                let key = "כללי"
+                var uid = key
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if let groc = self.groceryItem{
+                        if groc.name == item[indexPath.row].key{
+                            if groc.uid == item[indexPath.row].uid{
+                                uid = key
+                                ref = Database.database().reference(withPath: pathString)
+                                print("numkkk","kk")
+                                self.SaveGroceryObjectFireBase(key: key, pathString: GeneralCategoryEnum.mainCategory.rawValue, tabCategory: pathString, ref: ref)
+                            }else{
+                                uid = key + " " + GeneralCategoryEnum.secondCategory.rawValue
+                            }
+                            ref.child(self.groceryItem!.key).updateChildValues(["name":key, "uid":uid, "isCompleted": true])
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    func SaveGroceryObjectFireBase(key: String, pathString: String, tabCategory: String, ref: DatabaseReference){
+        
+        let groceryItem = GroceryItem(name: key, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: tabCategory, generalCategory: pathString, image: "", isSend: false, isColor: false, isCompleted: false, uid: key)
+        
+        let groceryItemRef = ref.child(key)
+        
+        groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+            
+            if error != nil {
+                print("oops, an error")
+            } else {
+                print("completed")
+            }
+        }
+    }
+    
     func updateGeneralListCellColor(pathString: String, grocObjKey: String) {
         let ref = Database.database().reference(withPath: pathString)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in

@@ -246,8 +246,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 }
             }
             
-            self.items = newItems
-            
             var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
             generalListObjectSorted.sort { (item1, item2) -> Bool in
                 
@@ -257,6 +255,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     return item1.uid < item2.uid
                 }
             }
+            
+            self.items = generalListObjectSorted
             
             self.generalListObsevaleTableView = Observable.of(generalListObjectSorted)
             
@@ -270,15 +270,29 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     private func setupGeneralListTableViewCellWhenDeleted() {
         tableUser.rx.itemDeleted
             .subscribe(onNext : { indexPath in
-                if self.tabCategory == "0" && self.items[indexPath.row].generalCategory == "secondCategory"{
-                      self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key)
+                print(self.items[indexPath.row].key)
+                if self.tabCategory == "0" && self.items[indexPath.row].generalCategory == GeneralCategoryEnum.secondCategory.rawValue{
+                    self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key)
+                                        
+                }else if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.mainCategory.rawValue {
+                    
+                    var pathString = ""
+                    if self.tabCategory == "1"{
+                        pathString = TabCategoryEnum.generalCategory.rawValue
+                    }else{
+                        pathString = TabCategoryEnum.vicationCategory.rawValue
+                    }
+                    self.modelCell.updateGeneralListAndVicationListNameCategory(pathString: pathString, indexPath: indexPath, item: self.items)
+                    
                 }
                 self.removeObjectFromFirebase(indexPath: indexPath)
+
             })
         .disposed(by: disposeBag)
     }
     
     func removeObjectFromFirebase(indexPath: IndexPath){
+        print(self.items[indexPath.row].key)
         let groceryItem = self.items[indexPath.row]
         groceryItem.ref?.removeValue()
         self.generalListTableDataBindingDisposable?.dispose()
