@@ -11,23 +11,22 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class VicationCategoryCell: UITableViewCell {
+class VicationCategoryCell: ModelCell {
     
-    
-    @IBOutlet var binBtn: UIButton!
-    @IBOutlet var viewCellBtn: UIButton!
+    @IBOutlet var vvBtn: UIButton!
     @IBOutlet var nameCategorycell: UILabel!
+    @IBOutlet var viewCheckBox: UIView!
+    @IBOutlet var vvImgView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //setupCell()
+        setupView()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    override func setupView() {
+        vvBtn.rx.tap.subscribe {  _ in
+           let isSend = self.markCheckBox(pathString: TabCategoryEnum.vicationCategory.rawValue, name: self.items[0].name)
+        }.disposed(by:self.disposeBag)
     }
-
 }
 

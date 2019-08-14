@@ -201,6 +201,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell
+                cell.items = [element]
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
 
@@ -236,7 +237,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             self.generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
-                 //   print("ggg",snapshot.childSnapshot(forPath: "object"))
                     let groceryItem = GroceryItem(snapshot: snapshot) {
                     
                     if let value = snapshot.value as? [String: AnyObject] {
@@ -266,7 +266,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                         }
                     }
                     newItems.append(groceryItem)
-                    print(newItems.count)
                     self.observableGeneralListEmptyObject.append(groceryItem)
                     if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{                        
                         self.myArrayCategoryName.append(groceryItem.name)
@@ -299,9 +298,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     private func setupGeneralListTableViewCellWhenDeleted() {
         tableUser.rx.itemDeleted
             .subscribe(onNext : { indexPath in
-                print(self.items[indexPath.row].key)
                 if self.tabCategory == "0" && self.items[indexPath.row].generalCategory == GeneralCategoryEnum.secondCategory.rawValue{
-                    self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key)
+                    self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key, name: self.items[indexPath.row].name)
                                         
                 }else if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.mainCategory.rawValue {
                     
@@ -321,7 +319,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func removeObjectFromFirebase(indexPath: IndexPath){
-        print(self.items[indexPath.row].key)
         let groceryItem = self.items[indexPath.row]
         groceryItem.ref?.removeValue()
         self.generalListTableDataBindingDisposable?.dispose()

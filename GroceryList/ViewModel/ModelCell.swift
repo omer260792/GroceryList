@@ -130,7 +130,6 @@ class ModelCell: UITableViewCell {
                             if groc.uid == item[indexPath.row].uid{
                                 uid = key
                                 ref = Database.database().reference(withPath: pathString)
-                                print("numkkk","kk")
                                 self.SaveGroceryObjectFireBase(key: key, pathString: GeneralCategoryEnum.mainCategory.rawValue, tabCategory: pathString, ref: ref)
                             }else{
                                 uid = key + " " + GeneralCategoryEnum.secondCategory.rawValue
@@ -159,9 +158,9 @@ class ModelCell: UITableViewCell {
         }
     }
     
-    func updateGeneralListCellColor(pathString: String, grocObjKey: String) {
+    func updateGeneralListCellColor(pathString: String, grocObjKey: String, name: String) {
         let ref = Database.database().reference(withPath: pathString)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     self.groceryItem = GroceryItem(snapshot: snap)
@@ -197,6 +196,26 @@ class ModelCell: UITableViewCell {
                 }
             }
         })
+    }
+    
+    func markCheckBox(pathString: String, name: String) -> Bool {
+        var isSend: Bool = false
+        let ref = Database.database().reference(withPath: pathString)
+        ref.child(name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    if self.groceryItem?.key == self.items[0].key {
+                        if self.items[0].isSend == true{
+                            isSend = false
+                        }else{
+                            isSend = true
+                        };                        ref.child(name).child("object").child(self.groceryItem!.key).updateChildValues(["isSend":isSend])
+                    }
+                }
+            }
+        })
+        return isSend
     }
    
     
