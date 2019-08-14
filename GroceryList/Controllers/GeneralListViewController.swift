@@ -74,6 +74,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
 
     func populateView() {
         
+        self.tableUser.separatorStyle = .none
+        
         self.tableUser.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: self.categoryCellIndentifier)
         
         self.tableUser.register(UINib(nibName: "CategoryItemCell", bundle: nil), forCellReuseIdentifier: self.categoryItemCellIndentifier)
@@ -129,7 +131,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         super.viewWillAppear(animated)
         updateRef()
         populateTableView()
-
     }
     
     func updateRef(){
@@ -152,7 +153,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     
     func getCell(forTableView tableView: UITableView, andIndexPath indexPath: IndexPath, elemntData: GroceryItem) -> UITableViewCell {
         let element = elemntData
-        tableView.separatorStyle = .none
         tableView.rowHeight = 60
         switch element.tabCategory {
         case "generalCategory":
