@@ -26,7 +26,9 @@ class VicationCell: ModelCell {
     
     override func setupView() {
         viewCellBtn.rx.tap.subscribe {  _ in
-            self.toggleContent(pathString: "vicationCategory")
+            if let name = self.itemCategoryLabel.text{
+                self.toggleContent(pathString: "vicationCategory",name: name)
+            }
         }.disposed(by:self.disposeBag)
     }
 }

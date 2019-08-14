@@ -25,7 +25,9 @@ class CategoryCell: ModelCell {
 
     override func setupView() {
         viewButton.rx.tap.subscribe {  _ in
-            self.toggleContent(pathString: "generalCategory")
+            if let name = self.categoryLabel.text{
+                self.toggleContent(pathString: "generalCategory", name: name)
+            }
             }.disposed(by:self.disposeBag)
     }
 

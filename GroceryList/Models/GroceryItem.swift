@@ -16,6 +16,7 @@ struct GroceryItem {
     let isSend: Bool
     var isCompleted: Bool
     let uid: String
+   // let object: [GroceryItem]?
     
     init(name: String, content: String, date: String, tabCategory: String, generalCategory: String, image: String, isSend: Bool, isColor: Bool, isCompleted: Bool, uid: String, key: String = "") {
         self.ref = nil
@@ -29,6 +30,7 @@ struct GroceryItem {
         self.isSend = isSend
         self.isColor = isColor
         self.isCompleted = isCompleted
+        //self.object = nil
         self.uid = uid
     }
     
@@ -44,6 +46,7 @@ struct GroceryItem {
             let isSend = value["isSend"] as? Bool,
             let isColor = value["isColor"] as? Bool,
             let uid = value["uid"] as? String,
+            //let object = value["object"] as? [GroceryItem],
             let isCompleted = value["isCompleted"] as? Bool else {
                 return nil
         }
@@ -59,6 +62,7 @@ struct GroceryItem {
         self.isSend = isSend
         self.isColor = isColor
         self.isCompleted = isCompleted
+      //  self.object = object
         self.uid = uid
     }
     
@@ -73,6 +77,7 @@ struct GroceryItem {
             "isSend": isSend,
             "isColor": isColor,
             "isCompleted": isCompleted,
+         //   "object": object,
             "uid": uid
         ]
     }

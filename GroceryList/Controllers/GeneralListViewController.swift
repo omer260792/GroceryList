@@ -203,7 +203,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
-                    
+
                 }else{
                     tableView.rowHeight = 60
                     cell.nameCategorycell.text = element.key
@@ -236,8 +236,37 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             self.generalListObsevaleTableView = Observable<[GroceryItem]>.empty()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
+                 //   print("ggg",snapshot.childSnapshot(forPath: "object"))
                     let groceryItem = GroceryItem(snapshot: snapshot) {
+                    
+                    if let value = snapshot.value as? [String: AnyObject] {
+                        
+                        let object = value["object"] as? [String: AnyObject]
+                        
+                        if let objSec = object{
+                            for (key, value) in objSec{
+                            
+                                let name =  value["name"] as? String ?? ""
+                                let content =  value["content"] as? String ?? ""
+                                let date =  value["date"] as? String ?? ""
+                                let tabCategory =  value["tabCategory"] as? String ?? ""
+                                let generalCategory =  value["generalCategory"] as? String ?? ""
+                                let image =  value["image"] as? String ?? ""
+                                let isSend =  value["isSend"] as? Bool ?? false
+                                let isColor =  value["isColor"] as? Bool ?? false
+                                let isCompleted =  value["isCompleted"] as? Bool ?? false
+                                let uid =  value["uid"] as? String ?? ""
+                                
+                                let groceryItem = GroceryItem(name: name, content: content, date: date, tabCategory: tabCategory, generalCategory: generalCategory, image: image, isSend: isSend, isColor: isColor, isCompleted: isCompleted, uid: uid, key: key)
+                                
+                                    newItems.append(groceryItem)
+                                self.observableGeneralListEmptyObject.append(groceryItem)
+
+                            }
+                        }
+                    }
                     newItems.append(groceryItem)
+                    print(newItems.count)
                     self.observableGeneralListEmptyObject.append(groceryItem)
                     if groceryItem.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{                        
                         self.myArrayCategoryName.append(groceryItem.name)
@@ -315,6 +344,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
+//    func saveObject(categ){
+//
+//    }
+    
     func addButtonDidTouchT(category: String){
         let alert = UIAlertController(title: "Grocery Item",
                                       message: "Add an Item",
@@ -329,7 +362,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 if snapshot.hasChildren(){
                     print("true rooms exist")
                 }else{
-                    self.save(text: text, category: category)
+                    if category == GeneralCategoryEnum.mainCategory.rawValue {
+                        self.saveMainCategory(text: text)
+                    }else{
+                        self.saveSecondCategory(text: text)
+                    }
                 }
             })
         }
@@ -343,9 +380,49 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         present(alert, animated: true, completion: nil)
     }
     
-    func save(text: String, category: String){
-        var uid: String
-        var name :String
+    func saveMainCategory(text: String){
+    
+        let uid = text
+        let name = text
+        
+        getIndexTab()
+
+        let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: GeneralCategoryEnum.mainCategory.rawValue, image: "", isSend: false, isColor: false, isCompleted: false, uid: uid)
+
+        let groceryItemRef = self.ref.child(text.lowercased())
+
+        groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+
+            if error != nil {
+                print("oops, an error")
+            } else {
+                print("completed")
+            }
+        }
+    }
+    
+    func saveSecondCategory(text: String){
+ 
+        getIndexTab()
+
+        let uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
+        let name = self.nameOfCategoryString
+        
+        let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: GeneralCategoryEnum.secondCategory.rawValue, image: "", isSend: false, isColor: false, isCompleted: false, uid: uid)
+
+        let groceryItemRef = self.ref.child(name)
+
+        groceryItemRef.child("object").child(text.lowercased()).setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+
+            if error != nil {
+                print("oops, an error")
+            } else {
+                print("completed")
+            }
+        }
+    }
+    
+    func getIndexTab(){
         switch  self.tabIndex {
         case 0:
             self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
@@ -357,6 +434,13 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         default:
             self.tabCategory = "3"
         }
+    }
+    
+    func save(text: String, category: String){
+        var uid: String
+        var name :String
+        getIndexTab()
+        
         if category == GeneralCategoryEnum.mainCategory.rawValue {
             uid = text
             name = text
@@ -364,13 +448,13 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
             name = self.nameOfCategoryString
         }
-        
+//
         let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: false, isColor: false, isCompleted: false, uid: uid)
-        
+
         let groceryItemRef = self.ref.child(text.lowercased())
-        
-        groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
-            
+
+        groceryItemRef.child("").setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
+
             if error != nil {
                 print("oops, an error")
             } else {
@@ -379,10 +463,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
-    // MARK: Add Item
-    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-       
-    }
     
     @objc func userCountButtonDidTouch() {
         performSegue(withIdentifier: listToUsers, sender: nil)

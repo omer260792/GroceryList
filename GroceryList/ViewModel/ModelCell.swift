@@ -47,9 +47,9 @@ class ModelCell: UITableViewCell {
         
     }
     
-    func toggleContent(pathString: String) {
+    func toggleContent(pathString: String, name: String) {
         let ref = Database.database().reference(withPath: pathString)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     self.groceryItem = GroceryItem(snapshot: snap)
@@ -60,7 +60,8 @@ class ModelCell: UITableViewCell {
                         }else{
                             isCompleted = true
                         }
-                        ref.child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
+                       ref.child(name).updateChildValues(["isCompleted":isCompleted])
+                        ref.child(name).child("object").child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
                     }
                 }
             }

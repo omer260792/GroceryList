@@ -39,7 +39,6 @@ class GeneralViewController: GeneralListViewController {
                 self.addPickerViewDelegate()
                 UIView.animate(withDuration: 0.3, animations: {
                     self.groceryItemsCategory = GeneralCategoryEnum.secondCategory.rawValue
-                    self.addButtonDidTouchT(category: GeneralCategoryEnum.secondCategory.rawValue)
                     self.dismissPickerView()
                 })
                 }.disposed(by: disposeBag)
