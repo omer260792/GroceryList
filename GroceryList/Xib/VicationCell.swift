@@ -30,5 +30,9 @@ class VicationCell: ModelCell {
                 self.toggleContent(pathString: TabCategoryEnum.vicationCategory.rawValue,name: name)
             }
         }.disposed(by:self.disposeBag)
+        
+        binBtn.rx.tap.subscribe {  _ in
+            self.setAllMarkCheckboxEmpty(pathString: TabCategoryEnum.vicationCategory.rawValue, name: self.items[0].name)
+        }.disposed(by:self.disposeBag)
     }
 }

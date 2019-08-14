@@ -204,10 +204,14 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.items = [element]
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
-
                 }else{
                     tableView.rowHeight = 60
                     cell.nameCategorycell.text = element.key
+                }
+                if element.isSend == true {
+                    cell.vvImgView.isHidden = false
+                }else{
+                    cell.vvImgView.isHidden = true
                 }
                 return cell
              }
@@ -280,6 +284,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 if self.tabCategory == "0" {
                     return item1.date < item2.date
                 }else{
+                    if item1.uid == item2.uid{
+                        return item1.date < item2.date
+                    }
                     return item1.uid < item2.uid
                 }
             }

@@ -217,6 +217,18 @@ class ModelCell: UITableViewCell {
         })
         return isSend
     }
-   
     
+    func setAllMarkCheckboxEmpty(pathString: String, name: String) {
+        let ref = Database.database().reference(withPath: pathString)
+        ref.child(name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    self.groceryItem = GroceryItem(snapshot: snap)
+                    ref.child(name).child("object").child(self.groceryItem!.key).updateChildValues(["isSend":false])
+                    
+                }
+            }
+        })
+    }
+
 }
