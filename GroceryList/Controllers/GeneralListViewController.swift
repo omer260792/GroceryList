@@ -344,10 +344,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
-//    func saveObject(categ){
-//
-//    }
-    
     func addPopUpView(category: String){
         let alert = UIAlertController(title: "Grocery Item",
                                       message: "Add an Item",
@@ -380,37 +376,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         present(alert, animated: true, completion: nil)
     }
     
-    func addButtonDidTouchT(category: String){
-        let alert = UIAlertController(title: "Grocery Item",
-                                      message: "Add an Item",
-                                      preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
-            guard let textField = alert.textFields?.first,
-                let text = textField.text else { return }
-            
-            self.updateRef()
-            self.ref.child(text).observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.hasChildren(){
-                    print("true rooms exist")
-                }else{
-                    if category == GeneralCategoryEnum.mainCategory.rawValue {
-                        self.saveMainCategory(text: text)
-                    }else{
-                        self.saveSecondCategory(text: text)
-                    }
-                }
-            })
-        }
-        
-        let cancelAction = UIAlertAction(title: "ביטול",
-                                         style: .cancel)
-        
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
     
     func saveMainCategory(text: String){
     
@@ -424,7 +389,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         let groceryItemRef = self.ref.child(text.lowercased())
 
         groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
-
             if error != nil {
                 print("oops, an error")
             } else {
@@ -480,7 +444,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             uid = self.nameOfCategoryString+GeneralCategoryEnum.secondCategory.rawValue
             name = self.nameOfCategoryString
         }
-//
+
         let groceryItem = GroceryItem(name: name, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: self.tabCategory, generalCategory: category, image: "", isSend: false, isColor: false, isCompleted: false, uid: uid)
 
         let groceryItemRef = self.ref.child(text.lowercased())
@@ -536,9 +500,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 })
             }.disposed(by: disposeBag)
         }
-       
-        
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

@@ -70,12 +70,12 @@ class ModelCell: UITableViewCell {
     
     func updateAmountObject(pathString: String,  item: [GroceryItem], isColor: Bool) {
         let ref = Database.database().reference(withPath: pathString)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(item[0].name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     self.groceryItem = GroceryItem(snapshot: snap)
                     if self.groceryItem?.key == item[0].key {
-                        ref.child(self.groceryItem!.key).updateChildValues(["isColor":isColor])
+                        ref.child(item[0].name).child("object").child(self.groceryItem!.key).updateChildValues(["isColor":isColor])
                     }
                 }
             }
