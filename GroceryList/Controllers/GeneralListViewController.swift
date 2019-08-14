@@ -348,6 +348,38 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
 //
 //    }
     
+    func addPopUpView(category: String){
+        let alert = UIAlertController(title: "Grocery Item",
+                                      message: "Add an Item",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
+            guard let textField = alert.textFields?.first,
+                let text = textField.text else { return }
+            
+            self.updateRef()
+            self.ref.child(text).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChildren(){
+                    print("true rooms exist")
+                }else{
+                    if category == GeneralCategoryEnum.mainCategory.rawValue {
+                        self.saveMainCategory(text: text)
+                    }else{
+                        self.saveSecondCategory(text: text)
+                    }
+                }
+            })
+        }
+        
+        let cancelAction = UIAlertAction(title: "ביטול",
+                                         style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func addButtonDidTouchT(category: String){
         let alert = UIAlertController(title: "Grocery Item",
                                       message: "Add an Item",
@@ -496,7 +528,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "קטגוריה" , style: .plain, target: self, action: nil)
         if let rightBtn = navigationItem.rightBarButtonItem {
             rightBtn.rx.tap.subscribe{ _ in
-                self.addButtonDidTouchT(category: GeneralCategoryEnum.mainCategory.rawValue)
+                self.addPopUpView(category: GeneralCategoryEnum.mainCategory.rawValue)
                 UIView.animate(withDuration: 0.3, animations: {
                     if let pickerView = self.pikerView {
                         pickerView.alpha = 0
@@ -516,9 +548,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         self.nameOfCategoryString = myArrayCategoryName[row] as String
-        print(self.nameOfCategoryString)
         return myArrayCategoryName[row]
     }
 
@@ -537,10 +567,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
             guard let textField = alert.textFields?.first,
                 let text = textField.text else { return }
-            
-//            if text.contains(", . ? /") {
-//                print("YES")
-//            }
             
             self.modelCell.addItemToNewList(path: TabCategoryEnum.temporaryCategory.rawValue, item: item,content: text)
         }

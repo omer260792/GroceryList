@@ -39,6 +39,7 @@ class GeneralViewController: GeneralListViewController {
                 self.addPickerViewDelegate()
                 UIView.animate(withDuration: 0.3, animations: {
                     self.groceryItemsCategory = GeneralCategoryEnum.secondCategory.rawValue
+                    self.addPopUpView(category: self.groceryItemsCategory)
                     self.dismissPickerView()
                 })
                 }.disposed(by: disposeBag)
