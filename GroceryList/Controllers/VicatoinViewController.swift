@@ -40,7 +40,7 @@ class VicatoinViewController: GeneralListViewController {
                 self.addPickerViewDelegate()
                 UIView.animate(withDuration: 0.3, animations: {
                     self.groceryItemsCategory = GeneralCategoryEnum.secondCategory.rawValue
-                    self.addPopUpView(category: self.groceryItemsCategory)
+                    self.addPopUpView(category: self.groceryItemsCategory, title: "תת קטגוריה", msg: self.nameOfCategoryString)
                     self.dismissPickerView()
                 })
             }.disposed(by: disposeBag)

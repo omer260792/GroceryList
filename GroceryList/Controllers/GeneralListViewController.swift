@@ -348,9 +348,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
-    func addPopUpView(category: String){
-        let alert = UIAlertController(title: "Grocery Item",
-                                      message: "Add an Item",
+    func addPopUpView(category: String, title: String, msg: String){
+        let alert = UIAlertController(title: title,
+                                      message: msg,
                                       preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "שמור", style: .default) { _ in
@@ -496,7 +496,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "קטגוריה" , style: .plain, target: self, action: nil)
         if let rightBtn = navigationItem.rightBarButtonItem {
             rightBtn.rx.tap.subscribe{ _ in
-                self.addPopUpView(category: GeneralCategoryEnum.mainCategory.rawValue)
+                self.addPopUpView(category: GeneralCategoryEnum.mainCategory.rawValue, title: "הכנס קטגוריה", msg: "בחר שם:")
                 UIView.animate(withDuration: 0.3, animations: {
                     if let pickerView = self.pikerView {
                         pickerView.alpha = 0
