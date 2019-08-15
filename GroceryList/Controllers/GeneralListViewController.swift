@@ -24,7 +24,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var listToUsers = "ListToUsers"
     var groceryItemsCategory = "grocery-items"
     var tabIndex = 0
-    var tabCategory = "0"
+    var tabCategory = TabCategoryEnum.temporaryCategory.rawValue
     var nameOfCategoryString = ""
     var cellTestIndex: Int = 0
     var titlePage = ""
@@ -137,16 +137,16 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         switch  self.tabIndex {
         case 0:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.temporaryCategory.rawValue)
-            self.tabCategory = "0"
-            self.titlePage = "0"
+            self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
+            self.titlePage = TabCategoryEnum.temporaryCategory.rawValue
         case 1:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
-            self.tabCategory = "1"
-            self.titlePage = "1"
+            self.tabCategory = TabCategoryEnum.generalCategory.rawValue
+            self.titlePage = TabCategoryEnum.generalCategory.rawValue
         case 2:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
-            self.tabCategory = "2"
-            self.titlePage = "2"
+            self.tabCategory = TabCategoryEnum.vicationCategory.rawValue
+            self.titlePage = TabCategoryEnum.vicationCategory.rawValue
         default: break
         }
     }
@@ -281,7 +281,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
             generalListObjectSorted.sort { (item1, item2) -> Bool in
                 
-                if self.tabCategory == "0" {
+                if self.tabCategory == TabCategoryEnum.temporaryCategory.rawValue {
                     return item1.date < item2.date
                 }else{
                     if item1.uid == item2.uid{
@@ -305,22 +305,37 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     private func setupGeneralListTableViewCellWhenDeleted() {
         tableUser.rx.itemDeleted
             .subscribe(onNext : { indexPath in
-                if self.tabCategory == "0" && self.items[indexPath.row].generalCategory == GeneralCategoryEnum.secondCategory.rawValue{
-                    self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key, name: self.items[indexPath.row].name)
-                                        
-                }else if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.mainCategory.rawValue {
-                    
-                    var pathString = ""
-                    if self.tabCategory == "1"{
-                        pathString = TabCategoryEnum.generalCategory.rawValue
-                    }else{
-                        pathString = TabCategoryEnum.vicationCategory.rawValue
+                if self.tabCategory == TabCategoryEnum.temporaryCategory.rawValue {
+                    if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.secondCategory.rawValue{
+                        self.modelCell.updateGeneralListCellColor(pathString: TabCategoryEnum.generalCategory.rawValue, grocObjKey: self.items[indexPath.row].key, name: self.items[indexPath.row].name)
                     }
-                    self.modelCell.updateGeneralListAndVicationListNameCategory(pathString: pathString, indexPath: indexPath, item: self.items)
-                    
-                }
-                self.removeObjectFromFirebase(indexPath: indexPath)
+                
+                    if self.items.count == 1{
+                        self.removeObjectFromFirebase(indexPath: indexPath)
+                        self.generalListTableDataBindingDisposable?.dispose()
+                    }else{
+                        self.removeObjectFromFirebase(indexPath: indexPath)
+                    }
 
+                }else if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.mainCategory.rawValue {
+                    let groceryItem = self.items[indexPath.row]
+
+                    self.modelCell.updateGeneralListAndVicationListNameCategory(pathString: groceryItem.tabCategory, indexPath: indexPath, item: self.items)
+                    groceryItem.ref?.removeValue()
+                }else if self.items[indexPath.row].generalCategory == GeneralCategoryEnum.secondCategory.rawValue{
+                    let groceryItem = self.items[indexPath.row]
+
+                    let reff = Database.database().reference(withPath: groceryItem.tabCategory).child(self.items[indexPath.row].name).child("object").child(self.items[indexPath.row].key)
+                    
+                    reff.removeValue(){ (error, ref) -> Void in
+                        if error != nil {
+                            print("oops, an error")
+                        } else {
+                            print("completed")
+                        }
+                    }
+                }
+                self.tableUser.reloadData()
             })
         .disposed(by: disposeBag)
     }
@@ -328,8 +343,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func removeObjectFromFirebase(indexPath: IndexPath){
         let groceryItem = self.items[indexPath.row]
         groceryItem.ref?.removeValue()
-        self.generalListTableDataBindingDisposable?.dispose()
-        self.tableUser.reloadData()
+   
     }
     
     func isColorCell(cell: UITableViewCell, isColor: Bool) {

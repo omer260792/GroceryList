@@ -118,23 +118,47 @@ class ModelCell: UITableViewCell {
     }
     
     func updateGeneralListAndVicationListNameCategory(pathString: String, indexPath: IndexPath, item: [GroceryItem]) {
+        let key = "כללי"
+        var num = 0
+        var itemNewIndex = 0
         var ref = Database.database().reference(withPath: pathString)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        print(item[0].key)
+        ref.child(item[0].key).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                let key = "כללי"
                 var uid = key
                 for snap in snapshots {
                     self.groceryItem = GroceryItem(snapshot: snap)
                     if let groc = self.groceryItem{
                         if groc.name == item[indexPath.row].key{
-                            if groc.uid == item[indexPath.row].uid{
-                                uid = key
-                                ref = Database.database().reference(withPath: pathString)
-                                self.SaveGroceryObjectFireBase(key: key, pathString: GeneralCategoryEnum.mainCategory.rawValue, tabCategory: pathString, ref: ref)
-                            }else{
-                                uid = key + " " + GeneralCategoryEnum.secondCategory.rawValue
+                            
+                            uid = key + " " + GeneralCategoryEnum.secondCategory.rawValue
+
+        
+                            if num == 0{
+                                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                                    
+                                    if !snapshot.hasChild(key){
+                                        
+                                        self.SaveGroceryObjectFireBase(key: key, pathString: GeneralCategoryEnum.mainCategory.rawValue, tabCategory: pathString, ref: ref, indexPath: indexPath)
+                                    }
+                                    
+                                    num = 1
+                                    
+                                })
+                                
                             }
-                            ref.child(self.groceryItem!.key).updateChildValues(["name":key, "uid":uid, "isCompleted": true])
+                            let item = GroceryItem(name: key, content: groc.content, date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: groc.tabCategory, generalCategory: groc.generalCategory, image: groc.image, isSend: false, isColor: false, isCompleted: false, uid: key+groc.generalCategory)
+                            
+                            let groceryItemRef = ref.child(key).child("object").child(groc.key)
+                            
+                            groceryItemRef.setValue(item.toAnyObject()){ (error, ref) -> Void in
+                                
+                                if error != nil {
+                                    print("oops, an error")
+                                } else {
+                                    print("completed")
+                                }
+                            }
                         }
                     }
                 }
@@ -142,12 +166,13 @@ class ModelCell: UITableViewCell {
         })
     }
     
-    func SaveGroceryObjectFireBase(key: String, pathString: String, tabCategory: String, ref: DatabaseReference){
-        
+    func SaveGroceryObjectFireBase(key: String, pathString: String, tabCategory: String, ref: DatabaseReference, indexPath: IndexPath){
+
         let groceryItem = GroceryItem(name: key, content: "", date: TimeDataProvider.currentTimeInSecondsSting(), tabCategory: tabCategory, generalCategory: pathString, image: "", isSend: false, isColor: false, isCompleted: false, uid: key)
         
         let groceryItemRef = ref.child(key)
-        
+        print("hg",groceryItemRef)
+
         groceryItemRef.setValue(groceryItem.toAnyObject()){ (error, ref) -> Void in
             
             if error != nil {
