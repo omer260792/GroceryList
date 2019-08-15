@@ -34,10 +34,7 @@ class CategoryItemCell: ModelCell {
                 self.delegate?.addObjectToVicationListFromGeneralList(item: [self.items[0]])
             }
         }).disposed(by: self.disposeBag)
-        
     }
-
-
 }
 
 extension UIView {

@@ -175,11 +175,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     cell.delegate = self
                 isColorCell(cell: cell, isColor: element.isColor)
                 if element.isCompleted == true {
-                    tableView.rowHeight = 0
-                    
-                }else{
                     tableView.rowHeight = Constanst.Cell.general_sec_category_height_constants
                     cell.titleLabel.text = element.key
+                }else{
+                    tableView.rowHeight = 0
                 }
                 return cell
             }
@@ -188,11 +187,14 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
             cell.items = [element]
+            
 
             if element.isCompleted == true {
                 cell.lineView.isHidden = false
+                
             }else{
                 cell.lineView.isHidden = true
+                cell.didMoveToSuperview()
             }
             cell.titleLabel.text = element.key
             cell.contentLabel.text = element.content
@@ -230,9 +232,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func arrowAnimate(num: CGFloat, animationDuration: TimeInterval, cell:CategoryCell){
         var transform: CGAffineTransform
         if num == 0 {
-            transform =  CGAffineTransform.identity
-        }else{
             transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+        }else{
+            transform =  CGAffineTransform.identity
         }
         tableUser.beginUpdates()
         UIView.animate(withDuration: animationDuration, animations: {

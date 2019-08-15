@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17220A6F2305CA37008EF669 /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A6E2305CA37008EF669 /* Constanst.swift */; };
+		17220A712305DC03008EF669 /* lineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A702305DC03008EF669 /* lineView.swift */; };
 		17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3A22F0958C00106D1C /* AppDelegate.swift */; };
 		17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */; };
 		17F30C4022F0958C00106D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C3E22F0958C00106D1C /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		17220A6B2305C491008EF669 /* heebo_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_regular.ttf; sourceTree = "<group>"; };
 		17220A6C2305C491008EF669 /* heebo_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_medium.ttf; sourceTree = "<group>"; };
 		17220A6E2305CA37008EF669 /* Constanst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanst.swift; sourceTree = "<group>"; };
+		17220A702305DC03008EF669 /* lineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lineView.swift; sourceTree = "<group>"; };
 		17F30C3722F0958C00106D1C /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F30C3A22F0958C00106D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicatoinViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				17F30C6C22F1996500106D1C /* TimeDataProvider.swift */,
 				17F30C6E22F1999100106D1C /* RoundButton.swift */,
+				17220A702305DC03008EF669 /* lineView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				17F30C8E22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift in Sources */,
 				17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */,
 				17F30C9622F3A11500106D1C /* PhotoCollectionViewCell.swift in Sources */,
+				17220A712305DC03008EF669 /* lineView.swift in Sources */,
 				17F30C6722F0CC5500106D1C /* Enums.swift in Sources */,
 				17F30C9222F1E61B00106D1C /* ModelCell.swift in Sources */,
 				17F30C6922F0D37E00106D1C /* TemporeyViewController.swift in Sources */,
