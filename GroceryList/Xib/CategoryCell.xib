@@ -8,60 +8,66 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="heebo_bold.ttf">
+            <string>Heebo-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCellIdentifier" rowHeight="336" id="baU-MY-mha" customClass="CategoryCell" customModule="GroceryList" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCellIdentifier" rowHeight="70" id="baU-MY-mha" customClass="CategoryCell" customModule="GroceryList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="baU-MY-mha" id="HtN-zV-N6J">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-help-96" translatesAutoresizingMaskIntoConstraints="NO" id="z91-XW-ANR">
-                        <rect key="frame" x="301" y="13" width="64" height="64"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="64" id="EOt-nN-czr"/>
-                            <constraint firstAttribute="width" constant="64" id="IJr-Zg-lfI"/>
-                        </constraints>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9f-Fz-Fmx">
-                        <rect key="frame" x="20" y="2" width="260" height="85.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-vp-34w" customClass="RoundButton" customModule="GroceryList" customModuleProvider="target">
+                        <rect key="frame" x="4" y="4" width="367" height="41.5"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-triangle-arrow-24" translatesAutoresizingMaskIntoConstraints="NO" id="z91-XW-ANR">
+                                <rect key="frame" x="337" y="16" width="20" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="eqX-6M-za5"/>
+                                    <constraint firstAttribute="height" constant="10" id="hus-d6-ajb"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="קטגוריה" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys2-wa-bpk">
-                                <rect key="frame" x="2" y="0.0" width="256" height="85.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <rect key="frame" x="243" y="5.5" width="74" height="31"/>
+                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.88259989023208618" green="0.88951289653778076" blue="0.90174061059951782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70896211676510068" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ys2-wa-bpk" secondAttribute="trailing" constant="2" id="Mv1-QJ-isi"/>
-                            <constraint firstAttribute="bottom" secondItem="ys2-wa-bpk" secondAttribute="bottom" id="R5E-gS-0YN"/>
-                            <constraint firstItem="ys2-wa-bpk" firstAttribute="centerY" secondItem="v9f-Fz-Fmx" secondAttribute="centerY" id="iyU-a9-Ie8"/>
-                            <constraint firstItem="ys2-wa-bpk" firstAttribute="leading" secondItem="v9f-Fz-Fmx" secondAttribute="leading" constant="2" id="l5I-eY-Dnb"/>
-                            <constraint firstItem="ys2-wa-bpk" firstAttribute="top" secondItem="v9f-Fz-Fmx" secondAttribute="top" id="nQa-ZK-gFk"/>
+                            <constraint firstItem="z91-XW-ANR" firstAttribute="centerY" secondItem="RQl-vp-34w" secondAttribute="centerY" id="Ch7-MX-HGP"/>
+                            <constraint firstItem="ys2-wa-bpk" firstAttribute="centerY" secondItem="RQl-vp-34w" secondAttribute="centerY" id="OEo-1M-LsV"/>
+                            <constraint firstAttribute="trailing" secondItem="z91-XW-ANR" secondAttribute="trailing" constant="10" id="pcB-P9-QPz"/>
+                            <constraint firstItem="z91-XW-ANR" firstAttribute="leading" secondItem="ys2-wa-bpk" secondAttribute="trailing" constant="20" id="qbo-iJ-mcH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMq-pr-OsW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.88259989023208618" green="0.88951289653778076" blue="0.90174061059951782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="v9f-Fz-Fmx" firstAttribute="centerY" secondItem="HtN-zV-N6J" secondAttribute="centerY" id="0MK-HQ-S5X"/>
-                    <constraint firstAttribute="trailing" secondItem="z91-XW-ANR" secondAttribute="trailing" constant="10" id="1mk-0B-Mwr"/>
-                    <constraint firstItem="v9f-Fz-Fmx" firstAttribute="top" secondItem="HtN-zV-N6J" secondAttribute="top" constant="2" id="A0R-UH-AGZ"/>
+                    <constraint firstItem="RQl-vp-34w" firstAttribute="top" secondItem="HtN-zV-N6J" secondAttribute="top" constant="4" id="7Q4-iv-ud5"/>
                     <constraint firstItem="cMq-pr-OsW" firstAttribute="top" secondItem="HtN-zV-N6J" secondAttribute="top" id="ASL-2g-edO"/>
                     <constraint firstItem="cMq-pr-OsW" firstAttribute="leading" secondItem="HtN-zV-N6J" secondAttribute="leading" id="Cub-Cx-dGY"/>
-                    <constraint firstItem="v9f-Fz-Fmx" firstAttribute="leading" secondItem="HtN-zV-N6J" secondAttribute="leading" constant="20" id="Jtd-ti-a4x"/>
+                    <constraint firstAttribute="bottom" secondItem="RQl-vp-34w" secondAttribute="bottom" constant="4" id="Nis-55-K6A"/>
                     <constraint firstAttribute="bottom" secondItem="cMq-pr-OsW" secondAttribute="bottom" id="OXg-Cw-QYQ"/>
-                    <constraint firstItem="z91-XW-ANR" firstAttribute="leading" secondItem="v9f-Fz-Fmx" secondAttribute="trailing" constant="21" id="VpR-f3-tAN"/>
                     <constraint firstAttribute="trailing" secondItem="cMq-pr-OsW" secondAttribute="trailing" id="Whh-hR-TuB"/>
-                    <constraint firstAttribute="bottom" secondItem="v9f-Fz-Fmx" secondAttribute="bottom" constant="2" id="mcT-wg-03V"/>
-                    <constraint firstItem="z91-XW-ANR" firstAttribute="centerY" secondItem="HtN-zV-N6J" secondAttribute="centerY" id="woq-YK-WoB"/>
+                    <constraint firstItem="RQl-vp-34w" firstAttribute="leading" secondItem="HtN-zV-N6J" secondAttribute="leading" constant="4" id="tSA-f8-pSn"/>
+                    <constraint firstAttribute="trailing" secondItem="RQl-vp-34w" secondAttribute="trailing" constant="4" id="yQz-bb-qGj"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -73,6 +79,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icons8-help-96" width="96" height="96"/>
+        <image name="icons8-triangle-arrow-24" width="24" height="24"/>
     </resources>
 </document>

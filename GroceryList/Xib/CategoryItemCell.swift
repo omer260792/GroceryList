@@ -12,15 +12,9 @@ import UIKit
 
 class CategoryItemCell: ModelCell {
     
-    @IBOutlet var isSendLabel: UILabel!
     @IBOutlet var imageViewItem: UIImageView!
     @IBOutlet var view: UIView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var categoryStatusLabel: UILabel!
-    @IBOutlet var categoryIsCompleted: UILabel!
-    @IBOutlet var uidLabel: UILabel!
-    @IBOutlet var secondCategroyLabel: UILabel!
-
     @IBOutlet var viewCell: UIView!
     
     override func awakeFromNib() {

@@ -19,6 +19,7 @@ class ModelCell: UITableViewCell {
     var vicationViewModel: VicationViewModel?
     var items: [GroceryItem] = []
     var arrayNamePicker = [String]()
+    var arrowImagaeRotationAngle: CGFloat = CGFloat.pi * 0
 
     private var ref = Database.database()
     private var groceryItem:GroceryItem? = nil

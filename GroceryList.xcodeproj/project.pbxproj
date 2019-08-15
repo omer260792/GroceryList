@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17220A6F2305CA37008EF669 /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A6E2305CA37008EF669 /* Constanst.swift */; };
 		17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3A22F0958C00106D1C /* AppDelegate.swift */; };
 		17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */; };
 		17F30C4022F0958C00106D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C3E22F0958C00106D1C /* Main.storyboard */; };
@@ -44,6 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17220A6A2305C490008EF669 /* heebo_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_bold.ttf; sourceTree = "<group>"; };
+		17220A6B2305C491008EF669 /* heebo_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_regular.ttf; sourceTree = "<group>"; };
+		17220A6C2305C491008EF669 /* heebo_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_medium.ttf; sourceTree = "<group>"; };
+		17220A6E2305CA37008EF669 /* Constanst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanst.swift; sourceTree = "<group>"; };
 		17F30C3722F0958C00106D1C /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F30C3A22F0958C00106D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicatoinViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +101,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17220A632305C453008EF669 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				17220A6A2305C490008EF669 /* heebo_bold.ttf */,
+				17220A6C2305C491008EF669 /* heebo_medium.ttf */,
+				17220A6B2305C491008EF669 /* heebo_regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		17220A6D2305CA19008EF669 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				17220A6E2305CA37008EF669 /* Constanst.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		17F30C2E22F0958C00106D1C = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +140,8 @@
 		17F30C3922F0958C00106D1C /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				17220A6D2305CA19008EF669 /* Constant */,
+				17220A632305C453008EF669 /* Fonts */,
 				17F30C8C22F1CB9900106D1C /* ViewModel */,
 				17F30C6B22F1995000106D1C /* Utils */,
 				17F30C6A22F1993300106D1C /* Xib */,
@@ -371,6 +396,7 @@
 				17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */,
 				17F30C5122F096F300106D1C /* GroceryItem.swift in Sources */,
 				17F30C5322F096FC00106D1C /* User.swift in Sources */,
+				17220A6F2305CA37008EF669 /* Constanst.swift in Sources */,
 				17F30C8B22F1B73200106D1C /* GeneralViewController.swift in Sources */,
 				17F30C7B22F1A0DD00106D1C /* VicationCell.swift in Sources */,
 				17F30C8E22F1CBFB00106D1C /* GeneralListViewModelProtocol.swift in Sources */,

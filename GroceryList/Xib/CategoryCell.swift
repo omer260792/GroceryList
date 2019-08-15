@@ -27,6 +27,7 @@ class CategoryCell: ModelCell {
         viewButton.rx.tap.subscribe {  _ in
             if let name = self.categoryLabel.text{
                 self.toggleContent(pathString: "generalCategory", name: name)
+                
             }
             }.disposed(by:self.disposeBag)
     }

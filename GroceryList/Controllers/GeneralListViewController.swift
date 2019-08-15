@@ -158,10 +158,16 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case "generalCategory":
             
             if element.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
+                tableView.rowHeight = Constanst.Cell.general_main_category_height_constants
                let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryCellIndentifier, for: indexPath) as! CategoryCell
                 cell.categoryLabel.text = element.key
                 cell.items = [element]
                 cell.delegate = self
+                if element.isCompleted == true{
+                    arrowAnimate(num: 1, animationDuration: 0.44, cell: cell)
+                }else{
+                    arrowAnimate(num: 0, animationDuration: 0.44, cell: cell)
+                }
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryItemCellIndentifier, for: indexPath) as! CategoryItemCell
@@ -172,7 +178,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     tableView.rowHeight = 0
                     
                 }else{
-                    tableView.rowHeight = 60
+                    tableView.rowHeight = Constanst.Cell.general_sec_category_height_constants
                     cell.titleLabel.text = element.key
                 }
                 return cell
@@ -219,6 +225,23 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         default:
             return UITableViewCell()
         }
+    }
+    
+    func arrowAnimate(num: CGFloat, animationDuration: TimeInterval, cell:CategoryCell){
+        var transform: CGAffineTransform
+        if num == 0 {
+            transform =  CGAffineTransform.identity
+        }else{
+            transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+        }
+        tableUser.beginUpdates()
+        UIView.animate(withDuration: animationDuration, animations: {
+            //let transform = CGAffineTransform(rotationAngle: CGFloat(Double(num) * .pi/180))
+            cell.categoryImgView.transform = transform
+        }) { (finish) in
+           // cell.arrowImagaeRotationAngle =  CGFloat.pi * num
+        }
+        tableUser.endUpdates()
     }
 
     func bindDataForGeneralListTableView() {
@@ -483,10 +506,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func setNavigationTopBar() {
-        
+        UINavigationBar.appearance().isTranslucent = false
+
         // Navigation title Color
-        let navBarColor = UIColor(red: 205/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+        let navBarColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
         navigationController?.navigationBar.barTintColor = navBarColor
+        UINavigationBar.appearance().barTintColor = .magenta
         
         if self.tabBarController?.selectedIndex == 0 {
             tabIndex = 0
