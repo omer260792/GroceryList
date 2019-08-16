@@ -186,26 +186,24 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case "temporaryCategory":
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
-            cell.items = [element]
             
-
-            if element.isCompleted == true {
-                cell.lineView.isHidden = false
-                
-            }else{
-                cell.lineView.isHidden = true
-                cell.didMoveToSuperview()
-            }
-            cell.titleLabel.text = element.key
-            cell.contentLabel.text = element.content
+                cell.items = [element]
+                if element.isCompleted == true {
+                    cell.lineView.isHidden = false
+                }else{
+                    cell.lineView.isHidden = true
+                    cell.lineView.didMoveToSuperview()
+                }
+                cell.titleLabel.text = element.key
+                cell.contentLabel.text = element.content
             return cell
             
         case "vicationCategory":
             
             if element.generalCategory == GeneralCategoryEnum.mainCategory.rawValue{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCellIndentifier, for: indexPath) as! VicationCell
-                cell.itemCategoryLabel.text = element.key
-                cell.items = [element]
+                    cell.itemCategoryLabel.text = element.key
+                    cell.items = [element]
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell

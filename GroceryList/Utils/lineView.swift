@@ -10,77 +10,38 @@ import UIKit
 
 class lineView: UIView {
 
-    let maskLayer = CAShapeLayer()
-    var rectanglePath = UIBezierPath()
-    
-    override func addSubview(_ view: UIView) {
-        animation(num: 0)
-    }
-    
+    weak var shapeLayer: CAShapeLayer?
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        animation(num: 0)
-
-//        backgroundColor = UIColor.clear
-//
-//        // initial shape of the view
-//        rectanglePath = UIBezierPath(rect: bounds)
-//
-//        // Create initial shape of the view
-//        shapeLayer.path = rectanglePath.cgPath
-//        shapeLayer.strokeColor = UIColor.black.cgColor
-//        shapeLayer.fillColor = UIColor.clear.cgColor
-//        layer.addSublayer(shapeLayer)
-//
-//        //mask layer
-//        maskLayer.path = shapeLayer.path
-//        maskLayer.position =  shapeLayer.position
-//        layer.mask = maskLayer
+        animate()
     }
     
-//    func prepareForEditing(editing:Bool){
-//
-//        let animation = CABasicAnimation(keyPath: "path")
-//        animation.duration = 2
-//
-//        // Your new shape here
-//        animation.toValue = UIBezierPath(ovalIn: bounds).cgPath
-//        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-//
-//        // The next two line preserves the final shape of animation,
-//        // if you remove it the shape will return to the original shape after the animation finished
-//        animation.fillMode = CAMediaTimingFillMode.forwards
-//        animation.isRemovedOnCompletion = false
-//
-//        shapeLayer.add(animation, forKey: nil)
-//        maskLayer.add(animation, forKey: nil)
-//    }
-    
-    func animation(num: Int){
-       
-        CATransaction.begin()
+    func animate(){
         
-        let layer : CAShapeLayer = CAShapeLayer()
-        layer.strokeColor = UIColor.purple.cgColor
-        layer.lineWidth = 1.0
-        layer.fillColor = UIColor.clear.cgColor
+        self.shapeLayer?.removeFromSuperlayer()
         
-        let path : UIBezierPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.size.width + 2, height: self.frame.size.height + 2), byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 5.0, height: 0.0))
-        layer.path = path.cgPath
+        // create whatever path you want
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 50, y: 5))
+        path.addLine(to: CGPoint(x: 230, y: 5))
         
-        let animation : CABasicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0.0
-        animation.toValue = 0.5
+        // create shape layer for that path
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1).cgColor
+        shapeLayer.lineWidth = 2
+        shapeLayer.path = path.cgPath
         
-        animation.duration = 2.0
+        // animate it
+        self.layer.addSublayer(shapeLayer)
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.duration = 1.5
+        shapeLayer.add(animation, forKey: "MyAnimation")
         
-        CATransaction.setCompletionBlock{ [weak self] in
-            print("Animation completed")
-        }
-        
-        layer.add(animation, forKey: "myStroke")
-        CATransaction.commit()
-        self.layer.addSublayer(layer)
+        // save shape layer
+        self.shapeLayer = shapeLayer
     }
     
     

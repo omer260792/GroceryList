@@ -41,7 +41,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYC-Ez-nm4" customClass="lineView" customModule="GroceryList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="21.5" width="226" height="2"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Hnn-yQ-4gy"/>
                                                 </constraints>
