@@ -23,14 +23,14 @@ class lineView: UIView {
         
         // create whatever path you want
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 50, y: 5))
-        path.addLine(to: CGPoint(x: 230, y: 5))
+        path.move(to: CGPoint(x: 100, y: 3))
+        path.addLine(to: CGPoint(x: 280, y: 3))
         
         // create shape layer for that path
         let shapeLayer = CAShapeLayer()
         shapeLayer.fillColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0).cgColor
-        shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1).cgColor
-        shapeLayer.lineWidth = 2
+        shapeLayer.strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        shapeLayer.lineWidth = 3
         shapeLayer.path = path.cgPath
         
         // animate it

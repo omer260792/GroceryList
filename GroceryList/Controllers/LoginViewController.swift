@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
+                self.LoadSplashScreen()
                 self.performSegue(withIdentifier: self.loginToList, sender: nil)
                 self.textFieldLoginEmail.text = nil
                 self.textFieldLoginPassword.text = nil
@@ -54,6 +55,8 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 
                 self.present(alert, animated: true, completion: nil)
+            }else{
+                self.LoadSplashScreen()
             }
         }
     }
@@ -93,6 +96,14 @@ class LoginViewController: UIViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func LoadSplashScreen() {
+        let myView = Bundle.main.loadNibNamed("splashScreen", owner: nil, options: nil)![0] as! UIView
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        myView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        view.addSubview(myView)
     }
 }
 

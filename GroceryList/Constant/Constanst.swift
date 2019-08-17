@@ -14,9 +14,12 @@ class Constanst {
     struct Cell{
         static let general_main_category_height_constants:CGFloat = 50
         static let general_sec_category_height_constants:CGFloat = 45
+        static let color_app_cell_main_general_constants:UIColor = UIColor(red: 238/255.0, green: 197/255.0, blue: 139/255.0, alpha: 1)
+         static let color_app_cell_second_general_constants:UIColor = UIColor(red: 238/255.0, green: 197/255.0, blue: 139/255.0, alpha: 0.2)
     }
     
     struct colorApp{
-        static let color_app_constants:UIColor = UIColor(red: 40/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1)
+        static let color_app_constants:UIColor = UIColor(red: 20/255.0, green: 211/255.0, blue: 78/255.0, alpha: 1)
+       
     }
 }

@@ -90,7 +90,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
 
     func populateView() {
         
-        self.tableUser.backgroundView = UIImageView(image: UIImage(named: "image_background_white.png"))
+        self.tableUser.backgroundView = UIImageView(image: UIImage(named: "Untitled-1.png"))
         
         self.tableUser.backgroundColor?.withAlphaComponent(0.4)
         
@@ -183,6 +183,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.categoryLabel.text = element.key
                 cell.items = [element]
                 cell.delegate = self
+                cell.viewDesign.backgroundColor =  Constanst.Cell.color_app_cell_main_general_constants
                 if element.isCompleted == true{
                     arrowAnimate(num: 1, animationDuration: 0.44, cell: cell)
                 }else{
@@ -391,12 +392,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     
     func isColorCell(cell: CategoryItemCell, isColor: Bool) {
         if isColor {
-            cell.backgroundColor = Constanst.colorApp.color_app_constants
+            cell.backgroundColor = Constanst.Cell.color_app_cell_second_general_constants
             cell.titleLabel.textColor = .white
-            cell.contentView.alpha = 0.5
+            cell.contentView.alpha = 0.1
         } else {
+            cell.backgroundColor = .clear
             cell.titleLabel.textColor = .black
-            cell.backgroundColor = .white
         }
     }
     
@@ -534,7 +535,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         // Navigation title Color
         let navBarColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
         navigationController?.navigationBar.barTintColor = navBarColor
-        UINavigationBar.appearance().barTintColor = .magenta
         
         if self.tabBarController?.selectedIndex == 0 {
             tabIndex = 0

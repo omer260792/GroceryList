@@ -13,9 +13,6 @@
         <array key="heebo_bold.ttf">
             <string>Heebo-Bold</string>
         </array>
-        <array key="heebo_regular.ttf">
-            <string>Heebo-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Login View Controller-->
@@ -30,16 +27,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEw-U8-b85">
-                                <rect key="frame" x="124" y="96" width="166" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="166" id="B2U-Ig-yvz"/>
-                                    <constraint firstAttribute="height" constant="59" id="XLz-Sb-HOu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="64"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-5x-fZf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fPB-77-yDB">
                                 <rect key="frame" x="74" y="271" width="266" height="30"/>
                                 <constraints>
@@ -67,9 +57,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="ER8-8i-RfN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="17"/>
                                 <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -93,9 +83,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="AwC-4L-WU5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="17"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -108,22 +98,24 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.29204627869999999" green="0.65247046949999998" blue="0.49190118910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fPB-77-yDB" firstAttribute="top" secondItem="kEw-U8-b85" secondAttribute="bottom" constant="116" id="3vo-pb-fGB"/>
                             <constraint firstItem="fPB-77-yDB" firstAttribute="leading" secondItem="SXH-gy-3yU" secondAttribute="leadingMargin" constant="54" id="6Wq-Cn-ipc"/>
                             <constraint firstItem="XcE-nw-ec4" firstAttribute="leading" secondItem="SXH-gy-3yU" secondAttribute="leadingMargin" constant="54" id="8sb-Nd-q2i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XcE-nw-ec4" secondAttribute="trailing" constant="54" id="CxH-TS-Eiw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fPB-77-yDB" secondAttribute="trailing" constant="54" id="DJi-0j-tgI"/>
                             <constraint firstItem="Cdu-6S-nG1" firstAttribute="leading" secondItem="SXH-gy-3yU" secondAttribute="leadingMargin" constant="54" id="Il4-8u-98q"/>
+                            <constraint firstItem="tvp-5x-fZf" firstAttribute="leading" secondItem="PjR-BI-hvy" secondAttribute="leading" id="Ji8-6K-6rk"/>
                             <constraint firstItem="Cdu-6S-nG1" firstAttribute="top" secondItem="hCD-kf-AQq" secondAttribute="bottom" constant="16" id="KVh-5c-0oJ"/>
                             <constraint firstItem="hCD-kf-AQq" firstAttribute="top" secondItem="XcE-nw-ec4" secondAttribute="bottom" constant="20" id="R98-Vf-Gbg"/>
                             <constraint firstItem="XcE-nw-ec4" firstAttribute="top" secondItem="fPB-77-yDB" secondAttribute="bottom" constant="8" id="SXX-Z2-eBI"/>
-                            <constraint firstAttribute="centerX" secondItem="kEw-U8-b85" secondAttribute="centerX" id="W2X-M1-Qp9"/>
+                            <constraint firstItem="PjR-BI-hvy" firstAttribute="trailing" secondItem="tvp-5x-fZf" secondAttribute="trailing" id="Vae-QM-3U2"/>
+                            <constraint firstAttribute="bottom" secondItem="tvp-5x-fZf" secondAttribute="bottom" id="Waq-AN-uuW"/>
+                            <constraint firstItem="fPB-77-yDB" firstAttribute="top" secondItem="acg-bd-S13" secondAttribute="bottom" constant="227" id="b17-rH-91Y"/>
+                            <constraint firstItem="tvp-5x-fZf" firstAttribute="top" secondItem="SXH-gy-3yU" secondAttribute="top" id="cds-Ch-ydO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cdu-6S-nG1" secondAttribute="trailing" constant="54" id="hxD-LI-3qk"/>
                             <constraint firstItem="hCD-kf-AQq" firstAttribute="leading" secondItem="SXH-gy-3yU" secondAttribute="leadingMargin" constant="54" id="iMk-uc-Qy0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hCD-kf-AQq" secondAttribute="trailing" constant="54" id="ruH-48-4WE"/>
-                            <constraint firstItem="kEw-U8-b85" firstAttribute="top" secondItem="acg-bd-S13" secondAttribute="bottom" constant="52" id="xfN-e7-745"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PjR-BI-hvy"/>
                     </view>
@@ -135,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CU-At-nAK" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-50"/>
+            <point key="canvasLocation" x="656.52173913043487" y="-50.223214285714285"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hCZ-yR-nHI">
@@ -269,19 +261,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hh6-Xj-JlD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEG-mg-Oqb" customClass="DesignableButton" customModule="GroceryList" customModuleProvider="target">
-                                <rect key="frame" x="47" y="294.5" width="320" height="307"/>
+                                <rect key="frame" x="47" y="193" width="320" height="310"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z22-fV-OQR">
-                                        <rect key="frame" x="10" y="5" width="300" height="31"/>
-                                        <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                        <rect key="frame" x="10" y="5" width="300" height="34"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="23"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="qbJ-CR-85q">
-                                        <rect key="frame" x="0.0" y="36" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="39" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-uM-43m">
-                                        <rect key="frame" x="10" y="252" width="300" height="45"/>
+                                        <rect key="frame" x="10" y="255" width="300" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPa-i9-mI1">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="45"/>
@@ -300,7 +296,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="qbJ-CR-85q" secondAttribute="trailing" id="DZg-dI-Vlp"/>
                                     <constraint firstItem="qbJ-CR-85q" firstAttribute="top" secondItem="z22-fV-OQR" secondAttribute="bottom" id="HqM-JL-0iV"/>
@@ -313,22 +309,50 @@
                                     <constraint firstItem="z22-fV-OQR" firstAttribute="leading" secondItem="SEG-mg-Oqb" secondAttribute="leading" constant="10" id="tMC-ul-nMi"/>
                                     <constraint firstAttribute="trailing" secondItem="fBA-uM-43m" secondAttribute="trailing" constant="10" id="xMu-pv-4wo"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SEG-mg-Oqb" firstAttribute="leading" secondItem="g3d-8t-uR8" secondAttribute="leading" constant="47" id="1LY-An-luc"/>
                             <constraint firstItem="SEG-mg-Oqb" firstAttribute="centerX" secondItem="AWK-Cx-1jt" secondAttribute="centerX" id="Ixg-OU-M6h"/>
+                            <constraint firstItem="Hh6-Xj-JlD" firstAttribute="top" secondItem="AWK-Cx-1jt" secondAttribute="top" id="LRU-Od-dga"/>
                             <constraint firstAttribute="bottom" secondItem="LJG-7X-ECU" secondAttribute="bottom" id="QEB-DG-Mep"/>
+                            <constraint firstItem="Hh6-Xj-JlD" firstAttribute="trailing" secondItem="g3d-8t-uR8" secondAttribute="trailing" id="Sjc-BP-cqZ"/>
                             <constraint firstItem="LJG-7X-ECU" firstAttribute="top" secondItem="AWK-Cx-1jt" secondAttribute="top" id="aGf-CH-7YB"/>
+                            <constraint firstItem="g3d-8t-uR8" firstAttribute="bottom" secondItem="Hh6-Xj-JlD" secondAttribute="bottom" id="cUB-ld-PVt"/>
+                            <constraint firstItem="Hh6-Xj-JlD" firstAttribute="leading" secondItem="g3d-8t-uR8" secondAttribute="leading" id="hF5-lw-NAT"/>
                             <constraint firstItem="LJG-7X-ECU" firstAttribute="leading" secondItem="g3d-8t-uR8" secondAttribute="leading" id="jcU-KE-fFd"/>
-                            <constraint firstItem="SEG-mg-Oqb" firstAttribute="centerY" secondItem="AWK-Cx-1jt" secondAttribute="centerY" id="rdq-y9-03Z"/>
+                            <constraint firstItem="SEG-mg-Oqb" firstAttribute="centerY" secondItem="AWK-Cx-1jt" secondAttribute="centerY" constant="-100" id="rdq-y9-03Z"/>
                             <constraint firstItem="LJG-7X-ECU" firstAttribute="trailing" secondItem="g3d-8t-uR8" secondAttribute="trailing" id="xYH-z0-Lvc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g3d-8t-uR8"/>
                     </view>
                     <navigationItem key="navigationItem" id="rjl-zw-49c"/>
                     <connections>
+                        <outlet property="backgrondView" destination="Hh6-Xj-JlD" id="kXP-aO-3zE"/>
                         <outlet property="cencelBtn" destination="tPa-i9-mI1" id="hX2-qF-jLl"/>
                         <outlet property="confirmBtn" destination="yVV-SO-s7n" id="pEP-nZ-QSj"/>
                         <outlet property="listCategoryLabel" destination="z22-fV-OQR" id="cvW-Yu-Yz6"/>
@@ -379,32 +403,56 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-Ov-BjX" customClass="DesignableButton" customModule="GroceryList" customModuleProvider="target">
-                                <rect key="frame" x="47" y="194.5" width="320" height="307"/>
+                                <rect key="frame" x="47" y="193" width="320" height="310"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-I6-WLK">
-                                        <rect key="frame" x="10" y="5" width="300" height="31"/>
-                                        <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                        <rect key="frame" x="10" y="5" width="300" height="34"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="23"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="SQG-eH-hWw">
-                                        <rect key="frame" x="0.0" y="36" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="39" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EFV-Mw-9z5">
-                                        <rect key="frame" x="10" y="252" width="300" height="45"/>
+                                        <rect key="frame" x="10" y="255" width="300" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-yI-xH8">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="45"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="ביטול">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3im-YB-zvt">
                                                 <rect key="frame" x="150" y="0.0" width="150" height="45"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="אישור">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -550,5 +598,6 @@
         <image name="icons8-add-list-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-beach-umbrella-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-shopping-cart-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="splashscreen.png" width="750" height="1334"/>
     </resources>
 </document>

@@ -75,6 +75,7 @@
                 <outlet property="categoryImgView" destination="z91-XW-ANR" id="Oky-bO-aaY"/>
                 <outlet property="categoryLabel" destination="ys2-wa-bpk" id="hy8-2k-3Ph"/>
                 <outlet property="viewButton" destination="cMq-pr-OsW" id="mT8-kb-lIF"/>
+                <outlet property="viewDesign" destination="RQl-vp-34w" id="2Y6-s4-SuK"/>
             </connections>
             <point key="canvasLocation" x="1023.913043478261" y="-53.571428571428569"/>
         </tableViewCell>

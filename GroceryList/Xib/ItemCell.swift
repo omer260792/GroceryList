@@ -18,7 +18,7 @@ class ItemCell: ModelCell {
     @IBOutlet var imageViewCell: UIImageView!
     @IBOutlet var contentLabel: UILabel!
     @IBOutlet var viewBtnOutlet: UIButton!
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
@@ -30,6 +30,7 @@ class ItemCell: ModelCell {
     }
     
     override func setupView() {
+     
         viewBtnOutlet.rx.tap.subscribe {  _ in
             self.toggleLine(pathString: "temporaryCategory")
             }.disposed(by:self.disposeBag)

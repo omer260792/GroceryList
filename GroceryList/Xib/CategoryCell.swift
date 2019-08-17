@@ -18,6 +18,7 @@ class CategoryCell: ModelCell {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var viewButton: UIButton!
     
+    @IBOutlet var viewDesign: DesignableButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
