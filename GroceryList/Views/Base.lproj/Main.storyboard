@@ -154,7 +154,7 @@
         <!--Photos Collection View Controller-->
         <scene sceneID="rTA-YC-dfc">
             <objects>
-                <collectionViewController id="XYp-Vn-0bH" customClass="PhotosCollectionViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="goBackTemporayList" id="XYp-Vn-0bH" customClass="PhotosCollectionViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kXm-8f-kTv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -366,6 +366,7 @@
                         <outlet property="pickerImgEdit" destination="ZWf-ms-YTb" id="dNf-VO-Lug"/>
                         <outlet property="tableUser" destination="MBE-19-J7b" id="28l-bs-5ZI"/>
                         <outlet property="viewTemporery" destination="KsZ-Mt-AbE" id="q1z-6g-RB6"/>
+                        <segue destination="kNS-15-rZA" kind="show" identifier="goBackTemporayList" id="mFF-Vu-QcO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbf-xE-b2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -756,7 +757,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="duW-qq-Bb4" kind="relationship" relationship="rootViewController" id="7ne-pr-fDc"/>
-                        <segue destination="kNS-15-rZA" kind="show" identifier="goBackTemporayList" id="cMe-Cp-VTo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDg-oK-cx7" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -68,7 +68,6 @@ class PhotosCollectionViewController: UICollectionViewController {
                     }
                 }
                 if let image = image {
-                    
                     if let name = self?.name, let path = self?.pathString {
                         self?.addImgToFireStorge(pathString: path, image: image, itemName: name)
                         self?.selectedPhotoSubject.onNext(image)

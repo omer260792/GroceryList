@@ -639,7 +639,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func openCollectionImage(){
-         navigationController?.performSegue(withIdentifier: "goBackTemporayList", sender: self)
+         performSegue(withIdentifier: "goBackTemporayList", sender: self)
     }
     
     func showPickerView(){
@@ -683,12 +683,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         if (segue.identifier == "goBackTemporayList")
         {
             let destinationVC = segue.destination as! UINavigationController
-            let nextViewController = destinationVC.viewControllers[0] as! PhotosCollectionViewController
-            
+            let nextViewController = destinationVC.topViewController as! PhotosCollectionViewController
+
             nextViewController.name = self.items[0].key
             nextViewController.pathString = TabCategoryEnum.temporaryCategory.rawValue
-            navigationController?.pushViewController(nextViewController, animated: true)
-            
         }
     }
     
