@@ -58,6 +58,7 @@
                     <constraint firstItem="cO2-b6-KqE" firstAttribute="centerX" secondItem="7JW-J9-7Jd" secondAttribute="centerX" id="tN2-1h-msP"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="nameCategorycell" destination="cO2-b6-KqE" id="PXo-AF-Nf3"/>
                 <outlet property="viewCheckBox" destination="nQA-fR-yCD" id="SB1-b6-0Vd"/>

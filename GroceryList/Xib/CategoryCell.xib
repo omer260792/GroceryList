@@ -70,6 +70,7 @@
                     <constraint firstAttribute="trailing" secondItem="RQl-vp-34w" secondAttribute="trailing" constant="4" id="yQz-bb-qGj"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="categoryImgView" destination="z91-XW-ANR" id="Oky-bO-aaY"/>
                 <outlet property="categoryLabel" destination="ys2-wa-bpk" id="hy8-2k-3Ph"/>

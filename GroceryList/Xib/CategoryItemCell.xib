@@ -77,6 +77,7 @@
                     <constraint firstAttribute="trailing" secondItem="Gf3-sk-Zss" secondAttribute="trailing" constant="4" id="k9D-uk-WDT"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="imageViewItem" destination="eqG-20-tQ0" id="ole-aG-EGk"/>
                 <outlet property="titleLabel" destination="cbJ-ZZ-uDE" id="tTu-qo-y4r"/>

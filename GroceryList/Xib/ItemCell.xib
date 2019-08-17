@@ -47,7 +47,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Z9u-Mk-Nkl" secondAttribute="trailing" id="4Dy-1x-v0y"/>
                                             <constraint firstItem="CYC-Ez-nm4" firstAttribute="centerX" secondItem="YZZ-pj-hCS" secondAttribute="centerX" id="6fh-vd-vIX"/>
@@ -74,7 +74,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wcY-Gf-3sS" firstAttribute="leading" secondItem="n77-3G-vAd" secondAttribute="leading" constant="2" id="0Sh-57-HFB"/>
                             <constraint firstItem="wcY-Gf-3sS" firstAttribute="top" secondItem="n77-3G-vAd" secondAttribute="top" constant="3" id="AJG-zW-aNM"/>
@@ -104,6 +104,7 @@
                     <constraint firstAttribute="trailing" secondItem="sjH-q9-IWy" secondAttribute="trailing" constant="10" id="r0E-HI-bQl"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="contentLabel" destination="Gmy-CG-EbU" id="81I-QT-NCp"/>
                 <outlet property="imageViewCell" destination="sjH-q9-IWy" id="QK3-2I-0Mv"/>

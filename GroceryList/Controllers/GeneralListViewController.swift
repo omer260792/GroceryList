@@ -73,8 +73,26 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         setupGeneralListTableViewCellWhenDeleted()
         setupGeneralListTableViewCellWhenTapped()
     }
+    
+    func getImageFromDir(_ imageName: String) -> UIImage? {
+        
+        if let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = documentsUrl.appendingPathComponent(imageName)
+            do {
+                let imageData = try Data(contentsOf: fileURL)
+                return UIImage(data: imageData)
+            } catch {
+                print("Not able to load image")
+            }
+        }
+        return nil
+    }
 
     func populateView() {
+        
+        self.tableUser.backgroundView = UIImageView(image: UIImage(named: "image_background_white.png"))
+        
+        self.tableUser.backgroundColor?.withAlphaComponent(0.4)
         
         self.tableUser.separatorStyle = .none
         
@@ -375,6 +393,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         if isColor {
             cell.backgroundColor = Constanst.colorApp.color_app_constants
             cell.titleLabel.textColor = .white
+            cell.contentView.alpha = 0.5
         } else {
             cell.titleLabel.textColor = .black
             cell.backgroundColor = .white

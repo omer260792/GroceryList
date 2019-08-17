@@ -11,6 +11,7 @@
 		17220A712305DC03008EF669 /* lineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A702305DC03008EF669 /* lineView.swift */; };
 		174802E92307677B00150D44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174802E82307677B00150D44 /* DesignableView.swift */; };
 		174802EE2307725200150D44 /* LaunchImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 174802ED2307725200150D44 /* LaunchImg.png */; };
+		174802F02307E0E600150D44 /* image_background_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 174802EF2307E0E600150D44 /* image_background_white.png */; };
 		17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3A22F0958C00106D1C /* AppDelegate.swift */; };
 		17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */; };
 		17F30C4022F0958C00106D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C3E22F0958C00106D1C /* Main.storyboard */; };
@@ -26,7 +27,6 @@
 		17F30C6722F0CC5500106D1C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6622F0CC5500106D1C /* Enums.swift */; };
 		17F30C6922F0D37E00106D1C /* TemporeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */; };
 		17F30C6D22F1996500106D1C /* TimeDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6C22F1996500106D1C /* TimeDataProvider.swift */; };
-		17F30C6F22F1999100106D1C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C6E22F1999100106D1C /* RoundButton.swift */; };
 		17F30C7122F199EE00106D1C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C7022F199EE00106D1C /* ItemCell.swift */; };
 		17F30C7B22F1A0DD00106D1C /* VicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C7222F1A0DC00106D1C /* VicationCell.swift */; };
 		17F30C7C22F1A0DD00106D1C /* VicationCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C7322F1A0DC00106D1C /* VicationCategoryCell.xib */; };
@@ -55,6 +55,7 @@
 		17220A702305DC03008EF669 /* lineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lineView.swift; sourceTree = "<group>"; };
 		174802E82307677B00150D44 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		174802ED2307725200150D44 /* LaunchImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImg.png; sourceTree = "<group>"; };
+		174802EF2307E0E600150D44 /* image_background_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_background_white.png; sourceTree = "<group>"; };
 		17F30C3722F0958C00106D1C /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F30C3A22F0958C00106D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicatoinViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		17F30C6622F0CC5500106D1C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		17F30C6822F0D37E00106D1C /* TemporeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporeyViewController.swift; sourceTree = "<group>"; };
 		17F30C6C22F1996500106D1C /* TimeDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataProvider.swift; sourceTree = "<group>"; };
-		17F30C6E22F1999100106D1C /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		17F30C7022F199EE00106D1C /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		17F30C7222F1A0DC00106D1C /* VicationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VicationCell.swift; sourceTree = "<group>"; };
 		17F30C7322F1A0DC00106D1C /* VicationCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VicationCategoryCell.xib; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				174802ED2307725200150D44 /* LaunchImg.png */,
+				174802EF2307E0E600150D44 /* image_background_white.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -228,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				17F30C6C22F1996500106D1C /* TimeDataProvider.swift */,
-				17F30C6E22F1999100106D1C /* RoundButton.swift */,
 				17220A702305DC03008EF669 /* lineView.swift */,
 				174802E82307677B00150D44 /* DesignableView.swift */,
 			);
@@ -332,6 +332,7 @@
 				17F30C4522F0958E00106D1C /* Assets.xcassets in Resources */,
 				17F30C7C22F1A0DD00106D1C /* VicationCategoryCell.xib in Resources */,
 				17F30C8322F1A0DD00106D1C /* CategoryCell.xib in Resources */,
+				174802F02307E0E600150D44 /* image_background_white.png in Resources */,
 				17F30C4022F0958C00106D1C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,7 +407,6 @@
 				17F30C5822F097D900106D1C /* LoginViewController.swift in Sources */,
 				17F30C5622F0977D00106D1C /* OnlineUsersTableViewController.swift in Sources */,
 				17F30C9422F3048400106D1C /* VicationViewModel.swift in Sources */,
-				17F30C6F22F1999100106D1C /* RoundButton.swift in Sources */,
 				17F30C4322F0958C00106D1C /* GroceryList.xcdatamodeld in Sources */,
 				17F30C9022F1CE9F00106D1C /* GeneralListCellViewModel.swift in Sources */,
 				17F30C6122F0B14900106D1C /* GeneralListViewController.swift in Sources */,
