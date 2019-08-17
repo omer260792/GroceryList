@@ -27,6 +27,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     @IBOutlet var pikerView: UIView?
     @IBOutlet var listCategoryLabel: UILabel!
     
+    // view show image
+    @IBOutlet var viewImg: UIView!
+    @IBOutlet var xBtn: UIButton!
+    @IBOutlet var imageViewShow: UIImageView!
+    
+    
     // MARK: Constants
     var listToUsers = "ListToUsers"
     var groceryItemsCategory = "grocery-items"
@@ -41,6 +47,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var itemsCount: [GroceryItem] = []
     var itemsEmpty: [GroceryItem] = []
     var user: User!
+    var indexTapCell: Int = 0
     var userCountBarButtonItem: UIBarButtonItem!
     var ref = Database.database().reference(withPath: "groceryItems")
     let usersRef = Database.database().reference(withPath: "online")
@@ -158,6 +165,13 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 self.dismissEditCellPickerView()
             }.disposed(by: self.disposeBag)
         }
+        
+        if let pickerEdit = self.xBtn{
+            pickerEdit.rx.tap.subscribe{ _ in
+                self.desmissImageView()
+            }.disposed(by: self.disposeBag)
+        }
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
@@ -234,6 +248,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
                 cell.delegate = self
+                cell.lineView.tag = indexPath.row
+
                 cell.items = [element]
                 if element.isCompleted == true {
                     cell.lineView.isHidden = false
@@ -616,6 +632,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     
         }).disposed(by: disposeBag)
     }
+    func showImage(image: UIImage) {
+        
+    }
     
     func addObjectToVicationListFromGeneralList(item: [GroceryItem]){
         let alert = UIAlertController(title: item[0].key,
@@ -664,7 +683,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
-    func showEditCellPickerView(){
+    func showEditCellPickerView(index: Int){
+        indexTapCell = index
         if let viewTemporery = self.viewTemporery, let backgrondView = self.backgrondView {
             viewTemporery.alpha = 1
             backgrondView.alpha = 0.7
@@ -678,6 +698,20 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
+    func showImageView(image: UIImage) {
+        if let view = self.viewImg, let backgrondView = self.backgrondView, let img = self.imageViewShow {
+            view.alpha = 1
+            backgrondView.alpha = 0.7
+            img.image = image
+        }
+    }
+    
+    func desmissImageView() {
+        if let view = self.viewImg, let backgrondView = self.backgrondView {
+            view.alpha = 0
+            backgrondView.alpha = 0
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "goBackTemporayList")
@@ -685,7 +719,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             let destinationVC = segue.destination as! UINavigationController
             let nextViewController = destinationVC.topViewController as! PhotosCollectionViewController
 
-            nextViewController.name = self.items[0].key
+            nextViewController.name = self.items[indexTapCell].key
             nextViewController.pathString = TabCategoryEnum.temporaryCategory.rawValue
         }
     }

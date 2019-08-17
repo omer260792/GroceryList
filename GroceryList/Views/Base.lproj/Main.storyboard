@@ -340,9 +340,63 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gl9-Y5-Lp9" customClass="DesignableButton" customModule="GroceryList" customModuleProvider="target">
+                                <rect key="frame" x="40" y="248" width="334" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEX-wK-qnF">
+                                        <rect key="frame" x="20" y="0.0" width="294" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="uDs-UP-s5H"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWp-00-M9o">
+                                        <rect key="frame" x="278" y="10" width="46" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="I6f-AK-XjF"/>
+                                            <constraint firstAttribute="width" constant="46" id="VTc-34-J9h"/>
+                                        </constraints>
+                                        <state key="normal" image="icons8-circled-x-50"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tEX-wK-qnF" secondAttribute="bottom" id="7lD-dR-dij"/>
+                                    <constraint firstAttribute="trailing" secondItem="IWp-00-M9o" secondAttribute="trailing" constant="10" id="Bhy-gh-MhD"/>
+                                    <constraint firstItem="tEX-wK-qnF" firstAttribute="leading" secondItem="gl9-Y5-Lp9" secondAttribute="leading" constant="20" id="G5U-rs-kLs"/>
+                                    <constraint firstItem="IWp-00-M9o" firstAttribute="top" secondItem="gl9-Y5-Lp9" secondAttribute="top" constant="10" id="MHs-EA-RAV"/>
+                                    <constraint firstAttribute="trailing" secondItem="tEX-wK-qnF" secondAttribute="trailing" constant="20" id="Mju-7S-pmQ"/>
+                                    <constraint firstAttribute="height" constant="400" id="NGb-VL-gnE"/>
+                                    <constraint firstItem="tEX-wK-qnF" firstAttribute="centerY" secondItem="gl9-Y5-Lp9" secondAttribute="centerY" id="nhE-RF-fhF"/>
+                                    <constraint firstItem="tEX-wK-qnF" firstAttribute="centerX" secondItem="gl9-Y5-Lp9" secondAttribute="centerX" id="nmz-Lf-DxZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gl9-Y5-Lp9" firstAttribute="centerY" secondItem="dOI-zB-qe8" secondAttribute="centerY" id="AZc-cc-5EV"/>
                             <constraint firstItem="wO9-Sz-Srr" firstAttribute="trailing" secondItem="KsZ-Mt-AbE" secondAttribute="trailing" constant="20" id="AhT-es-42U"/>
                             <constraint firstItem="MBE-19-J7b" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" id="B33-ZX-d3g"/>
                             <constraint firstItem="MBE-19-J7b" firstAttribute="trailing" secondItem="wO9-Sz-Srr" secondAttribute="trailing" id="Dmx-7a-05U"/>
@@ -352,9 +406,12 @@
                             <constraint firstItem="wO9-Sz-Srr" firstAttribute="trailing" secondItem="Uc0-mc-IVF" secondAttribute="trailing" id="YuM-Lq-Voa"/>
                             <constraint firstItem="Uc0-mc-IVF" firstAttribute="top" secondItem="wO9-Sz-Srr" secondAttribute="top" id="d2b-rV-l8B"/>
                             <constraint firstItem="KsZ-Mt-AbE" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" constant="20" id="gov-sj-iEa"/>
+                            <constraint firstItem="gl9-Y5-Lp9" firstAttribute="centerX" secondItem="dOI-zB-qe8" secondAttribute="centerX" id="jMG-kW-PmY"/>
                             <constraint firstAttribute="bottom" secondItem="MBE-19-J7b" secondAttribute="bottom" id="ku8-oF-r8I"/>
                             <constraint firstItem="Uc0-mc-IVF" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" id="mWI-OM-WQa"/>
+                            <constraint firstItem="wO9-Sz-Srr" firstAttribute="trailing" secondItem="gl9-Y5-Lp9" secondAttribute="trailing" constant="40" id="mw3-y6-ZqE"/>
                             <constraint firstItem="KsZ-Mt-AbE" firstAttribute="centerY" secondItem="dOI-zB-qe8" secondAttribute="centerY" id="xMR-ZE-Hwy"/>
+                            <constraint firstItem="gl9-Y5-Lp9" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" constant="40" id="xoc-pk-lSA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wO9-Sz-Srr"/>
                     </view>
@@ -362,10 +419,13 @@
                     <connections>
                         <outlet property="backgrondView" destination="Uc0-mc-IVF" id="1dk-zx-WMF"/>
                         <outlet property="buttonXPickerEdit" destination="xSv-dW-nYx" id="cbq-RF-rcw"/>
+                        <outlet property="imageViewShow" destination="tEX-wK-qnF" id="9LS-87-cG1"/>
                         <outlet property="pickerAmountEdit" destination="BZR-cF-5yK" id="FtU-05-q1L"/>
                         <outlet property="pickerImgEdit" destination="ZWf-ms-YTb" id="dNf-VO-Lug"/>
                         <outlet property="tableUser" destination="MBE-19-J7b" id="28l-bs-5ZI"/>
+                        <outlet property="viewImg" destination="gl9-Y5-Lp9" id="78X-4g-jux"/>
                         <outlet property="viewTemporery" destination="KsZ-Mt-AbE" id="q1z-6g-RB6"/>
+                        <outlet property="xBtn" destination="IWp-00-M9o" id="IuJ-Jr-L9s"/>
                         <segue destination="kNS-15-rZA" kind="show" identifier="goBackTemporayList" id="mFF-Vu-QcO"/>
                     </connections>
                 </viewController>

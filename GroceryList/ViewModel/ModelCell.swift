@@ -28,8 +28,7 @@ class ModelCell: UITableViewCell {
     private let itemsEmpty: [GroceryItem] = []
     var collectionModel = PhotosCollectionViewController()
 
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -293,7 +292,23 @@ class ModelCell: UITableViewCell {
         })
     }
     
+    func downloadImage(pathString: String, name: String){
+        let storageRef = storage.reference()
+        var image : UIImage? = nil
+        print("\(pathString)/images/\(name).jpg")
+        let islandRef = storageRef.child("\(pathString)/images/\(name).jpg")
     
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        if let error = error {
+        } else {
+        // Data for "images/island.jpg" is returned
+            if let image = UIImage(data: data!){
+                self.delegate!.showImageView(image: image)
 
+            }
+        }
+        }
+    }
 
 }

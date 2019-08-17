@@ -36,16 +36,16 @@
                         <rect key="frame" x="20" y="2" width="275" height="55.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZZ-pj-hCS">
-                                <rect key="frame" x="0.0" y="7" width="275" height="27"/>
+                                <rect key="frame" x="0.0" y="7" width="275" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-Mk-Nkl">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="27"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="34"/>
                                         <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="23"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYC-Ez-nm4" customClass="lineView" customModule="GroceryList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12.5" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="16" width="275" height="2"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="Hnn-yQ-4gy"/>
@@ -65,7 +65,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmy-CG-EbU">
-                                <rect key="frame" x="0.0" y="39" width="275" height="20"/>
+                                <rect key="frame" x="0.0" y="46" width="275" height="25"/>
                                 <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="17"/>
                                 <color key="textColor" red="0.39184703209771504" green="0.25986570668878156" blue="0.40750993847846984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,9 +87,18 @@
                             <color key="titleColor" red="0.46666666666666667" green="0.81960784313725488" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N38-XQ-AxE">
+                        <rect key="frame" x="20" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="L0d-OG-yiv"/>
+                            <constraint firstAttribute="width" constant="30" id="ggB-ns-1r2"/>
+                        </constraints>
+                        <state key="normal" image="icons8-help-96"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ywd-pa-Pkr" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" id="30F-Gb-pb2"/>
+                    <constraint firstItem="N38-XQ-AxE" firstAttribute="centerY" secondItem="FDn-AR-4s3" secondAttribute="centerY" id="3BH-iF-RJH"/>
                     <constraint firstItem="n77-3G-vAd" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" constant="20" id="CAw-Y4-DeP"/>
                     <constraint firstItem="n77-3G-vAd" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" constant="2" id="GGk-Y7-X8I"/>
                     <constraint firstItem="sjH-q9-IWy" firstAttribute="top" secondItem="FDn-AR-4s3" secondAttribute="top" id="J4R-ga-YDH"/>
@@ -98,6 +107,7 @@
                     <constraint firstAttribute="bottom" secondItem="ywd-pa-Pkr" secondAttribute="bottom" id="YAD-Rz-EpM"/>
                     <constraint firstItem="ywd-pa-Pkr" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" id="gPc-Ox-zap"/>
                     <constraint firstItem="sjH-q9-IWy" firstAttribute="leading" secondItem="n77-3G-vAd" secondAttribute="trailing" constant="21" id="gnI-kH-Vki"/>
+                    <constraint firstItem="N38-XQ-AxE" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" constant="20" id="h5a-oa-e1b"/>
                     <constraint firstAttribute="bottom" secondItem="n77-3G-vAd" secondAttribute="bottom" constant="2" id="pQt-t3-bPe"/>
                     <constraint firstAttribute="trailing" secondItem="sjH-q9-IWy" secondAttribute="trailing" constant="44" id="r0E-HI-bQl"/>
                 </constraints>
@@ -107,6 +117,7 @@
                 <outlet property="contentLabel" destination="Gmy-CG-EbU" id="81I-QT-NCp"/>
                 <outlet property="imageViewCell" destination="sjH-q9-IWy" id="QK3-2I-0Mv"/>
                 <outlet property="lineView" destination="CYC-Ez-nm4" id="1yf-qm-pqL"/>
+                <outlet property="showImagebtn" destination="N38-XQ-AxE" id="d4C-lB-GJT"/>
                 <outlet property="titleLabel" destination="Z9u-Mk-Nkl" id="aW7-AR-iHd"/>
                 <outlet property="viewBtnOutlet" destination="ywd-pa-Pkr" id="2iA-l1-9Io"/>
                 <outlet property="viewCell" destination="n77-3G-vAd" id="K3K-sV-lM1"/>
@@ -115,6 +126,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icons8-help-96" width="96" height="96"/>
         <image name="icons8-new-moon-50" width="50" height="50"/>
     </resources>
 </document>
