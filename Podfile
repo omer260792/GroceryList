@@ -9,6 +9,7 @@ target 'GroceryList' do
   pod 'Firebase/Auth', :inhibit_warnings => true
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
   pod 'RxSwift','~> 4.0'
   pod 'RxCocoa','~> 4.0'
   pod 'RxGesture'

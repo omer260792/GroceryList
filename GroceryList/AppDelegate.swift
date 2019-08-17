@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-
+        let storage = Storage.storage()
         Messaging.messaging().isAutoInitEnabled = true
 
         if #available(iOS 10.0, *) {
