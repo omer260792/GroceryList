@@ -11,6 +11,7 @@ target 'GroceryList' do
   pod 'Firebase/Messaging'
   pod 'RxSwift','~> 4.0'
   pod 'RxCocoa','~> 4.0'
+  pod 'RxGesture'
   pod 'SDWebImage', '~> 4.0'
   pod 'Fabric'
   pod 'Crashlytics'

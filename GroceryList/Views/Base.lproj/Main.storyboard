@@ -13,6 +13,9 @@
         <array key="heebo_bold.ttf">
             <string>Heebo-Bold</string>
         </array>
+        <array key="heebo_regular.ttf">
+            <string>Heebo-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Login View Controller-->
@@ -220,19 +223,92 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsZ-Mt-AbE">
+                                <rect key="frame" x="20" y="398" width="374" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-circled-x-50" translatesAutoresizingMaskIntoConstraints="NO" id="kZl-Qh-xx7">
+                                        <rect key="frame" x="334" y="5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="2gL-gD-LoC"/>
+                                            <constraint firstAttribute="height" constant="30" id="VFM-UW-jAB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אפשרות עריכה:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dw5-ex-UQn">
+                                        <rect key="frame" x="105" y="0.0" width="164.5" height="35.5"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-8o-WH7">
+                                        <rect key="frame" x="20" y="0.0" width="334" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWf-ms-YTb">
+                                                <rect key="frame" x="0.0" y="47" width="167" height="43"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                                <state key="normal" title="תמונה"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZR-cF-5yK">
+                                                <rect key="frame" x="167" y="52" width="167" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <state key="normal" title="כמות"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PNE-8o-WH7" secondAttribute="bottom" constant="10" id="CXJ-He-1eh"/>
+                                    <constraint firstItem="Dw5-ex-UQn" firstAttribute="centerX" secondItem="KsZ-Mt-AbE" secondAttribute="centerX" id="L2I-jx-IAc"/>
+                                    <constraint firstItem="kZl-Qh-xx7" firstAttribute="top" secondItem="KsZ-Mt-AbE" secondAttribute="top" constant="5" id="LSG-bW-CF9"/>
+                                    <constraint firstItem="PNE-8o-WH7" firstAttribute="top" secondItem="KsZ-Mt-AbE" secondAttribute="top" id="P6K-ZQ-bnZ"/>
+                                    <constraint firstAttribute="height" constant="100" id="Pwd-vU-8CU"/>
+                                    <constraint firstItem="Dw5-ex-UQn" firstAttribute="top" secondItem="KsZ-Mt-AbE" secondAttribute="top" id="dGC-aF-2Ah"/>
+                                    <constraint firstAttribute="trailing" secondItem="kZl-Qh-xx7" secondAttribute="trailing" constant="10" id="hDc-yd-OZl"/>
+                                    <constraint firstAttribute="trailing" secondItem="PNE-8o-WH7" secondAttribute="trailing" constant="20" id="hnl-tH-pEm"/>
+                                    <constraint firstItem="PNE-8o-WH7" firstAttribute="leading" secondItem="KsZ-Mt-AbE" secondAttribute="leading" constant="20" id="njo-rl-1PM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wO9-Sz-Srr" firstAttribute="trailing" secondItem="KsZ-Mt-AbE" secondAttribute="trailing" constant="20" id="AhT-es-42U"/>
                             <constraint firstItem="MBE-19-J7b" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" id="B33-ZX-d3g"/>
                             <constraint firstItem="MBE-19-J7b" firstAttribute="trailing" secondItem="wO9-Sz-Srr" secondAttribute="trailing" id="Dmx-7a-05U"/>
+                            <constraint firstItem="KsZ-Mt-AbE" firstAttribute="centerX" secondItem="dOI-zB-qe8" secondAttribute="centerX" id="HuR-Qw-6b8"/>
                             <constraint firstItem="MBE-19-J7b" firstAttribute="top" secondItem="dOI-zB-qe8" secondAttribute="top" id="Ohp-kf-pal"/>
+                            <constraint firstItem="KsZ-Mt-AbE" firstAttribute="leading" secondItem="wO9-Sz-Srr" secondAttribute="leading" constant="20" id="gov-sj-iEa"/>
                             <constraint firstAttribute="bottom" secondItem="MBE-19-J7b" secondAttribute="bottom" id="ku8-oF-r8I"/>
+                            <constraint firstItem="KsZ-Mt-AbE" firstAttribute="centerY" secondItem="dOI-zB-qe8" secondAttribute="centerY" id="xMR-ZE-Hwy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wO9-Sz-Srr"/>
                     </view>
                     <navigationItem key="navigationItem" id="ird-iH-bfK"/>
                     <connections>
                         <outlet property="tableUser" destination="MBE-19-J7b" id="28l-bs-5ZI"/>
+                        <outlet property="viewTemporery" destination="KsZ-Mt-AbE" id="q1z-6g-RB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbf-xE-b2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -494,18 +570,90 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hph-QA-fQE">
+                                <rect key="frame" x="40" y="398" width="334" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-circled-x-50" translatesAutoresizingMaskIntoConstraints="NO" id="7Rr-NH-ub0">
+                                        <rect key="frame" x="294" y="5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GNh-NT-BWl"/>
+                                            <constraint firstAttribute="width" constant="30" id="QYB-8V-Oaf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אפשרות עריכה:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI0-CI-AjT">
+                                        <rect key="frame" x="85" y="0.0" width="164.5" height="35.5"/>
+                                        <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fzT-oj-pua">
+                                        <rect key="frame" x="20" y="0.0" width="294" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJ5-XZ-vop">
+                                                <rect key="frame" x="0.0" y="47" width="147" height="43"/>
+                                                <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
+                                                <state key="normal" title="תמונה"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuL-i1-qlF">
+                                                <rect key="frame" x="147" y="52" width="147" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <state key="normal" title="כמות"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fzT-oj-pua" firstAttribute="leading" secondItem="hph-QA-fQE" secondAttribute="leading" constant="20" id="KYT-f2-AiP"/>
+                                    <constraint firstAttribute="height" constant="100" id="M3O-J8-Rdb"/>
+                                    <constraint firstItem="wI0-CI-AjT" firstAttribute="centerX" secondItem="hph-QA-fQE" secondAttribute="centerX" id="VEP-Ai-EO7"/>
+                                    <constraint firstItem="wI0-CI-AjT" firstAttribute="top" secondItem="hph-QA-fQE" secondAttribute="top" id="fCG-nQ-gtj"/>
+                                    <constraint firstAttribute="bottom" secondItem="fzT-oj-pua" secondAttribute="bottom" constant="10" id="fSQ-QV-Uy1"/>
+                                    <constraint firstItem="fzT-oj-pua" firstAttribute="top" secondItem="hph-QA-fQE" secondAttribute="top" id="fam-mP-i47"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Rr-NH-ub0" secondAttribute="trailing" constant="10" id="iku-mB-wJh"/>
+                                    <constraint firstItem="7Rr-NH-ub0" firstAttribute="top" secondItem="hph-QA-fQE" secondAttribute="top" constant="5" id="rmb-7E-eEe"/>
+                                    <constraint firstAttribute="trailing" secondItem="fzT-oj-pua" secondAttribute="trailing" constant="20" id="vJ1-90-tSQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mx-Ll-rSI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hph-QA-fQE" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" constant="40" id="6ar-fd-mT2"/>
+                            <constraint firstItem="gEG-GF-5H1" firstAttribute="trailing" secondItem="hph-QA-fQE" secondAttribute="trailing" constant="40" id="9Pq-KZ-2uH"/>
                             <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerX" secondItem="hxE-2a-f5v" secondAttribute="centerX" id="AKL-LB-Yw5"/>
                             <constraint firstItem="fh0-Ov-BjX" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" constant="47" id="BSF-Bb-O9F"/>
                             <constraint firstItem="4mx-Ll-rSI" firstAttribute="top" secondItem="gEG-GF-5H1" secondAttribute="top" id="BuC-Ee-EUm"/>
                             <constraint firstItem="Ye3-ZC-UBM" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" id="Fvz-ph-5UK"/>
+                            <constraint firstItem="hph-QA-fQE" firstAttribute="centerY" secondItem="hxE-2a-f5v" secondAttribute="centerY" id="GcY-5e-qX7"/>
                             <constraint firstItem="gEG-GF-5H1" firstAttribute="bottom" secondItem="XRW-au-WhF" secondAttribute="bottom" id="Kp6-Fe-FKD"/>
                             <constraint firstItem="Ye3-ZC-UBM" firstAttribute="top" secondItem="hxE-2a-f5v" secondAttribute="top" id="QDg-yN-KfF"/>
+                            <constraint firstItem="hph-QA-fQE" firstAttribute="centerX" secondItem="hxE-2a-f5v" secondAttribute="centerX" id="VDC-et-hhb"/>
                             <constraint firstItem="gEG-GF-5H1" firstAttribute="trailing" secondItem="4mx-Ll-rSI" secondAttribute="trailing" id="dbu-Wl-wez"/>
                             <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerY" secondItem="hxE-2a-f5v" secondAttribute="centerY" constant="-100" id="dd6-7E-HdS"/>
                             <constraint firstAttribute="bottom" secondItem="Ye3-ZC-UBM" secondAttribute="bottom" id="fhp-2c-y3d"/>
@@ -597,6 +745,7 @@
     <resources>
         <image name="icons8-add-list-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-beach-umbrella-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="icons8-circled-x-50" width="50" height="50"/>
         <image name="icons8-shopping-cart-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="splashscreen.png" width="750" height="1334"/>
     </resources>

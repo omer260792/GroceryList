@@ -9,6 +9,7 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import RxGesture
 
 class ItemCell: ModelCell {
     
@@ -30,7 +31,24 @@ class ItemCell: ModelCell {
     }
     
     override func setupView() {
-     
+        viewBtnOutlet.rx
+            .longPressGesture()
+            .when(.began, .changed, .ended)
+            .subscribe(onNext: { pan in
+                let view = pan.view
+                let location = pan.location(in: view)
+                switch pan.state {
+                case .began:
+                    print("began")
+                case .changed:
+                    print("changed \(location)")
+                case .ended:
+                    print("ended")
+                default:
+                    break
+                }
+            }).disposed(by: self.disposeBag)
+        
         viewBtnOutlet.rx.tap.subscribe {  _ in
             self.toggleLine(pathString: "temporaryCategory")
             }.disposed(by:self.disposeBag)

@@ -12,6 +12,8 @@ import RxSwift
 import RxCocoa
 
 class GeneralListViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
+    //Temporey List iboutlet
+    @IBOutlet var viewTemporery: UIView?
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var backgrondView: UIView!
@@ -393,8 +395,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func isColorCell(cell: CategoryItemCell, isColor: Bool) {
         if isColor {
             cell.backgroundColor = Constanst.Cell.color_app_cell_second_general_constants
-            cell.titleLabel.textColor = .white
-            cell.contentView.alpha = 0.1
+            cell.contentView.alpha = 0.7
+            cell.titleLabel.textColor = .gray
         } else {
             cell.backgroundColor = .clear
             cell.titleLabel.textColor = .black
@@ -549,9 +551,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         
         // Navigation Title
         let navLabel = UILabel()
-        let navTitle = NSMutableAttributedString(string:self.titlePage, attributes:[
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: UIFont.Weight.bold)])
-        navLabel.attributedText = navTitle
+        navLabel.font = UIFont(name: "heebo_regular", size: 20.0)
+        navLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        navLabel.text = self.titlePage
         navigationItem.titleView = navLabel
         
         // Navigation right
