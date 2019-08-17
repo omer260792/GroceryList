@@ -270,28 +270,28 @@
                                 </prototypes>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEG-mg-Oqb">
-                                <rect key="frame" x="47" y="301.5" width="320" height="293.5"/>
+                                <rect key="frame" x="47" y="294.5" width="320" height="307"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z22-fV-OQR">
-                                        <rect key="frame" x="10" y="5" width="300" height="24.5"/>
+                                        <rect key="frame" x="10" y="5" width="300" height="31"/>
                                         <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="qbJ-CR-85q">
-                                        <rect key="frame" x="0.0" y="29.5" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="36" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-uM-43m">
-                                        <rect key="frame" x="10" y="245.5" width="300" height="38"/>
+                                        <rect key="frame" x="10" y="252" width="300" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPa-i9-mI1">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="45"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="ביטול">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVV-SO-s7n">
-                                                <rect key="frame" x="150" y="0.0" width="150" height="38"/>
+                                                <rect key="frame" x="150" y="0.0" width="150" height="45"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="אישור">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -359,33 +359,48 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1R-u0-3xq" id="wfO-F7-82d">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="341.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdV-Dm-w37">
+                                                    <rect key="frame" x="20" y="11" width="374" height="320"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WdV-Dm-w37" firstAttribute="leading" secondItem="wfO-F7-82d" secondAttribute="leadingMargin" id="bTz-W5-2fP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WdV-Dm-w37" secondAttribute="bottom" id="bUM-bw-Dhv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="WdV-Dm-w37" secondAttribute="trailing" id="dvb-kS-E7S"/>
+                                                <constraint firstItem="WdV-Dm-w37" firstAttribute="top" secondItem="wfO-F7-82d" secondAttribute="topMargin" id="lFk-hC-eDI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-Ov-BjX">
-                                <rect key="frame" x="47" y="301.5" width="320" height="293.5"/>
+                            <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRW-au-WhF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-Ov-BjX" customClass="DesignableButton" customModule="GroceryList" customModuleProvider="target">
+                                <rect key="frame" x="47" y="194.5" width="320" height="307"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת קטגוריות" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-I6-WLK">
-                                        <rect key="frame" x="10" y="5" width="300" height="24.5"/>
+                                        <rect key="frame" x="10" y="5" width="300" height="31"/>
                                         <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="21"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="SQG-eH-hWw">
-                                        <rect key="frame" x="0.0" y="29.5" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="36" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EFV-Mw-9z5">
-                                        <rect key="frame" x="10" y="245.5" width="300" height="38"/>
+                                        <rect key="frame" x="10" y="252" width="300" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-yI-xH8">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="45"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="ביטול">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3im-YB-zvt">
-                                                <rect key="frame" x="150" y="0.0" width="150" height="38"/>
+                                                <rect key="frame" x="150" y="0.0" width="150" height="45"/>
                                                 <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="22"/>
                                                 <state key="normal" title="אישור">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.1137254902" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -394,7 +409,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="h5K-I6-WLK" secondAttribute="trailing" constant="10" id="GAX-MP-lfc"/>
                                     <constraint firstItem="h5K-I6-WLK" firstAttribute="leading" secondItem="fh0-Ov-BjX" secondAttribute="leading" constant="10" id="LeC-jQ-6Vh"/>
@@ -407,24 +422,60 @@
                                     <constraint firstAttribute="trailing" secondItem="EFV-Mw-9z5" secondAttribute="trailing" constant="10" id="qSf-YE-vwZ"/>
                                     <constraint firstItem="SQG-eH-hWw" firstAttribute="top" secondItem="h5K-I6-WLK" secondAttribute="bottom" id="woK-q3-8pD"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mx-Ll-rSI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerX" secondItem="hxE-2a-f5v" secondAttribute="centerX" id="AKL-LB-Yw5"/>
                             <constraint firstItem="fh0-Ov-BjX" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" constant="47" id="BSF-Bb-O9F"/>
+                            <constraint firstItem="4mx-Ll-rSI" firstAttribute="top" secondItem="gEG-GF-5H1" secondAttribute="top" id="BuC-Ee-EUm"/>
                             <constraint firstItem="Ye3-ZC-UBM" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" id="Fvz-ph-5UK"/>
+                            <constraint firstItem="gEG-GF-5H1" firstAttribute="bottom" secondItem="XRW-au-WhF" secondAttribute="bottom" id="Kp6-Fe-FKD"/>
                             <constraint firstItem="Ye3-ZC-UBM" firstAttribute="top" secondItem="hxE-2a-f5v" secondAttribute="top" id="QDg-yN-KfF"/>
-                            <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerY" secondItem="hxE-2a-f5v" secondAttribute="centerY" id="dd6-7E-HdS"/>
+                            <constraint firstItem="gEG-GF-5H1" firstAttribute="trailing" secondItem="4mx-Ll-rSI" secondAttribute="trailing" id="dbu-Wl-wez"/>
+                            <constraint firstItem="fh0-Ov-BjX" firstAttribute="centerY" secondItem="hxE-2a-f5v" secondAttribute="centerY" constant="-100" id="dd6-7E-HdS"/>
                             <constraint firstAttribute="bottom" secondItem="Ye3-ZC-UBM" secondAttribute="bottom" id="fhp-2c-y3d"/>
+                            <constraint firstItem="gEG-GF-5H1" firstAttribute="bottom" secondItem="4mx-Ll-rSI" secondAttribute="bottom" id="gU6-NJ-jZH"/>
+                            <constraint firstItem="gEG-GF-5H1" firstAttribute="trailing" secondItem="XRW-au-WhF" secondAttribute="trailing" id="iMV-In-pwN"/>
+                            <constraint firstItem="4mx-Ll-rSI" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" id="q3D-lE-e7K"/>
                             <constraint firstItem="Ye3-ZC-UBM" firstAttribute="trailing" secondItem="gEG-GF-5H1" secondAttribute="trailing" id="qpv-4o-FOT"/>
+                            <constraint firstItem="XRW-au-WhF" firstAttribute="top" secondItem="gEG-GF-5H1" secondAttribute="top" id="uDn-E5-Pqa"/>
+                            <constraint firstItem="XRW-au-WhF" firstAttribute="leading" secondItem="gEG-GF-5H1" secondAttribute="leading" id="vYY-Av-DWV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gEG-GF-5H1"/>
                     </view>
                     <navigationItem key="navigationItem" id="F7Y-l9-tnn"/>
                     <connections>
+                        <outlet property="backgrondView" destination="XRW-au-WhF" id="bxn-6d-Dnr"/>
                         <outlet property="cencelBtn" destination="ou3-yI-xH8" id="pMU-2I-uQS"/>
                         <outlet property="confirmBtn" destination="3im-YB-zvt" id="x2w-AS-VVb"/>
+                        <outlet property="imageView" destination="4mx-Ll-rSI" id="S8Q-Gc-duh"/>
                         <outlet property="listCategoryLabel" destination="h5K-I6-WLK" id="OHD-Kh-7eA"/>
                         <outlet property="picker" destination="SQG-eH-hWw" id="8BG-UX-lLm"/>
                         <outlet property="pikerView" destination="fh0-Ov-BjX" id="0ep-P5-fva"/>

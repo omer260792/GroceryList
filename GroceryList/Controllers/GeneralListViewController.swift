@@ -13,6 +13,8 @@ import RxCocoa
 
 class GeneralListViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
     
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var backgrondView: UIView!
     @IBOutlet var tableUser: UITableView!
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var cencelBtn: UIButton!
@@ -191,8 +193,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 if element.isCompleted == true {
                     cell.lineView.isHidden = false
                 }else{
-                    cell.lineView.isHidden = true
                     cell.lineView.didMoveToSuperview()
+                    cell.lineView.isHidden = true
                 }
                 cell.titleLabel.text = element.key
                 cell.contentLabel.text = element.content
@@ -369,10 +371,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
    
     }
     
-    func isColorCell(cell: UITableViewCell, isColor: Bool) {
+    func isColorCell(cell: CategoryItemCell, isColor: Bool) {
         if isColor {
-            cell.backgroundColor = .green
+            cell.backgroundColor = Constanst.colorApp.color_app_constants
+            cell.titleLabel.textColor = .white
         } else {
+            cell.titleLabel.textColor = .black
             cell.backgroundColor = .white
         }
     }
@@ -537,8 +541,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             rightBtn.rx.tap.subscribe{ _ in
                 self.addPopUpView(category: GeneralCategoryEnum.mainCategory.rawValue, title: "הכנס קטגוריה", msg: "בחר שם:")
                 UIView.animate(withDuration: 0.3, animations: {
-                    if let pickerView = self.pikerView {
+                    if let pickerView = self.pikerView, let backgrondView = self.backgrondView {
                         pickerView.alpha = 0
+                        backgrondView.alpha = 0
                     }
                 })
             }.disposed(by: disposeBag)
@@ -587,14 +592,16 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
     
     func showPickerView(){
-        if let pickerView = self.pikerView {
+        if let pickerView = self.pikerView, let backgrondView = self.backgrondView {
             pickerView.alpha = 1
+            backgrondView.alpha = 0.7
         }
     }
     
     func dismissPickerView(){
-        if let pickerView = self.pikerView {
+        if let pickerView = self.pikerView, let backgrondView = self.backgrondView{
             pickerView.alpha = 0
+            backgrondView.alpha = 0
         }
     }
     

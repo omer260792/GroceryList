@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		17220A6F2305CA37008EF669 /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A6E2305CA37008EF669 /* Constanst.swift */; };
 		17220A712305DC03008EF669 /* lineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A702305DC03008EF669 /* lineView.swift */; };
+		174802E92307677B00150D44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174802E82307677B00150D44 /* DesignableView.swift */; };
+		174802EE2307725200150D44 /* LaunchImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 174802ED2307725200150D44 /* LaunchImg.png */; };
 		17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3A22F0958C00106D1C /* AppDelegate.swift */; };
 		17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */; };
 		17F30C4022F0958C00106D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F30C3E22F0958C00106D1C /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		17220A6C2305C491008EF669 /* heebo_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_medium.ttf; sourceTree = "<group>"; };
 		17220A6E2305CA37008EF669 /* Constanst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanst.swift; sourceTree = "<group>"; };
 		17220A702305DC03008EF669 /* lineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lineView.swift; sourceTree = "<group>"; };
+		174802E82307677B00150D44 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		174802ED2307725200150D44 /* LaunchImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImg.png; sourceTree = "<group>"; };
 		17F30C3722F0958C00106D1C /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F30C3A22F0958C00106D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VicatoinViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		174802EA23076B3900150D44 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				174802ED2307725200150D44 /* LaunchImg.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		17F30C2E22F0958C00106D1C = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +154,7 @@
 		17F30C3922F0958C00106D1C /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				174802EA23076B3900150D44 /* Image */,
 				17220A6D2305CA19008EF669 /* Constant */,
 				17220A632305C453008EF669 /* Fonts */,
 				17F30C8C22F1CB9900106D1C /* ViewModel */,
@@ -217,6 +230,7 @@
 				17F30C6C22F1996500106D1C /* TimeDataProvider.swift */,
 				17F30C6E22F1999100106D1C /* RoundButton.swift */,
 				17220A702305DC03008EF669 /* lineView.swift */,
+				174802E82307677B00150D44 /* DesignableView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -314,6 +328,7 @@
 				17F30C8122F1A0DD00106D1C /* CategoryItemCell.xib in Resources */,
 				17F30C7D22F1A0DD00106D1C /* VicationCell.xib in Resources */,
 				17F30C8222F1A0DD00106D1C /* ItemCell.xib in Resources */,
+				174802EE2307725200150D44 /* LaunchImg.png in Resources */,
 				17F30C4522F0958E00106D1C /* Assets.xcassets in Resources */,
 				17F30C7C22F1A0DD00106D1C /* VicationCategoryCell.xib in Resources */,
 				17F30C8322F1A0DD00106D1C /* CategoryCell.xib in Resources */,
@@ -413,6 +428,7 @@
 				17F30C7F22F1A0DD00106D1C /* VicationCategoryCell.swift in Sources */,
 				17F30C9822F3A12E00106D1C /* PhotosCollectionViewController.swift in Sources */,
 				17F30C7122F199EE00106D1C /* ItemCell.swift in Sources */,
+				174802E92307677B00150D44 /* DesignableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

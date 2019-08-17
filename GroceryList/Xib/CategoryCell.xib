@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-vp-34w" customClass="RoundButton" customModule="GroceryList" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQl-vp-34w" customClass="DesignableButton" customModule="GroceryList" customModuleProvider="target">
                         <rect key="frame" x="4" y="4" width="367" height="41.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-triangle-arrow-24" translatesAutoresizingMaskIntoConstraints="NO" id="z91-XW-ANR">
