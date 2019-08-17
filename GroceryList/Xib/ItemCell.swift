@@ -24,6 +24,7 @@ class ItemCell: ModelCell {
         super.awakeFromNib()
         setupView()
         self.delegate = delegate
+        self.collectionModel = collectionModel
 
     }
     
@@ -42,6 +43,12 @@ class ItemCell: ModelCell {
                 switch pan.state {
                 case .began:
                     if let delegate = self.delegate{
+                        
+//                        let vc = SecondaryViewController(nibName: "SecondaryViewController", bundle: nil)
+//                        vc.text = "Next level blog photo booth, tousled authentic tote bag kogi"
+//
+//                        navigationController?.pushViewController(vc, animated: true)
+                        
                     delegate.showEditCellPickerView()
                     }
                     print("began")
@@ -59,4 +66,8 @@ class ItemCell: ModelCell {
             }.disposed(by:self.disposeBag)
         
     }
+    
+    
+    
+
 }

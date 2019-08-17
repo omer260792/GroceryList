@@ -144,9 +144,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
         
         if let pickerImg = self.pickerImgEdit{
-
+     
             pickerImg.rx.tap.subscribe{ _ in
-                
+                print("bggb")
+            
+                self.openCollectionImage()
+               // self.modelCell.addImgToFireStorge(pathString: TabCategoryEnum.temporaryCategory.rawValue, image: UIImage(named: "vv")!, itemName: "omer")
                 }.disposed(by: self.disposeBag)
         }
         
@@ -635,6 +638,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         present(alert, animated: true, completion: nil)
     }
     
+    func openCollectionImage(){
+         navigationController?.performSegue(withIdentifier: "goBackTemporayList", sender: self)
+    }
+    
     func showPickerView(){
         if let pickerView = self.pikerView, let backgrondView = self.backgrondView {
             pickerView.alpha = 1
@@ -670,4 +677,19 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             backgrondView.alpha = 0
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "goBackTemporayList")
+        {
+            let destinationVC = segue.destination as! UINavigationController
+            let nextViewController = destinationVC.viewControllers[0] as! PhotosCollectionViewController
+            
+            nextViewController.name = self.items[0].key
+            nextViewController.pathString = TabCategoryEnum.temporaryCategory.rawValue
+            navigationController?.pushViewController(nextViewController, animated: true)
+            
+        }
+    }
+    
 }

@@ -16,6 +16,8 @@
             </dict>
         </array>
     </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>CameraFilter app requires permission to access your photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

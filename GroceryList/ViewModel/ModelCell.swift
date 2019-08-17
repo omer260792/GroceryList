@@ -20,10 +20,15 @@ class ModelCell: UITableViewCell {
     var items: [GroceryItem] = []
     var arrayNamePicker = [String]()
     var arrowImagaeRotationAngle: CGFloat = CGFloat.pi * 0
+    var photosCollectionViewController: PhotosCollectionViewController?
+    let storage = Storage.storage(url:"gs://grocerylist-5c6ee.appspot.com")
 
     private var ref = Database.database()
     private var groceryItem:GroceryItem? = nil
     private let itemsEmpty: [GroceryItem] = []
+    var collectionModel = PhotosCollectionViewController()
+
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,6 +72,37 @@ class ModelCell: UITableViewCell {
                 }
             }
         })
+    }
+    
+    func addImgToFireStorge(pathString: String,  image: UIImage, itemName: String) {
+        
+        let storageRef = storage.reference()
+        storageRef.child(pathString)
+        // Data in memory
+        if let data = image.pngData() {
+            // Create a reference to the file you want to upload
+            let riversRef = storageRef.child("\(pathString)/images/\("itemName").jpg")
+            
+            // Upload the file to the path "images/rivers.jpg"
+            let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let size = metadata.size
+                // You can also access to download URL after upload.
+                riversRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                }
+            }
+        }
+        
+    
+
     }
     
     func updateAmountObject(pathString: String,  item: [GroceryItem], isColor: Bool) {
@@ -256,5 +292,8 @@ class ModelCell: UITableViewCell {
             }
         })
     }
+    
+    
+
 
 }
