@@ -14,6 +14,9 @@ import RxCocoa
 class GeneralListViewController: UIViewController, UITabBarControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
     //Temporey List iboutlet
     @IBOutlet var viewTemporery: UIView?
+    @IBOutlet var pickerAmountEdit: UIButton!
+    @IBOutlet var pickerImgEdit: UIButton!
+    @IBOutlet var buttonXPickerEdit: UIButton!
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var backgrondView: UIView!
@@ -134,6 +137,24 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 self.userCountBarButtonItem?.title = "0"
             }
         })
+        if let pickerAmount = self.pickerAmountEdit{
+            pickerAmount.rx.tap.subscribe{ _ in
+                
+            }.disposed(by: self.disposeBag)
+        }
+        
+        if let pickerImg = self.pickerImgEdit{
+
+            pickerImg.rx.tap.subscribe{ _ in
+                
+                }.disposed(by: self.disposeBag)
+        }
+        
+        if let pickerEdit = self.buttonXPickerEdit{
+            pickerEdit.rx.tap.subscribe{ _ in
+                self.dismissEditCellPickerView()
+            }.disposed(by: self.disposeBag)
+        }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
@@ -209,7 +230,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case "temporaryCategory":
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
-            
+                cell.delegate = self
                 cell.items = [element]
                 if element.isCompleted == true {
                     cell.lineView.isHidden = false
@@ -227,9 +248,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCellIndentifier, for: indexPath) as! VicationCell
                     cell.itemCategoryLabel.text = element.key
                     cell.items = [element]
+                    cell.delegate = self
                 return cell
             }else{
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCategoryCellIndentifier, for: indexPath) as! VicationCategoryCell
+                cell.delegate = self
                 cell.items = [element]
                 if element.isCompleted == true {
                     tableView.rowHeight = 0
@@ -626,10 +649,25 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
+    
     func addPickerViewDelegate(){
         if let picker = self.picker{
             picker.delegate = self
             picker.dataSource = self
+        }
+    }
+    
+    func showEditCellPickerView(){
+        if let viewTemporery = self.viewTemporery, let backgrondView = self.backgrondView {
+            viewTemporery.alpha = 1
+            backgrondView.alpha = 0.7
+        }
+    }
+    
+    func dismissEditCellPickerView(){
+        if let viewTemporery = self.viewTemporery, let backgrondView = self.backgrondView{
+            viewTemporery.alpha = 0
+            backgrondView.alpha = 0
         }
     }
 }

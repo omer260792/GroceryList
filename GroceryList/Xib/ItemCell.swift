@@ -23,6 +23,8 @@ class ItemCell: ModelCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+        self.delegate = delegate
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,6 +41,9 @@ class ItemCell: ModelCell {
                 let location = pan.location(in: view)
                 switch pan.state {
                 case .began:
+                    if let delegate = self.delegate{
+                    delegate.showEditCellPickerView()
+                    }
                     print("began")
                 case .changed:
                     print("changed \(location)")
@@ -52,5 +57,6 @@ class ItemCell: ModelCell {
         viewBtnOutlet.rx.tap.subscribe {  _ in
             self.toggleLine(pathString: "temporaryCategory")
             }.disposed(by:self.disposeBag)
+        
     }
 }
