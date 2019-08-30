@@ -41,6 +41,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var nameOfCategoryString = ""
     var cellTestIndex: Int = 0
     var titlePage = ""
+    var permessionFirstOpen = true
 
     // MARK: Properties
     var items: [GroceryItem] = []
@@ -249,16 +250,16 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
                 cell.delegate = self
                 cell.lineView.tag = indexPath.row
-
                 cell.items = [element]
-                if element.isCompleted == true {
-                    cell.lineView.isHidden = false
-                }else{
-                    cell.lineView.didMoveToSuperview()
-                    cell.lineView.isHidden = true
-                }
                 cell.titleLabel.text = element.key
                 cell.contentLabel.text = element.content
+                if permessionFirstOpen == true{
+                    if self.items[indexPath.row].isCompleted == true {
+                        cell.lineView.didChangeValue(forKey: "increase")
+                    }else{
+                        cell.lineView.didChangeValue(forKey: "decrease")
+                    }
+                }
             return cell
             
         case "vicationCategory":

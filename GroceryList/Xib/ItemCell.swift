@@ -26,6 +26,7 @@ class ItemCell: ModelCell {
         setupView()
         self.delegate = delegate
         self.collectionModel = collectionModel
+     
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,7 +62,14 @@ class ItemCell: ModelCell {
         
         viewBtnOutlet.rx.tap.subscribe {  _ in
             self.toggleLine(pathString: "temporaryCategory")
-            }.disposed(by:self.disposeBag)
+            if let delegate = self.delegate{
+                delegate.permessionFirstOpen = false
+            }
+            if self.items[0].isCompleted == true {
+                self.lineView.didChangeValue(forKey: "increase")
+            }else{
+                self.lineView.didChangeValue(forKey: "decrease")
+            }}.disposed(by:self.disposeBag)
         
     }
     
