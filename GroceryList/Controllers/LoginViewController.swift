@@ -24,6 +24,7 @@ class LoginViewController: UIViewController {
     // MARK: UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Database.database().isPersistenceEnabled = true
         
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
