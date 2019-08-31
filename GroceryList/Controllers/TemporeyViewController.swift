@@ -26,7 +26,6 @@ class TemporeyViewController: GeneralListViewController {
         if let leftBtn = navigationItem.leftBarButtonItem {
             leftBtn.rx.tap.subscribe{ _ in
                 self.modelCell.removeTemporaryList(pathString: TabCategoryEnum.temporaryCategory.rawValue)
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                     self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -36,7 +35,6 @@ class TemporeyViewController: GeneralListViewController {
                             }
                         }
                     })
-                
                 })
             }.disposed(by: disposeBag)
         }

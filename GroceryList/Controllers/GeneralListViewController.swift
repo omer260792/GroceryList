@@ -32,7 +32,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     @IBOutlet var xBtn: UIButton!
     @IBOutlet var imageViewShow: UIImageView!
     
-    
     // MARK: Constants
     var listToUsers = "ListToUsers"
     var groceryItemsCategory = "grocery-items"
@@ -154,8 +153,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         if let pickerImg = self.pickerImgEdit{
      
             pickerImg.rx.tap.subscribe{ _ in
-                print("bggb")
-            
                 self.openCollectionImage()
                // self.modelCell.addImgToFireStorge(pathString: TabCategoryEnum.temporaryCategory.rawValue, image: UIImage(named: "vv")!, itemName: "omer")
                 }.disposed(by: self.disposeBag)

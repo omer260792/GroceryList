@@ -22,6 +22,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     var modelCell: ModelCell?
     var name: String = ""
     var pathString: String = ""
+    var imagePath: String = ""
 
     var selectedPhoto: Observable<UIImage> {
         return selectedPhotoSubject.asObservable()
@@ -63,7 +64,9 @@ class PhotosCollectionViewController: UICollectionViewController {
                 selectedAsset.requestContentEditingInput(with: PHContentEditingInputRequestOptions()) { (eidtingInput, info) in
                     if let input = eidtingInput, let imgURL = input.fullSizeImageURL {
                         let path:String = imgURL.description
-                        print("path",path)
+                        if let name = self?.name, let path = self?.pathString {
+                        self?.updateNameImg(name: name, pathString: path, imagePath: path)
+                        }
                         self?.selectedPathImage.onNext(path)
                     }
                 }
@@ -134,6 +137,11 @@ class PhotosCollectionViewController: UICollectionViewController {
                 
                 }.disposed(by: disposeBag)
         }
+    }
+    
+    func updateNameImg(name: String, pathString: String, imagePath: String)  {
+        let ref = Database.database().reference(withPath: pathString)
+        ref.child(name).updateChildValues(["image":imagePath])
     }
     
     func addImgToFireStorge(pathString: String,  image: UIImage, itemName: String) {

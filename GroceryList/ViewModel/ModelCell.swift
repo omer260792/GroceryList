@@ -73,10 +73,7 @@ class ModelCell: UITableViewCell {
         })
     }
     
-//    func updateNameImg(name: String)  {
-//        let ref = Database.database().reference(withPath: pathString)
-//
-//    }
+  
     
     func addImgToFireStorge(pathString: String,  image: UIImage, itemName: String) {
         
