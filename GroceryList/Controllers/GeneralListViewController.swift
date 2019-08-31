@@ -256,9 +256,16 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.items = [element]
                 cell.titleLabel.text = element.key
                 cell.contentLabel.text = element.content
+                let image = element.image
+                if image == ""{
+                cell.showImagebtn.isHidden = true
+                }else{
+                cell.showImagebtn.isHidden = false
+                }
                 if permessionFirstOpen == true{
                     if self.items[indexPath.row].isCompleted == true {
-                        cell.lineView.didChangeValue(forKey: "increase")
+                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
+                        cell.lineView.didChangeValue(forKey: titleWidth.description)
                     }else{
                         cell.lineView.didChangeValue(forKey: "decrease")
                     }

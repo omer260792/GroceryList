@@ -17,8 +17,8 @@ class lineView: UIView {
     }
     
     override func didChangeValue(forKey key: String) {
-        if key == "increase"{
-            animateIncrease()
+        if key != "decrease"{
+            animateIncrease(key: key)
         }else{
             animateDecrease()
         }
@@ -51,14 +51,18 @@ class lineView: UIView {
         self.shapeLayer = shapeLayer
     }
     
-    func animateIncrease(){
+    func animateIncrease(key: String){
         
         self.shapeLayer?.removeFromSuperlayer()
-        
+        let fl: CGFloat = CGFloat((key as NSString).doubleValue)
+
         // create whatever path you want
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 100, y: 3))
+
+        path.move(to: CGPoint(x: 275 - fl, y: 3))
+//        path.addLine(to: CGPoint(x: 230, y: 3))
         path.addLine(to: CGPoint(x: 280, y: 3))
+
         
         // create shape layer for that path
         let shapeLayer = CAShapeLayer()
@@ -71,7 +75,7 @@ class lineView: UIView {
         self.layer.addSublayer(shapeLayer)
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
-        animation.duration = 1.5
+        animation.duration = 0.5
         shapeLayer.add(animation, forKey: "MyAnimation")
         
         // save shape layer

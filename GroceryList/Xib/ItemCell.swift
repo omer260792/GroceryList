@@ -66,9 +66,10 @@ class ItemCell: ModelCell {
                 delegate.permessionFirstOpen = false
             }
             if self.items[0].isCompleted == true {
-                self.lineView.didChangeValue(forKey: "increase")
-            }else{
                 self.lineView.didChangeValue(forKey: "decrease")
+            }else{
+                let titleWidth = self.titleLabel.intrinsicContentSize.width
+                self.lineView.didChangeValue(forKey: titleWidth.description)
             }}.disposed(by:self.disposeBag)
         
     }
@@ -76,4 +77,58 @@ class ItemCell: ModelCell {
     
     
 
+}
+
+extension UILabel {
+    func getSeparatedLines() -> [Any] {
+        if self.lineBreakMode != NSLineBreakMode.byWordWrapping {
+            self.lineBreakMode = .byWordWrapping
+        }
+        var lines = [Any]() /* capacity: 10 */
+        let wordSeparators = CharacterSet.whitespacesAndNewlines
+        var currentLine: String? = self.text
+        let textLength: Int = (self.text?.count ?? 0)
+        var rCurrentLine = NSRange(location: 0, length: textLength)
+        var rWhitespace = NSRange(location: 0, length: 0)
+        var rRemainingText = NSRange(location: 0, length: textLength)
+        var done: Bool = false
+        while !done {
+            // determine the next whitespace word separator position
+            rWhitespace.location = rWhitespace.location + rWhitespace.length
+            rWhitespace.length = textLength - rWhitespace.location
+            rWhitespace = (self.text! as NSString).rangeOfCharacter(from: wordSeparators, options: .caseInsensitive, range: rWhitespace)
+            if rWhitespace.location == NSNotFound {
+                rWhitespace.location = textLength
+                done = true
+            }
+            let rTest = NSRange(location: rRemainingText.location, length: rWhitespace.location - rRemainingText.location)
+            let textTest: String = (self.text! as NSString).substring(with: rTest)
+            let fontAttributes: [String: Any]? = [NSAttributedString.Key.font.rawValue: font]
+            let maxWidth = (textTest as NSString).size(withAttributes: [NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): font]).width
+            if maxWidth > self.bounds.size.width {
+                lines.append(currentLine?.trimmingCharacters(in: wordSeparators) ?? "")
+                rRemainingText.location = rCurrentLine.location + rCurrentLine.length
+                rRemainingText.length = textLength - rRemainingText.location
+                continue
+            }
+            rCurrentLine = rTest
+            currentLine = textTest
+        }
+        lines.append(currentLine?.trimmingCharacters(in: wordSeparators) ?? "")
+        return lines
+    }
+    
+    var lastLineWidth: CGFloat {
+        let lines: [Any] = self.getSeparatedLines()
+        if !lines.isEmpty {
+            let lastLine: String = (lines.last as? String)!
+            let fontAttributes = [NSAttributedString.Key.font.rawValue: font]
+            return (lastLine as NSString).size(withAttributes: [NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): font]).width
+        }
+        return 0
+    }
+    
+    
+    
+    
 }
