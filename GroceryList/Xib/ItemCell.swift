@@ -66,9 +66,11 @@ class ItemCell: ModelCell {
                 delegate.permessionFirstOpen = false
             }
             if self.items[0].isCompleted == true {
-                self.lineView.didChangeValue(forKey: "decrease")
+                let titleWidth = self.titleLabel.intrinsicContentSize.width
+                self.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
             }else{
                 let titleWidth = self.titleLabel.intrinsicContentSize.width
+                self.lineView.didChange(NSKeyValueChange(rawValue: 0)!, valuesAt: [0], forKey: titleWidth.description)
                 self.lineView.didChangeValue(forKey: titleWidth.description)
             }}.disposed(by:self.disposeBag)
         

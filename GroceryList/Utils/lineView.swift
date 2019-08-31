@@ -24,6 +24,50 @@ class lineView: UIView {
         }
     }
     
+    override func didChange(_ changeKind: NSKeyValueChange, valuesAt indexes: IndexSet, forKey key: String) {
+        if changeKind != NSKeyValueChange(rawValue: 1){
+            animateIncrease(key: key)
+        }else{
+            animateDecrease(key: key)
+        }
+    }
+    
+    func animateDecrease(key : String){
+        
+        self.shapeLayer?.removeFromSuperlayer()
+        let fl: CGFloat = CGFloat((key as NSString).doubleValue)
+        
+        // create whatever path you want
+        let path = UIBezierPath()
+        
+        path.move(to: CGPoint(x: 275 - fl, y: 3))
+        //        path.addLine(to: CGPoint(x: 230, y: 3))
+        path.addLine(to: CGPoint(x: 280, y: 3))
+        
+        
+        // create shape layer for that path
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        shapeLayer.strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        shapeLayer.lineWidth = 3
+        shapeLayer.path = path.cgPath
+        
+        // animate it
+        self.layer.addSublayer(shapeLayer)
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 0.5
+        shapeLayer.add(animation, forKey: "MyAnimation")
+        self.shapeLayer = shapeLayer
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.shapeLayer?.removeFromSuperlayer()
+        }
+
+        // save shape layer
+    }
+    
     func animateDecrease(){
         
         self.shapeLayer?.removeFromSuperlayer()
