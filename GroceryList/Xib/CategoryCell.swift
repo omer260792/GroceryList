@@ -17,8 +17,8 @@ class CategoryCell: ModelCell {
     @IBOutlet var categoryImgView: UIImageView!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var viewButton: UIButton!
-    
     @IBOutlet var viewDesign: DesignableButton!
+    var isToggle = false
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
@@ -26,9 +26,14 @@ class CategoryCell: ModelCell {
 
     override func setupView() {
         viewButton.rx.tap.subscribe {  _ in
+            print(self.isToggle)
             if let name = self.categoryLabel.text{
-                self.toggleContent(pathString: "generalCategory", name: name)
-                
+                if self.isToggle == true{
+                    self.isToggle = false
+                }else{
+                    self.isToggle = true
+                }
+                self.toggleContent(pathString: "generalCategory", name: name, isToggle: self.isToggle)
             }
             }.disposed(by:self.disposeBag)
     }

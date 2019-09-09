@@ -17,6 +17,7 @@ class VicationCell: ModelCell {
     @IBOutlet var binBtn: UIButton!
     @IBOutlet var viewCellBtn: UIButton!
     @IBOutlet var itemCategoryLabel: UILabel!
+    var isToggle = false
     
     
     override func awakeFromNib() {
@@ -27,7 +28,12 @@ class VicationCell: ModelCell {
     override func setupView() {
         viewCellBtn.rx.tap.subscribe {  _ in
             if let name = self.itemCategoryLabel.text{
-                self.toggleContent(pathString: TabCategoryEnum.vicationCategory.rawValue,name: name)
+                if self.isToggle == true{
+                    self.isToggle = false
+                }else{
+                    self.isToggle = true
+                }
+                self.toggleContent(pathString: TabCategoryEnum.vicationCategory.rawValue,name: name, isToggle: self.isToggle)
             }
         }.disposed(by:self.disposeBag)
         

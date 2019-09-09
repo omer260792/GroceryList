@@ -27,6 +27,7 @@ class ModelCell: UITableViewCell {
     private var groceryItem:GroceryItem? = nil
     private let itemsEmpty: [GroceryItem] = []
     var collectionModel = PhotosCollectionViewController()
+    var modelCountToggleContent = 0
 
 
     override func awakeFromNib() {
@@ -52,24 +53,10 @@ class ModelCell: UITableViewCell {
         
     }
     
-    func toggleContent(pathString: String, name: String) {
+    func toggleContent(pathString: String, name: String, isToggle: Bool) {
         let ref = Database.database().reference(withPath: pathString)
+        ref.child(name).updateChildValues(["isCompleted":isToggle])
         ref.child(name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshots {
-                    self.groceryItem = GroceryItem(snapshot: snap)
-                    if self.groceryItem?.name == self.items[0].name {
-                        var isCompleted: Bool
-                        if self.items[0].isCompleted == true{
-                            isCompleted = false
-                        }else{
-                            isCompleted = true
-                        }
-                       ref.child(name).updateChildValues(["isCompleted":isCompleted])
-                        ref.child(name).child("object").child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
-                    }
-                }
-            }
         })
     }
     

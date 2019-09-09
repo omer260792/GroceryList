@@ -41,6 +41,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var cellTestIndex: Int = 0
     var titlePage = ""
     var permessionFirstOpen = true
+    var generalModelCountToggleContent = 0
 
     // MARK: Properties
     var items: [GroceryItem] = []
@@ -84,6 +85,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         populateView()
         setupGeneralListTableViewCellWhenDeleted()
         setupGeneralListTableViewCellWhenTapped()
+        updateRef()
+        populateTableView()
     }
     
     func getImageFromDir(_ imageName: String) -> UIImage? {
@@ -187,8 +190,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateRef()
-        populateTableView()
+       
     }
     
     func updateRef(){
@@ -223,6 +225,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                let cell = self.tableUser.dequeueReusableCell(withIdentifier: categoryCellIndentifier, for: indexPath) as! CategoryCell
                 cell.categoryLabel.text = element.key
                 cell.items = [element]
+                cell.isToggle = element.isCompleted
                 cell.delegate = self
                 cell.viewDesign.backgroundColor =  Constanst.Cell.color_app_cell_main_general_constants
                 if element.isCompleted == true{
@@ -323,6 +326,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let indexPath = IndexPath(row: row, section: 0)
                 self.cellTestIndex = indexPath.row
                 let cell = self.getCell(forTableView: tableView, andIndexPath: indexPath, elemntData: element )
+
                 return cell
         }
         self.generalListTableDataBindingDisposable?.disposed(by: self.disposeBag)
@@ -331,6 +335,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     func populateTableView() {
         ref.queryOrdered(byChild: "isCompleted").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
+            var istoggle = false
+            self.generalListTableDataBindingDisposable?.dispose()
             self.myArrayCategoryName = [String]()
             self.itemsCount = self.itemsEmpty
             self.observableGeneralListEmptyObject.removeAll()
@@ -338,7 +344,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let groceryItem = GroceryItem(snapshot: snapshot) {
-                    
+                    istoggle = groceryItem.isCompleted
                     if let value = snapshot.value as? [String: AnyObject] {
                         
                         let object = value["object"] as? [String: AnyObject]
@@ -354,10 +360,10 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                                 let image =  value["image"] as? String ?? ""
                                 let isSend =  value["isSend"] as? Bool ?? false
                                 let isColor =  value["isColor"] as? Bool ?? false
-                                let isCompleted =  value["isCompleted"] as? Bool ?? false
+                                //let isCompleted =  value["isCompleted"] as? Bool ?? false
                                 let uid =  value["uid"] as? String ?? ""
                                 
-                                let groceryItem = GroceryItem(name: name, content: content, date: date, tabCategory: tabCategory, generalCategory: generalCategory, image: image, isSend: isSend, isColor: isColor, isCompleted: isCompleted, uid: uid, key: key)
+                                let groceryItem = GroceryItem(name: name, content: content, date: date, tabCategory: tabCategory, generalCategory: generalCategory, image: image, isSend: isSend, isColor: isColor, isCompleted: istoggle, uid: uid, key: key)
                                 
                                     newItems.append(groceryItem)
                                 self.observableGeneralListEmptyObject.append(groceryItem)
@@ -374,27 +380,32 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 }
             }
             
-            var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
-            generalListObjectSorted.sort { (item1, item2) -> Bool in
-                
-                if self.tabCategory == TabCategoryEnum.temporaryCategory.rawValue {
-                    return item1.date < item2.date
-                }else{
-                    if item1.uid == item2.uid{
+            if Constanst.test.omer == self.generalModelCountToggleContent {
+                var generalListObjectSorted  = Variable(self.observableGeneralListEmptyObject).value
+                generalListObjectSorted.sort { (item1, item2) -> Bool in
+                    
+                    if self.tabCategory == TabCategoryEnum.temporaryCategory.rawValue {
                         return item1.date < item2.date
+                    }else{
+                        if item1.uid == item2.uid{
+                            return item1.date < item2.date
+                        }
+                        return item1.uid < item2.uid
                     }
-                    return item1.uid < item2.uid
                 }
+                
+                self.items = generalListObjectSorted
+                
+                self.generalListObsevaleTableView = Observable.of(generalListObjectSorted)
+                if self.observableGeneralListEmptyObject.count > 0 {
+                    self.generalListTableDataBindingDisposable?.dispose()
+                    self.bindDataForGeneralListTableView()
+                }
+            }else{
+                self.generalModelCountToggleContent = self.generalModelCountToggleContent + 1
             }
             
-            self.items = generalListObjectSorted
-            
-            self.generalListObsevaleTableView = Observable.of(generalListObjectSorted)
-            
-            if self.observableGeneralListEmptyObject.count > 0 {
-                self.generalListTableDataBindingDisposable?.dispose()
-                self.bindDataForGeneralListTableView()
-            }
+          
         })
     }
     

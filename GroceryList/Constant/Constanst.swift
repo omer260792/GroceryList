@@ -22,4 +22,8 @@ class Constanst {
         static let color_app_constants:UIColor = UIColor(red: 20/255.0, green: 211/255.0, blue: 78/255.0, alpha: 1)
        
     }
+    
+    struct test {
+        static var omer = 0
+    }
 }
