@@ -296,5 +296,13 @@ class ModelCell: UITableViewCell {
         }
         }
     }
+    
+    func scrollToTop(indexPath: IndexPath) {
+        self.delegate?.tableUser.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    func scrollToBottom(indexPath: IndexPath) {
+        self.delegate?.tableUser.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
 
 }

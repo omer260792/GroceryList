@@ -244,6 +244,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     cell.titleLabel.text = element.key
                 }else{
                     tableView.rowHeight = 0
+                    tableUser.scrollToRow(at: indexPath, at: .top, animated: false)
                 }
                 return cell
             }
