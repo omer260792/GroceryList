@@ -274,7 +274,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     if self.items[indexPath.row].isCompleted == false {
                         cell.lineView.didChangeValue(forKey: "decrease")
                     }
-            }
+                }
             return cell
             
         case "vicationCategory":
@@ -283,6 +283,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 let cell = self.tableUser.dequeueReusableCell(withIdentifier: vicationCellIndentifier, for: indexPath) as! VicationCell
                     cell.itemCategoryLabel.text = element.key
                     cell.items = [element]
+                    cell.isToggle = element.isCompleted
                     cell.delegate = self
                 return cell
             }else{
@@ -290,6 +291,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.delegate = self
                 cell.items = [element]
                 if element.isCompleted == true {
+                    tableUser.scrollToRow(at: indexPath, at: .top, animated: false)
                     tableView.rowHeight = 0
                 }else{
                     tableView.rowHeight = 60
