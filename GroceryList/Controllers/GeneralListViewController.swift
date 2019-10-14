@@ -270,7 +270,11 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                     }else{
                         cell.lineView.didChangeValue(forKey: "decrease")
                     }
-                }
+                }else{
+                    if self.items[indexPath.row].isCompleted == false {
+                        cell.lineView.didChangeValue(forKey: "decrease")
+                    }
+            }
             return cell
             
         case "vicationCategory":
