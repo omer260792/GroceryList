@@ -271,9 +271,23 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                         cell.lineView.didChangeValue(forKey: "decrease")
                     }
                 }else{
-                    if self.items[indexPath.row].isCompleted == false {
+                    if ModelCell.modelCountToggleContent == self.items[indexPath.row].key {
+                         cell.lineView.didChangeValue(forKey: "decrease")
+                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
+                         cell.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
+                        ModelCell.modelCountToggleContent = ""
+                    }else if self.items[indexPath.row].isCompleted == false{
                         cell.lineView.didChangeValue(forKey: "decrease")
+                    }else{
+                       // print("ff")
                     }
+//                    if self.items[indexPath.row].isCompleted == false {
+//                        if cell.lineView.tag != 100{
+//                            cell.lineView.didChangeValue(forKey: "decrease")
+//                        }else{
+//                            print(cell.lineView.tag)
+//                        }
+//                    }
                 }
             return cell
             

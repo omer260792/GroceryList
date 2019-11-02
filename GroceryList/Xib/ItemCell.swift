@@ -65,7 +65,11 @@ class ItemCell: ModelCell {
             if let delegate = self.delegate{
                 delegate.permessionFirstOpen = false
             }
+            
             if self.items[0].isCompleted == true {
+                ModelCell.modelCountToggleContent = self.items[0].key
+                print("model-model",self.items[0].key)
+
                 let titleWidth = self.titleLabel.intrinsicContentSize.width
                 self.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
             }else{
@@ -75,10 +79,6 @@ class ItemCell: ModelCell {
             }}.disposed(by:self.disposeBag)
         
     }
-    
-    
-    
-
 }
 
 extension UILabel {

@@ -27,7 +27,7 @@ class ModelCell: UITableViewCell {
     private var groceryItem:GroceryItem? = nil
     private let itemsEmpty: [GroceryItem] = []
     var collectionModel = PhotosCollectionViewController()
-    var modelCountToggleContent = 0
+    static var modelCountToggleContent = ""
 
 
     override func awakeFromNib() {

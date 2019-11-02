@@ -12,6 +12,9 @@
 		174802E92307677B00150D44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174802E82307677B00150D44 /* DesignableView.swift */; };
 		174802F62307F3FB00150D44 /* Untitled-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 174802F52307F3FB00150D44 /* Untitled-1.png */; };
 		174802F8230804E900150D44 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 174802F7230804E900150D44 /* splashscreen.png */; };
+		17972DB2236B587700CC06B0 /* heebo_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17220A6B2305C491008EF669 /* heebo_regular.ttf */; };
+		17972DB3236B587900CC06B0 /* heebo_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17220A6C2305C491008EF669 /* heebo_medium.ttf */; };
+		17972DB4236B587B00CC06B0 /* heebo_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17220A6A2305C490008EF669 /* heebo_bold.ttf */; };
 		17BF1F8E2308095E00BA17F1 /* splashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BF1F8D2308095E00BA17F1 /* splashScreen.xib */; };
 		17F30C3B22F0958C00106D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3A22F0958C00106D1C /* AppDelegate.swift */; };
 		17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F30C3C22F0958C00106D1C /* VicatoinViewController.swift */; };
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174802F62307F3FB00150D44 /* Untitled-1.png in Resources */,
+				17972DB4236B587B00CC06B0 /* heebo_bold.ttf in Resources */,
 				17F30C4822F0958E00106D1C /* LaunchScreen.storyboard in Resources */,
 				17F30C5E22F0A5DA00106D1C /* GoogleService-Info.plist in Resources */,
 				17F30C8122F1A0DD00106D1C /* CategoryItemCell.xib in Resources */,
@@ -343,6 +347,8 @@
 				174802F8230804E900150D44 /* splashscreen.png in Resources */,
 				17F30C4522F0958E00106D1C /* Assets.xcassets in Resources */,
 				17F30C7C22F1A0DD00106D1C /* VicationCategoryCell.xib in Resources */,
+				17972DB3236B587900CC06B0 /* heebo_medium.ttf in Resources */,
+				17972DB2236B587700CC06B0 /* heebo_regular.ttf in Resources */,
 				17F30C8322F1A0DD00106D1C /* CategoryCell.xib in Resources */,
 				17BF1F8E2308095E00BA17F1 /* splashScreen.xib in Resources */,
 				17F30C4022F0958C00106D1C /* Main.storyboard in Resources */,
