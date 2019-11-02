@@ -252,6 +252,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case "temporaryCategory":
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
+                tableView.rowHeight = 80
                 cell.delegate = self
                 cell.lineView.tag = indexPath.row
                 cell.items = [element]
