@@ -47,11 +47,15 @@ class ItemCell: ModelCell {
             .when(.began)
             .subscribe(onNext: { pan in
                 let view = pan.view
-
+                
                 let location = pan.location(in: view)
                 switch pan.state {
                 case .began:
                     if let delegate = self.delegate{
+                        let touchPoint = pan.location(in: self.delegate?.tableUser)
+                        if let indexPath = self.delegate?.tableUser.indexPathForRow(at: touchPoint){
+                            self.delegate?.indexTapLongGesterItem  = indexPath.row
+                        }
                         delegate.showEditCellPickerView(index: self.lineView.tag)
                     }
                     print("began")
@@ -77,7 +81,6 @@ class ItemCell: ModelCell {
                 self.lineView.didChange(NSKeyValueChange(rawValue: 0)!, valuesAt: [0], forKey: titleWidth.description)
                 self.lineView.didChangeValue(forKey: titleWidth.description)
             }}.disposed(by:self.disposeBag)
-        
     }
 }
 

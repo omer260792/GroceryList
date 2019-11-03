@@ -32,6 +32,12 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     @IBOutlet var xBtn: UIButton!
     @IBOutlet var imageViewShow: UIImageView!
     
+    // view show set amount
+    @IBOutlet var viewAmountEdit: UIView!
+    @IBOutlet var editAmounttextField: UITextField!
+    @IBOutlet var editAmountConfirm: UIButton!
+    @IBOutlet var editAmountCencel: UIButton!
+    
     // MARK: Constants
     var listToUsers = "ListToUsers"
     var groceryItemsCategory = "grocery-items"
@@ -42,7 +48,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var titlePage = ""
     var permessionFirstOpen = true
     var generalModelCountToggleContent = 0
-
+    var indexTapLongGesterItem = 0
     // MARK: Properties
     var items: [GroceryItem] = []
     var itemsCount: [GroceryItem] = []
@@ -87,6 +93,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         setupGeneralListTableViewCellWhenTapped()
         updateRef()
         populateTableView()
+        populateKeyBoard()
     }
     
     func getImageFromDir(_ imageName: String) -> UIImage? {
@@ -149,7 +156,8 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         })
         if let pickerAmount = self.pickerAmountEdit{
             pickerAmount.rx.tap.subscribe{ _ in
-                
+                self.dismissEditCellPickerView()
+                self.showEditAmountView()
             }.disposed(by: self.disposeBag)
         }
         
@@ -171,6 +179,21 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             pickerEdit.rx.tap.subscribe{ _ in
                 self.desmissImageView()
             }.disposed(by: self.disposeBag)
+        }
+        
+        if let editAmountCencel = self.editAmountCencel{
+            editAmountCencel.rx.tap.subscribe{ _ in
+                self.dismissEditAmountView()
+                 self.hideKeyboardWhenTappedAround()
+                }.disposed(by: self.disposeBag)
+        }
+        
+        if let editAmountConfirm = self.editAmountConfirm{
+            editAmountConfirm.rx.tap.subscribe{ _ in
+                self.modelCell.updateAmountContent(pathString: TabCategoryEnum.temporaryCategory.rawValue, item: self.items, content:self.editAmounttextField.text ?? "", index: self.indexTapLongGesterItem)
+                self.dismissEditAmountView()
+                self.hideKeyboardWhenTappedAround()
+                }.disposed(by: self.disposeBag)
         }
         
     }
@@ -746,13 +769,33 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             img.image = image
         }
     }
-    
+
     func desmissImageView() {
         if let view = self.viewImg, let backgrondView = self.backgrondView {
             view.alpha = 0
             backgrondView.alpha = 0
         }
     }
+    
+    func showEditAmountView() {
+            self.viewAmountEdit?.alpha = 1
+            backgrondView.alpha = 0.7
+    }
+    
+    func dismissEditAmountView() {
+        self.viewAmountEdit?.alpha = 0
+        backgrondView.alpha = 0
+    }
+    
+    func populateKeyBoard() {
+        let tapGesture = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapGesture)
+        
+        tapGesture.rx.event.bind(onNext: { recognizer in
+            self.hideKeyboardWhenTappedAround()
+        }).disposed(by: disposeBag)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "goBackTemporayList")
@@ -764,5 +807,22 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             nextViewController.pathString = TabCategoryEnum.temporaryCategory.rawValue
         }
     }
+}
+
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func dismissPicker() {
+        view.endEditing(true)
+    }
+
 }

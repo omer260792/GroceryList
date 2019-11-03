@@ -29,7 +29,7 @@ class CategoryItemCell: ModelCell {
         
         viewCellTapGesture.rx.event.bind(onNext: { recognizer in
             if self.items[0].isColor == true{
-                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: self.items, isColor: false)
+                self.updateColor(pathString: TabCategoryEnum.generalCategory.rawValue, item: self.items, isColor: false)
             }else{
                 self.delegate?.addObjectToVicationListFromGeneralList(item: [self.items[0]])
             }

@@ -47,7 +47,7 @@ class ModelCell: UITableViewCell {
             if error != nil {
                 print("oops, an error")
             } else {
-                self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: item, isColor: true)
+                self.updateColor(pathString: TabCategoryEnum.generalCategory.rawValue, item: item, isColor: true)
             }
         }
         
@@ -90,7 +90,22 @@ class ModelCell: UITableViewCell {
         }
     }
     
-    func updateAmountObject(pathString: String,  item: [GroceryItem], isColor: Bool) {
+    func updateAmountContent(pathString: String,  item: [GroceryItem], content: String, index: Int) {
+        let ref = Database.database().reference(withPath: pathString)
+        ref.child(item[index].key).updateChildValues(["content":content])
+
+//        ref.child(itemNAME).observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+//                for snap in snapshots {
+//                    self.groceryItem = GroceryItem(snapshot: snap)
+//                    if self.groceryItem?.key == itemNAME {
+//                    }
+//                }
+//            }
+//        })
+    }
+    
+    func updateColor(pathString: String,  item: [GroceryItem], isColor: Bool) {
         let ref = Database.database().reference(withPath: pathString)
         ref.child(item[0].name).child("object").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -130,7 +145,7 @@ class ModelCell: UITableViewCell {
                     self.groceryItem = GroceryItem(snapshot: snap)
                     if let groc = self.groceryItem{
                         if groc.isCompleted == true{
-                            self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: [groc], isColor: false)
+                            self.updateColor(pathString: TabCategoryEnum.generalCategory.rawValue, item: [groc], isColor: false)
                             groc.ref?.removeValue()
                         }
                     }
@@ -213,7 +228,7 @@ class ModelCell: UITableViewCell {
                     self.groceryItem = GroceryItem(snapshot: snap)
                     if let groc = self.groceryItem{
                         if groc.key == grocObjKey{
-                            self.updateAmountObject(pathString: TabCategoryEnum.generalCategory.rawValue, item: [groc], isColor: false)
+                            self.updateColor(pathString: TabCategoryEnum.generalCategory.rawValue, item: [groc], isColor: false)
                         }
                     }
                 }
