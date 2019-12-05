@@ -22,7 +22,10 @@ class TemporeyViewController: GeneralListViewController {
     
     func setupView(){
         // Navigation left
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "מחק" , style: .plain, target: self, action: nil)
+        var image = UIImage(named: "remove")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: nil, action: nil)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "מחק" , style: .plain, target: self, action: nil)
         if let leftBtn = navigationItem.leftBarButtonItem {
             leftBtn.rx.tap.subscribe{ _ in
                 self.modelCell.removeTemporaryList(pathString: TabCategoryEnum.temporaryCategory.rawValue)

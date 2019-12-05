@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-new-moon-50" translatesAutoresizingMaskIntoConstraints="NO" id="sjH-q9-IWy">
-                        <rect key="frame" x="316" y="0.0" width="15" height="50"/>
+                        <rect key="frame" x="316" y="0.0" width="15" height="37.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="9Ce-4t-RDC"/>
                         </constraints>
@@ -36,16 +36,16 @@
                         <rect key="frame" x="20" y="2" width="275" height="55.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZZ-pj-hCS">
-                                <rect key="frame" x="0.0" y="7" width="275" height="34"/>
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="27"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-Mk-Nkl">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="27"/>
                                         <fontDescription key="fontDescription" name="Heebo-Bold" family="Heebo" pointSize="23"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYC-Ez-nm4" customClass="lineView" customModule="GroceryList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="16" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="12.5" width="275" height="2"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="Hnn-yQ-4gy"/>
@@ -65,7 +65,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmy-CG-EbU">
-                                <rect key="frame" x="0.0" y="46" width="275" height="25"/>
+                                <rect key="frame" x="0.0" y="27" width="275" height="20"/>
                                 <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="17"/>
                                 <color key="textColor" red="0.39184703209771504" green="0.25986570668878156" blue="0.40750993847846984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,10 +73,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YZZ-pj-hCS" firstAttribute="top" secondItem="n77-3G-vAd" secondAttribute="top" constant="7" id="20w-Pv-KKT"/>
+                            <constraint firstItem="YZZ-pj-hCS" firstAttribute="top" secondItem="n77-3G-vAd" secondAttribute="top" id="20w-Pv-KKT"/>
                             <constraint firstAttribute="trailing" secondItem="YZZ-pj-hCS" secondAttribute="trailing" id="50n-e0-rnA"/>
                             <constraint firstItem="YZZ-pj-hCS" firstAttribute="leading" secondItem="n77-3G-vAd" secondAttribute="leading" id="58v-M5-vdl"/>
-                            <constraint firstItem="Gmy-CG-EbU" firstAttribute="top" secondItem="YZZ-pj-hCS" secondAttribute="bottom" constant="5" id="6gW-hB-i3V"/>
+                            <constraint firstItem="Gmy-CG-EbU" firstAttribute="top" secondItem="YZZ-pj-hCS" secondAttribute="bottom" id="6gW-hB-i3V"/>
                             <constraint firstAttribute="trailing" secondItem="Gmy-CG-EbU" secondAttribute="trailing" id="TKW-cm-L0h"/>
                             <constraint firstItem="Gmy-CG-EbU" firstAttribute="leading" secondItem="n77-3G-vAd" secondAttribute="leading" id="iP9-Vh-OhO"/>
                         </constraints>
@@ -108,6 +108,7 @@
                     <constraint firstItem="ywd-pa-Pkr" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" id="gPc-Ox-zap"/>
                     <constraint firstItem="sjH-q9-IWy" firstAttribute="leading" secondItem="n77-3G-vAd" secondAttribute="trailing" constant="21" id="gnI-kH-Vki"/>
                     <constraint firstItem="N38-XQ-AxE" firstAttribute="leading" secondItem="FDn-AR-4s3" secondAttribute="leading" constant="20" id="h5a-oa-e1b"/>
+                    <constraint firstAttribute="bottom" secondItem="sjH-q9-IWy" secondAttribute="bottom" constant="22" id="mj4-qw-lvY"/>
                     <constraint firstAttribute="bottom" secondItem="n77-3G-vAd" secondAttribute="bottom" constant="2" id="pQt-t3-bPe"/>
                     <constraint firstAttribute="trailing" secondItem="sjH-q9-IWy" secondAttribute="trailing" constant="44" id="r0E-HI-bQl"/>
                 </constraints>

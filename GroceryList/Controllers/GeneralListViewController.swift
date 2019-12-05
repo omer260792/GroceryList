@@ -275,7 +275,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         case "temporaryCategory":
             
             let cell = self.tableUser.dequeueReusableCell(withIdentifier: itemCellIndentifier, for: indexPath) as! ItemCell
-                tableView.rowHeight = 80
+                tableView.rowHeight = 60
                 cell.delegate = self
                 cell.lineView.tag = indexPath.row
                 cell.items = [element]
@@ -632,7 +632,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         }
     }
     
-    
     @objc func userCountButtonDidTouch() {
         performSegue(withIdentifier: listToUsers, sender: nil)
     }
@@ -658,7 +657,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
         // Navigation Title
         let navLabel = UILabel()
         navLabel.font = UIFont(name: "heebo_regular", size: 20.0)
-        navLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         navLabel.text = self.titlePage
         navigationItem.titleView = navLabel
         
@@ -738,7 +736,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             backgrondView.alpha = 0
         }
     }
-    
     
     func addPickerViewDelegate(){
         if let picker = self.picker{
