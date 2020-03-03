@@ -72,11 +72,12 @@ class ItemCell: ModelCell {
             
             if self.items[0].isCompleted == true {
                 ModelCell.modelCountToggleContent = self.items[0].key
-                print("model-model",self.items[0].key)
+                print("isCompleted true",self.items[0].key)
 
                 let titleWidth = self.titleLabel.intrinsicContentSize.width
                 self.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
             }else{
+                print("isCompleted false",self.items[0].key)
                 let titleWidth = self.titleLabel.intrinsicContentSize.width
                 self.lineView.didChange(NSKeyValueChange(rawValue: 0)!, valuesAt: [0], forKey: titleWidth.description)
                 self.lineView.didChangeValue(forKey: titleWidth.description)

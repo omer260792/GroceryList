@@ -28,11 +28,8 @@ class VicationCell: ModelCell {
     override func setupView() {
         viewCellBtn.rx.tap.subscribe {  _ in
             if let name = self.itemCategoryLabel.text{
-                if self.isToggle == true{
-                    self.isToggle = false
-                }else{
-                    self.isToggle = true
-                }
+                self.isToggle = self.isToggle ? false : true
+                
                 self.toggleContent(pathString: TabCategoryEnum.vicationCategory.rawValue,name: name, isToggle: self.isToggle)
             }
         }.disposed(by:self.disposeBag)

@@ -28,11 +28,8 @@ class CategoryCell: ModelCell {
         viewButton.rx.tap.subscribe {  _ in
             print(self.isToggle)
             if let name = self.categoryLabel.text{
-                if self.isToggle == true{
-                    self.isToggle = false
-                }else{
-                    self.isToggle = true
-                }
+                self.isToggle = self.isToggle ? false : true
+
                 self.toggleContent(pathString: "generalCategory", name: name, isToggle: self.isToggle)
             }
             }.disposed(by:self.disposeBag)
