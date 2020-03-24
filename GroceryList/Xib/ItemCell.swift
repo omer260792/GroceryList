@@ -18,7 +18,6 @@ class ItemCell: ModelCell {
     @IBOutlet var viewCell: UIView!
     @IBOutlet var imageViewCell: UIImageView!
     @IBOutlet var contentLabel: UILabel!
-    @IBOutlet var viewBtnOutlet: UIButton!
     @IBOutlet var showImagebtn: UIButton!
     
     override func awakeFromNib() {
@@ -47,48 +46,6 @@ class ItemCell: ModelCell {
             
         }.disposed(by: self.disposeBag)
         
-        //        viewBtnOutlet.rx
-        //            .longPressGesture()
-        //            .when(.began)
-        //            .subscribe(onNext: { pan in
-        //                let view = pan.view
-        //
-        //                let location = pan.location(in: view)
-        //                switch pan.state {
-        //                case .began:
-        //                    if let delegate = self.delegate{
-        //                        let touchPoint = pan.location(in: self.delegate?.tableUser)
-        //                        if let indexPath = self.delegate?.tableUser.indexPathForRow(at: touchPoint){
-        //                            self.delegate?.indexTapLongGesterItem  = indexPath.row
-        //                        }
-        //                        delegate.showEditCellPickerView(index: self.lineView.tag)
-        //                    }
-        //                    print("began")
-        //                default:
-        //                    break
-        //                }
-        //            }).disposed(by: self.disposeBag)
-        
-        //        viewBtnOutlet.rx.tap.subscribe {  _ in
-        //            self.toggleLine(pathString: "temporaryCategory")
-        //            if let delegate = self.delegate{
-        //                delegate.permessionFirstOpen = false
-        //            }
-        ////
-        ////            if self.items[0].isCompleted == true {
-        ////                ModelCell.modelCountToggleContent = self.items[0].key
-        ////                print("isCompleted true",self.items[0].key)
-        ////
-        ////                let titleWidth = self.titleLabel.intrinsicContentSize.width
-        ////                self.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
-        ////            }else{
-        ////                print("isCompleted false",self.items[0].key)
-        ////                let titleWidth = self.titleLabel.intrinsicContentSize.width
-        ////                self.lineView.didChange(NSKeyValueChange(rawValue: 0)!, valuesAt: [0], forKey: titleWidth.description)
-        ////                self.lineView.didChangeValue(forKey: titleWidth.description)
-        ////            }
-        //
-        //        }.disposed(by:self.disposeBag)
     }
     
     public func drawLine(item: GroceryItem){
