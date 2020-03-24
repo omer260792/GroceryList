@@ -219,19 +219,17 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             self.ref = Database.database().reference(withPath: TabCategoryEnum.temporaryCategory.rawValue)
             self.tabCategory = TabCategoryEnum.temporaryCategory.rawValue
             self.titlePage = TabCategoryEnum.temporaryCategory.rawValue
-            ref.keepSynced(true)
         case 1:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.generalCategory.rawValue)
             self.tabCategory = TabCategoryEnum.generalCategory.rawValue
             self.titlePage = TabCategoryEnum.generalCategory.rawValue
-            ref.keepSynced(true)
         case 2:
             self.ref = Database.database().reference(withPath: TabCategoryEnum.vicationCategory.rawValue)
             self.tabCategory = TabCategoryEnum.vicationCategory.rawValue
             self.titlePage = TabCategoryEnum.vicationCategory.rawValue
-            ref.keepSynced(true)
         default: break
         }
+        ref.keepSynced(true)
     }
     
     func getCell(forTableView tableView: UITableView, andIndexPath indexPath: IndexPath, elemntData: GroceryItem) -> UITableViewCell {
@@ -500,7 +498,6 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             self.updateRef()
             self.ref.child(text).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.hasChildren(){
-                    print("true rooms exist")
                 }else{
                     if category == GeneralCategoryEnum.mainCategory.rawValue {
                         self.saveMainCategory(text: text)

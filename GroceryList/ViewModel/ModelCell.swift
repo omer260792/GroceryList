@@ -93,15 +93,6 @@ class ModelCell: UITableViewCell {
         let ref = Database.database().reference(withPath: pathString)
         ref.child(item[index].key).updateChildValues(["content":content])
 
-//        ref.child(itemNAME).observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-//                for snap in snapshots {
-//                    self.groceryItem = GroceryItem(snapshot: snap)
-//                    if self.groceryItem?.key == itemNAME {
-//                    }
-//                }
-//            }
-//        })
     }
     
     func updateColor(pathString: String,  item: [GroceryItem], isColor: Bool) {
@@ -243,8 +234,7 @@ class ModelCell: UITableViewCell {
     
     func toggleLine(pathString: String, model: GroceryItem) {
         let ref = Database.database().reference(withPath: pathString)
-        
-        ref.queryOrdered(byChild: "uid").queryEqual(toValue: model.key).observeSingleEvent(of: .value) { (querySnapshot) in
+        ref.queryOrdered(byChild: "name").queryEqual(toValue: model.name).observeSingleEvent(of: .value) { (querySnapshot) in
                for result in querySnapshot.children {
                    let resultSnapshot = result as! DataSnapshot
                 if let isCompleted = resultSnapshot.childSnapshot(forPath: "isCompleted").value as? Bool{
@@ -252,23 +242,6 @@ class ModelCell: UITableViewCell {
                 }
                }
            }
-        
-//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-//                for snap in snapshots {
-//                    self.groceryItem = GroceryItem(snapshot: snap)
-//                    if self.groceryItem?.key == self.items[0].key {
-//                        var isCompleted: Bool
-//                        if self.items[0].isCompleted == true{
-//                            isCompleted = false
-//                        }else{
-//                            isCompleted = true
-//                        }
-//                        ref.child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
-//                    }
-//                }
-//            }
-//        })
     }
     
     func markCheckBox(pathString: String, name: String) -> Bool {
