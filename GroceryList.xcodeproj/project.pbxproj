@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1712BAFC242A1AE3003B1CC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712BAFB242A1AE3003B1CC6 /* SignUpViewController.swift */; };
+		1712BAFE242A1B0C003B1CC6 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712BAFD242A1B0C003B1CC6 /* LoginManager.swift */; };
+		1712BB00242A1B25003B1CC6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712BAFF242A1B25003B1CC6 /* SignupViewModel.swift */; };
 		17220A6F2305CA37008EF669 /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A6E2305CA37008EF669 /* Constanst.swift */; };
 		17220A712305DC03008EF669 /* lineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17220A702305DC03008EF669 /* lineView.swift */; };
 		174802E92307677B00150D44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174802E82307677B00150D44 /* DesignableView.swift */; };
@@ -52,6 +55,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1712BAFB242A1AE3003B1CC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1712BAFD242A1B0C003B1CC6 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		1712BAFF242A1B25003B1CC6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		17220A6A2305C490008EF669 /* heebo_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_bold.ttf; sourceTree = "<group>"; };
 		17220A6B2305C491008EF669 /* heebo_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_regular.ttf; sourceTree = "<group>"; };
 		17220A6C2305C491008EF669 /* heebo_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = heebo_medium.ttf; sourceTree = "<group>"; };
@@ -112,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1712BAFA242A1AB4003B1CC6 /* SignupFB */ = {
+			isa = PBXGroup;
+			children = (
+				1712BAFB242A1AE3003B1CC6 /* SignUpViewController.swift */,
+				1712BAFF242A1B25003B1CC6 /* SignupViewModel.swift */,
+			);
+			path = SignupFB;
+			sourceTree = "<group>";
+		};
 		17220A632305C453008EF669 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +185,7 @@
 		17F30C3922F0958C00106D1C /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				1712BAFA242A1AB4003B1CC6 /* SignupFB */,
 				174802EA23076B3900150D44 /* Image */,
 				17220A6D2305CA19008EF669 /* Constant */,
 				17220A632305C453008EF669 /* Fonts */,
@@ -195,6 +211,7 @@
 				17F30C9122F1E61B00106D1C /* ModelCell.swift */,
 				17F30C5022F096F300106D1C /* GroceryItem.swift */,
 				17F30C5222F096FC00106D1C /* User.swift */,
+				1712BAFD242A1B0C003B1CC6 /* LoginManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -427,8 +444,11 @@
 				17F30C9422F3048400106D1C /* VicationViewModel.swift in Sources */,
 				17F30C4322F0958C00106D1C /* GroceryList.xcdatamodeld in Sources */,
 				17F30C9022F1CE9F00106D1C /* GeneralListCellViewModel.swift in Sources */,
+				1712BB00242A1B25003B1CC6 /* SignupViewModel.swift in Sources */,
+				1712BAFC242A1AE3003B1CC6 /* SignUpViewController.swift in Sources */,
 				17F30C6122F0B14900106D1C /* GeneralListViewController.swift in Sources */,
 				17F30C8022F1A0DD00106D1C /* CategoryItemCell.swift in Sources */,
+				1712BAFE242A1B0C003B1CC6 /* LoginManager.swift in Sources */,
 				17F30C3D22F0958C00106D1C /* VicatoinViewController.swift in Sources */,
 				17F30C5122F096F300106D1C /* GroceryItem.swift in Sources */,
 				17F30C5322F096FC00106D1C /* User.swift in Sources */,

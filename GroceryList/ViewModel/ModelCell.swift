@@ -29,7 +29,6 @@ class ModelCell: UITableViewCell {
     var collectionModel = PhotosCollectionViewController()
     static var modelCountToggleContent = ""
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -242,24 +241,34 @@ class ModelCell: UITableViewCell {
         return 0
     }
     
-    func toggleLine(pathString: String) {
+    func toggleLine(pathString: String, model: GroceryItem) {
         let ref = Database.database().reference(withPath: pathString)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshots {
-                    self.groceryItem = GroceryItem(snapshot: snap)
-                    if self.groceryItem?.key == self.items[0].key {
-                        var isCompleted: Bool
-                        if self.items[0].isCompleted == true{
-                            isCompleted = false
-                        }else{
-                            isCompleted = true
-                        }
-                        ref.child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
-                    }
+        
+        ref.queryOrdered(byChild: "uid").queryEqual(toValue: model.key).observeSingleEvent(of: .value) { (querySnapshot) in
+               for result in querySnapshot.children {
+                   let resultSnapshot = result as! DataSnapshot
+                if let isCompleted = resultSnapshot.childSnapshot(forPath: "isCompleted").value as? Bool{
+                     ref.child(resultSnapshot.key).updateChildValues(["isCompleted" : !isCompleted])
                 }
-            }
-        })
+               }
+           }
+        
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+//                for snap in snapshots {
+//                    self.groceryItem = GroceryItem(snapshot: snap)
+//                    if self.groceryItem?.key == self.items[0].key {
+//                        var isCompleted: Bool
+//                        if self.items[0].isCompleted == true{
+//                            isCompleted = false
+//                        }else{
+//                            isCompleted = true
+//                        }
+//                        ref.child(self.groceryItem!.key).updateChildValues(["isCompleted":isCompleted])
+//                    }
+//                }
+//            }
+//        })
     }
     
     func markCheckBox(pathString: String, name: String) -> Bool {

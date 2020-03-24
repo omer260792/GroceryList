@@ -46,6 +46,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     var nameOfCategoryString = ""
     var cellTestIndex: Int = 0
     var titlePage = ""
+    
     var permessionFirstOpen = true
     var generalModelCountToggleContent = 0
     var indexTapLongGesterItem = 0
@@ -66,6 +67,9 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     let itemCellIndentifier = "ItemCellIndentifier"
     let vicationCategoryCellIndentifier = "VicationCategoryCellIdentifier"
     let vicationCellIndentifier = "VicationCellIndentifier"
+    
+    // MARK: Temporary
+    var nameIdexLineTemporary = ""
     
     // MARK: rxswift
     var generalListTableDataBindingDisposable: Disposable?
@@ -279,40 +283,46 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
                 cell.delegate = self
                 cell.lineView.tag = indexPath.row
                 cell.items = [element]
-                cell.titleLabel.text = element.key
-                cell.contentLabel.text = element.content
-                let image = element.image
-                if image == ""{
-                cell.showImagebtn.isHidden = true
-                }else{
-                cell.showImagebtn.isHidden = false
-                }
-                if permessionFirstOpen == true{
-                    if self.items[indexPath.row].isCompleted == true {
-                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
-                        cell.lineView.didChangeValue(forKey: titleWidth.description)
-                    }else{
-                        cell.lineView.didChangeValue(forKey: "decrease")
-                    }
-                }else{
-                    if ModelCell.modelCountToggleContent == self.items[indexPath.row].key {
-                         cell.lineView.didChangeValue(forKey: "decrease")
-                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
-                         cell.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
-                        ModelCell.modelCountToggleContent = ""
-                    }else if self.items[indexPath.row].isCompleted == false{
-                        cell.lineView.didChangeValue(forKey: "decrease")
-                    }else{
-                       // print("ff")
-                    }
-//                    if self.items[indexPath.row].isCompleted == false {
-//                        if cell.lineView.tag != 100{
-//                            cell.lineView.didChangeValue(forKey: "decrease")
-//                        }else{
-//                            print(cell.lineView.tag)
-//                        }
+            
+                cell.setListCell(model: element)
+            if self.nameIdexLineTemporary == element.key{
+                cell.drawLine(item: element)
+                self.nameIdexLineTemporary = ""
+            }else{
+                cell.addLine(item: element)
+            }
+            
+//                if permessionFirstOpen == true{
+//                    if self.items[indexPath.row].isCompleted == true {
+//                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
+//                        cell.lineView.didChangeValue(forKey: titleWidth.description)
+//                    }else{
+//                        cell.lineView.didChangeValue(forKey: "decrease")
 //                    }
-                }
+//                }else{
+//                    if ModelCell.modelCountToggleContent == self.items[indexPath.row].key {
+//                         cell.lineView.didChangeValue(forKey: "decrease")
+//                        let titleWidth = cell.titleLabel.intrinsicContentSize.width
+//                         cell.lineView.didChange(NSKeyValueChange(rawValue: 1)!, valuesAt: [1], forKey: titleWidth.description)
+//                        ModelCell.modelCountToggleContent = ""
+//                    }else if self.items[indexPath.row].isCompleted == false{
+//                        cell.lineView.didChangeValue(forKey: "decrease")
+//                    }else{
+//                       // print("ff")
+//                    }
+//
+//                    print("omer: ",cell.titleLabel.text)
+//                    print("omer: ",self.items[indexPath.row].isCompleted)
+//                    print("omer: ########################################")
+//
+////                    if self.items[indexPath.row].isCompleted == false {
+////                        if cell.lineView.tag != 100{
+////                            cell.lineView.didChangeValue(forKey: "decrease")
+////                        }else{
+////                            print(cell.lineView.tag)
+////                        }
+////                    }
+//                }
             return cell
             
         case "vicationCategory":
@@ -347,6 +357,7 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
             return UITableViewCell()
         }
     }
+
     
     func arrowAnimate(num: CGFloat, animationDuration: TimeInterval, cell:CategoryCell){
         var transform: CGAffineTransform
@@ -689,10 +700,53 @@ class GeneralListViewController: UIViewController, UITabBarControllerDelegate, U
     }
 
     private func setupGeneralListTableViewCellWhenTapped() {
+//        tableUser.rx.longPressGesture()
+//        .when(.began)
+//        .subscribe(onNext: { [weak self] gesture in
+//            let point = gesture.location(in: self.tableUser)
+//            let coordinate = view.convert(point, toCoordinateFrom: view)
+//            self?.addUnsavedAnnotation(at: coordinate)
+//        }).disposed(by: disposeBag)
+        
+        tableUser.rx
+            .longPressGesture()
+            .subscribe(onNext: { [weak self]  indexPath in
+                if let index = self?.tabIndex {
+                    switch index {
+                    case 0:
+                        print("omer",indexPath)
+                       
+                     
+                      //  self.toggleLine(pathString: "temporaryCategory")
+                        //            if let delegate = self.delegate{
+                        //                delegate.permessionFirstOpen = false
+                        //            }
+                        
+                    case 1:break
+                    case 2:break
+                    default:
+                        break
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+        
         tableUser.rx.itemSelected
-            .subscribe(onNext: { indexPath in
-    
-        }).disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self]  indexPath in
+                if let index = self?.tabIndex {
+                    switch index {
+                    case 0:
+                        if let item = self?.items[indexPath.row]{
+                            self?.nameIdexLineTemporary = item.key
+                            self?.modelCell.toggleLine(pathString: "temporaryCategory", model: item)
+                        }
+                    case 1:break
+                    case 2:break
+                    default:
+                        break
+                    }
+                }
+            }).disposed(by: disposeBag)
     }
     func showImage(image: UIImage) {
         
